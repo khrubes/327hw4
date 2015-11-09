@@ -24,11 +24,11 @@ vector<string> getStringVectorFromLine(string line){
 }
 
 /*  
-    @param i the int we want to store our string value into
+    @param i the int we want to store @str value into
     @param str the string we want to convert
     @return true if str can be represented as an int
 */
-bool stringToInt(int &i, string str) {
+bool parseAndStoreStringIntoInt(int &i, string str) {
     const char* s = str.c_str();
     char c;
     std::stringstream ss(s);

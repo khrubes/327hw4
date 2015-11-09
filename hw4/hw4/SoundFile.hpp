@@ -14,10 +14,12 @@ class SoundFile {
         int numSamples;
         int sampleRate;
         string fileName;
-    
+
     public:
         SoundFile(string fileName, int bitRes, int numChannels, int sampleRate, int numSamples);
+        ~SoundFile();
         vector< vector<signed int> > channels;
+        void setNumSamples(int numSamples);
 };
 
 

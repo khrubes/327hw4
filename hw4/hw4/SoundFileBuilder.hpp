@@ -15,6 +15,7 @@ class SoundFileBuilder {
         bool containsCS229Heading(string line);
         bool shouldIgnoreLine(vector<string> lineVector);
         bool areSoundFileDataValuesInitialzed(int bitRes, int numChannels, int sampleRate);
+        bool addStartDataToSoundFile(SoundFile** soundFile, ifstream& file);
     public:
         SoundFileBuilder();
         SoundFile* buildSoundFileFromFileName(string fileName);

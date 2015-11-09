@@ -10,5 +10,18 @@ SoundFile::SoundFile(string fileName, int bitRes, int numChannels, int sampleRat
     this->numChannels = numChannels;
     this->numSamples = numSamples;
     this->sampleRate = sampleRate;
-    channels.reserve(numChannels);
+    this->channels.reserve(numChannels);
+    
+    for (int i=0; i < numChannels; i++) {
+        vector<signed int> *channel = new vector<signed int>();
+        this->channels.push_back(*channel);
+    }
+}
+
+SoundFile::~SoundFile(){
+    cout << "soundfile destructor, you probably have a shit ton of memory leaks" << endl;
+}
+
+void SoundFile::setNumSamples(int numSamples){
+    this->numSamples = numSamples;
 }
