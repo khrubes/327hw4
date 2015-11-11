@@ -8,6 +8,7 @@ using namespace std;
 */
 
 class SoundFile {
+
     private:
         int bitRes;
         int numChannels;
@@ -20,6 +21,13 @@ class SoundFile {
         ~SoundFile();
         vector< vector<signed int> > channels;
         void setNumSamples(int numSamples);
+        //void multiply(int multiVal); //TODO override * operator
+        const int getBitRes();
+        const int getNumChannels();
+        const int getNumSamples();
+        const int getSampleRate();
+        const string getFileName();
+        const string getFileType();
 };
 
 

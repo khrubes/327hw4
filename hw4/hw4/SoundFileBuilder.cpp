@@ -30,7 +30,7 @@ SoundFile* SoundFileBuilder::buildSoundFileFromFileName(string fileName){
             if (shouldIgnoreLine(lineVector)) {
                 continue;
             }
-            if (isFirstLine && !containsCS229Heading(lineVector[0])) {
+            if (isFirstLine && !isCS229Heading(lineVector[0])) {
                 cout << ".cs229 files must begin with CS229" << endl;
                 return NULL; //failure
             }
@@ -65,7 +65,8 @@ SoundFile* SoundFileBuilder::buildSoundFileFromFileName(string fileName){
         }
         if(!addStartDataToSoundFile(&soundFile, file)){
             //there was an error parsing the startdata
-            free(soundFile);
+            delete soundFile;
+            return NULL;
         }
         file.close();
     }
@@ -73,20 +74,22 @@ SoundFile* SoundFileBuilder::buildSoundFileFromFileName(string fileName){
     return soundFile;
 }
 
-bool SoundFileBuilder::isValidFileType(string fileName){ //TODO support .wav ?
+bool SoundFileBuilder::isValidFileType(string fileName, bool printOutput){ //TODO support .wav ?
     const string cs229FileExtenstion = ".cs229";
     size_t found = fileName.find(cs229FileExtenstion);
     if (found==string::npos){
-        cout << "File must be of type .cs229" << endl;
+        if (printOutput) {
+            cout << "File must be of type .cs229" << endl;
+        }
         return false; //failure
     }
     return true;
 }
 
 /*
-    @return true if @heading contains some form of cs229
+    @return true if @heading is some form of cs229
  */
-bool SoundFileBuilder::containsCS229Heading(string heading){
+bool SoundFileBuilder::isCS229Heading(string heading){
     const string cs229LowerCase = "cs229";
     return (cs229LowerCase.compare(heading) == 0);
 }
@@ -105,14 +108,14 @@ bool SoundFileBuilder::shouldIgnoreLine(vector<string> lineVector){
 */
 bool SoundFileBuilder::areSoundFileDataValuesInitialzed(int bitRes, int numChannels, int sampleRate){
     if (bitRes == NON_INITIALIZED_INT){
-        cout << "A BitRes value must be provided" << endl;
+        fprintf(stderr, "A BitRes value must be provided");
         return false;
     }
     if (numChannels == NON_INITIALIZED_INT){
-        cout << "A Channels value must be provided" << endl;
+        fprintf(stderr, "A Channels value must be provided");
     }
     if (sampleRate == NON_INITIALIZED_INT){
-        cout << "A SampleRate value must be provided" << endl;
+        fprintf(stderr, "A SampleRate value must be provided");
     }
     return true;
 }
@@ -123,6 +126,9 @@ bool SoundFileBuilder::areSoundFileDataValuesInitialzed(int bitRes, int numChann
     @return true if StartData was successfully added to the SoundFile
 */
 bool SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, ifstream& file){
+    if (!soundFile || !(*soundFile)) {
+        return false;
+    }
     string line;
     int numSamples = 0;
     while ( getline(file,line) ) {
@@ -130,7 +136,7 @@ bool SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, ifstream& 
         for (int i = 0; i < (*soundFile)->channels.size(); i++) {
             signed int sample;
             if(!parseAndStoreStringIntoInt(sample, lineVector[i])){
-                cout << "Sample \"" << lineVector[i] << "\"" << " in StartData section is not a valid sample." << endl;
+                fprintf(stderr, "Sample %s in StartData section is not a valid sample.", (lineVector[i]).c_str());
                 return false;
             }else{
                 (*soundFile)->channels[i].push_back(sample); //channels[i] is a vector<signed int> which holds data for one channel

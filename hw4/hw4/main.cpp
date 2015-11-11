@@ -1,8 +1,21 @@
 #include "all.h"
-#include "SoundFileBuilder.hpp"
+#include "SndInfo.hpp"
+using namespace std;
 
 int main(int argc, const char * argv[]) {
-    SoundFileBuilder sfB;
-    SoundFile* sfP = sfB.buildSoundFileFromFileName("/Users/kelseyhrubes/Documents/327/hw4/hw4/hw4/sf1.cs229");
+    try{
+        //TODO print error messages to standard error rather than stdout
+
+        vector<string> arguments;
+        for (int i = 1; i < argc; i++) { // skip over program name
+            arguments.push_back(argv[i]);
+        }
+        SndInfo* sf = new SndInfo(arguments);
+        //TODO fix sound length in seconds
+    }
+    catch (exception& e)
+    {
+        cout << "An error has occured \" " << e.what() << "\"" << endl;
+    }
     return 0;
 }
