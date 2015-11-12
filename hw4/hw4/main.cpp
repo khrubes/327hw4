@@ -1,6 +1,13 @@
 #include "all.h"
 #include "SndInfo.hpp"
+#include "util.hpp"
 using namespace std;
+
+#include <sstream>
+#include <vector>
+
+
+
 
 int main(int argc, const char * argv[]) {
     try{

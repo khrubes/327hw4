@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundProgram.hpp"
-            timestampString = "468992364.482216"
+            timestampString = "469041605.70428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "class SoundProgram"
             landmarkType = "3">
          </BreakpointContent>
@@ -40,12 +40,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFileBuilder.cpp"
-            timestampString = "468718689.994498"
+            timestampString = "469041605.70428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName)"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -56,12 +56,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFileBuilder.cpp"
-            timestampString = "468718689.994498"
+            timestampString = "469041605.70428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName)"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -72,23 +72,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFileBuilder.cpp"
-            timestampString = "468804531.486539"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "SoundFileBuilder::shouldIgnoreLine(vector&lt;string&gt; lineVector)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "hw4/SoundFileBuilder.cpp"
-            timestampString = "468804531.486539"
+            timestampString = "469041605.70428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
@@ -104,12 +88,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFileBuilder.cpp"
-            timestampString = "468719724.251261"
+            timestampString = "469041605.70428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName)"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "SoundFileBuilder::shouldIgnoreLine(vector&lt;string&gt; lineVector)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -120,12 +104,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFileBuilder.cpp"
-            timestampString = "468718689.994498"
+            timestampString = "469041605.70428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName)"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -136,12 +120,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFileBuilder.cpp"
-            timestampString = "468718689.994498"
+            timestampString = "469041605.70428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName)"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName, unsigned int multiplyValue"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hw4/SoundFileBuilder.cpp"
+            timestampString = "469041605.70428"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -166,12 +166,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFileBuilder.cpp"
-            timestampString = "468719724.251261"
+            timestampString = "469041605.70428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName)"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -198,12 +198,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFileBuilder.cpp"
-            timestampString = "468719724.251261"
+            timestampString = "469041605.70428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName)"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -214,12 +214,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFileBuilder.cpp"
-            timestampString = "468987483.772766"
+            timestampString = "469041605.70428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, ifstream&amp; file)"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, ifstream&amp; file, unsigned int multiplyValue)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -230,12 +230,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFileBuilder.cpp"
-            timestampString = "468727360.746473"
+            timestampString = "469041605.70428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName)"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -246,12 +246,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFileBuilder.cpp"
-            timestampString = "468719724.251261"
+            timestampString = "469041605.70428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName)"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -262,12 +262,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFileBuilder.cpp"
-            timestampString = "468987483.772766"
+            timestampString = "469041605.70428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, ifstream&amp; file)"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, ifstream&amp; file, unsigned int multiplyValue)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -278,12 +278,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFileBuilder.cpp"
-            timestampString = "468987483.772766"
+            timestampString = "469041605.70428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, ifstream&amp; file)"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, ifstream&amp; file, unsigned int multiplyValue)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -294,12 +294,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFileBuilder.cpp"
-            timestampString = "468719724.251261"
+            timestampString = "469041605.70428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName)"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -310,12 +310,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFileBuilder.cpp"
-            timestampString = "468719677.840351"
+            timestampString = "469041605.70428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName)"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "SoundFileBuilder::buildSoundFileFromFileName(string fileName, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -326,12 +326,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFileBuilder.cpp"
-            timestampString = "468987483.772766"
+            timestampString = "469041605.70428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, ifstream&amp; file)"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, ifstream&amp; file, unsigned int multiplyValue)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -342,12 +342,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFileBuilder.cpp"
-            timestampString = "468987483.772766"
+            timestampString = "469041605.70428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, ifstream&amp; file)"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, ifstream&amp; file, unsigned int multiplyValue)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -358,61 +358,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/main.cpp"
-            timestampString = "468992364.482216"
+            timestampString = "469041686.022664"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "main(int argc, const char * argv[])"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "hw4/main.cpp"
-            timestampString = "468992364.482216"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "main(int argc, const char * argv[])"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "main"
-                  moduleName = "hw4"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kelseyhrubes/Documents/327/hw4/hw4/hw4/main.cpp"
-                  timestampString = "468987485.048982"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "15"
-                  endingLineNumber = "15"
-                  offsetFromSymbolStart = "1196">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "main"
-                  moduleName = "hw4"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kelseyhrubes/Documents/327/hw4/hw4/hw4/main.cpp"
-                  timestampString = "468987485.049203"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "15"
-                  endingLineNumber = "15"
-                  offsetFromSymbolStart = "1201">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -464,7 +416,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundProgram.cpp"
@@ -491,6 +443,38 @@
             endingLineNumber = "39"
             landmarkName = "SndInfo::getProgramDescription()"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hw4/SoundProgram.hpp"
+            timestampString = "469041605.70428"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "class SoundProgram"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hw4/SoundFile.hpp"
+            timestampString = "469041605.70428"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "class SoundFile"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

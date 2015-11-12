@@ -14,14 +14,12 @@ class SoundProgram {
         void initSwitchFunctionMap();
     
     protected:
+        /* Functions */
         virtual void runProgram() = 0;
         virtual string getProgramName() = 0;
         virtual string getProgramDescription() = 0;
+        virtual void initSoundFiles(vector<string> arguments);
         void runSwitches();
-    
-        vector<SoundFile*> soundFiles;
-        string outPutFileName;
-        void initSoundFiles(vector<string> arguments); //sndgen will need to handle logic for multi arguments, make virtual eventually
         /*
             A SwitchFunction is pointer to a function which implements the functionality of a given switch.
             @param argument the argument passed in with the switch
@@ -34,15 +32,20 @@ class SoundProgram {
         bool hSwitch(string argument);
         bool oSwitch(string argument);
         vector<string> getValidSwitches(bool withParams);
+    
+        /* Member variables */
         unordered_map<string, SwitchFunction> switchFunctionMap;
         unordered_map<string, string> switchArgumentMap;
+        vector<SoundFile*> soundFiles;
+        string outPutFileName;
     
     public:
         SoundProgram();
         SoundProgram(vector<string> arguments);
         void setOutputFileName(string fileName);
-        SoundFileBuilder* soundFileBuilder;
         string getSwitchDescription(string switchName);
+    
+        SoundFileBuilder* soundFileBuilder;
 };
 
 #endif /* SoundProgram_hpp */

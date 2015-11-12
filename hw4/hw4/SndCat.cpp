@@ -4,6 +4,14 @@ SndCat::SndCat(vector<string> fileArguments) : SoundProgram(fileArguments){
     runProgram();
 }
 
+string SndCat::getProgramName(){
+    return "SndCat";
+}
+
+string SndCat::getProgramDescription(){
+    return "This program reads all sound files passed as arguments, and writes a single sound file that is the concatenation of the inputs";
+}
+
 
 /*
  This program reads all sound files passed as arguments, and writes a single sound file that is
@@ -19,6 +27,7 @@ SndCat::SndCat(vector<string> fileArguments) : SoundProgram(fileArguments){
  */
 void SndCat::runProgram(){
     //check for swtiches
+    runSwitches();
     
     for (auto &soundFile : this->soundFiles) // access by reference to avoid copying
     {

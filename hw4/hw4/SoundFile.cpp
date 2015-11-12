@@ -19,7 +19,26 @@ SoundFile::SoundFile(string fileName, int bitRes, int numChannels, int sampleRat
 }
 
 SoundFile::~SoundFile(){
-    cout << "soundfile destructor, you probably have a shit ton of memory leaks" << endl;
+    cout << "soundfile destructor, you probably have a shit ton of memory leaks" << endl; //TODO remove
+}
+
+/*  
+    Iterates over the sample data in #channels and multiplies it by multi.
+    @param multi the value to multiply sample data by. Must be a real value between -10 and 10
+    @return a modified reference to the current #SoundFile, or an unmodified one if multi is invalid.
+ 
+*/
+SoundFile SoundFile::operator*(int multi){ //TODO TEST
+    if (multi < -10 || multi > 10) {
+        fprintf(stderr, "Invalid multiplying value \"%i\" for file %s.", multi, this->getFileName().c_str());
+        return *this;
+    }
+    for(auto& channel : this->channels){
+        for (int i = 0; i < channel.size(); i++){
+            channel[i]*= multi;
+        }
+    }
+    return *this;
 }
 
 void SoundFile::setNumSamples(int numSamples){

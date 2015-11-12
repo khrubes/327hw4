@@ -126,6 +126,19 @@ void SoundProgram::runSwitches(){
 }
 
 /*
+ @param string outputFileName the output file name
+ @return true if @outputFileName is a valid file
+ */
+bool SoundProgram::oSwitch(string outputFileName){ //TODO move this to SndCat
+    if(!this->soundFileBuilder->isValidFileType(outputFileName, false /*print output*/)){
+        return false;
+    }
+    this->setOutputFileName(outputFileName);
+    return true;    //TODO use for -o
+}
+
+
+/*
     Prints the help screen which describes the program, its usage, and all legal switches, then exits the program.
  */
 bool SoundProgram::hSwitch(string argument = NULL){
@@ -140,18 +153,6 @@ bool SoundProgram::hSwitch(string argument = NULL){
         cout << switchName << ": " << getSwitchDescription(switchName) << endl;
     }
     return true;
-}
-
-/*
-    @param string outputFileName the output file name
-    @return true if @outputFileName is a valid file
-*/
-bool SoundProgram::oSwitch(string outputFileName){ //TODO move this to SndCat
-    if(!this->soundFileBuilder->isValidFileType(outputFileName, false /*print output*/)){
-        return false;
-    }
-    this->setOutputFileName(outputFileName);
-    return true;    //TODO use for -o
 }
 
 /*

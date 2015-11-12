@@ -6,9 +6,10 @@ SoundFileBuilder::SoundFileBuilder(){}
 
 /*
  @param fileName, the name of the file to create the SoundFile from.
+ @param multiplyValue the optional value to multiply SoundFile::channels sample data by.
  @return a pointer to a newly constructed SoundFile, or NULL if there was an error processing the file.
 */
-SoundFile* SoundFileBuilder::buildSoundFileFromFileName(string fileName){
+SoundFile* SoundFileBuilder::buildSoundFileFromFileName(string fileName, unsigned int multiplyValue /* default = 1 */){
 
     SoundFile* soundFile = NULL;
     //SoundFile member variables to initialize
@@ -63,7 +64,7 @@ SoundFile* SoundFileBuilder::buildSoundFileFromFileName(string fileName){
                 cout << "Invalid header: " << lineVector[0] << " this file cannot be parsed." << endl;
             }
         }
-        if(!addStartDataToSoundFile(&soundFile, file)){
+        if(!addStartDataToSoundFile(&soundFile, file, multiplyValue)){
             //there was an error parsing the startdata
             delete soundFile;
             return NULL;
@@ -112,8 +113,13 @@ bool SoundFileBuilder::areSoundFileDataValuesInitialzed(int bitRes, int numChann
         return false;
     }
     if (numChannels == NON_INITIALIZED_INT){
-        fprintf(stderr, "A Channels value must be provided");
+        fprintf(stderr, "A value for Channels must be provided");
+        return false;
+    }else if(numChannels <= 0){
+        fprintf(stderr, "Invalid number of Channels: %d", numChannels);
+        return false;
     }
+    
     if (sampleRate == NON_INITIALIZED_INT){
         fprintf(stderr, "A SampleRate value must be provided");
     }
@@ -125,7 +131,7 @@ bool SoundFileBuilder::areSoundFileDataValuesInitialzed(int bitRes, int numChann
     @param file, the file to read startdata from
     @return true if StartData was successfully added to the SoundFile
 */
-bool SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, ifstream& file){
+bool SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, ifstream& file, unsigned int multiplyValue){
     if (!soundFile || !(*soundFile)) {
         return false;
     }
@@ -139,7 +145,7 @@ bool SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, ifstream& 
                 fprintf(stderr, "Sample %s in StartData section is not a valid sample.", (lineVector[i]).c_str());
                 return false;
             }else{
-                (*soundFile)->channels[i].push_back(sample); //channels[i] is a vector<signed int> which holds data for one channel
+                (*soundFile)->channels[i].push_back(sample * multiplyValue); //channels[i] is a vector<signed int> which holds data for one channel
             }
         }
         numSamples++;
