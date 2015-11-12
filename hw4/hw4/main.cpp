@@ -11,7 +11,6 @@ int main(int argc, const char * argv[]) {
             arguments.push_back(argv[i]);
         }
         SndInfo* sf = new SndInfo(arguments);
-        //TODO fix sound length in seconds
     }
     catch (exception& e)
     {

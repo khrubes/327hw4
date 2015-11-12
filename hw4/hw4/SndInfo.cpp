@@ -4,7 +4,6 @@ SndInfo::SndInfo(vector<string> fileArguments) : SoundProgram(fileArguments){
     runProgram();
 }
 
-
 /*
   Prints the following for each SoundFile in #soundFiles
     -The file name
@@ -16,6 +15,7 @@ SndInfo::SndInfo(vector<string> fileArguments) : SoundProgram(fileArguments){
     - The length of the sound (in seconds)
  */
 void SndInfo::runProgram(){
+    runSwitches();
     for (auto &soundFile : this->soundFiles) // access by reference to avoid copying
     {
         cout << "File name: " << soundFile->getFileName() << endl;
@@ -28,4 +28,20 @@ void SndInfo::runProgram(){
         cout << "Sound length in seconds: " << soundLengthInSeconds << endl;
     }
     
+}
+
+string SndInfo::getProgramName(){
+    return "SndInfo";
+}
+
+string SndInfo::getProgramDescription(){
+    return "This program reads all sound files passed as arguments, and for each one, displays the following. \n"
+         "The file name\n"
+         "The file type\n"
+         "The sample rate\n"
+         "The bit depth\n"
+         "The number of channels\n"
+         "The number of samples\n"
+         "The length of the sound (in seconds)\n"
+         "If no files are passed as arguments, then the program should read from standard input.";
 }

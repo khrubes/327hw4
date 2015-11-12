@@ -9,6 +9,9 @@ using namespace std;
 class SndInfo : public SoundProgram {
     protected:
         void runProgram();
+        string getProgramName();
+        string getProgramDescription();
+    
     public:
         SndInfo(vector<string> fileArguments);
 };

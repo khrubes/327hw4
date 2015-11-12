@@ -9,13 +9,15 @@ using namespace std;
 */
 class SoundProgram {
     private:
-        bool isValidSwitchWithNoParams(string switchArg);
-        bool isValidSwitchWithParams(string switchArg);
+        bool isValidSwitch(string switchArg, bool withParams);
         void initSwitchArgumentMap(vector<string>* arguments);
         void initSwitchFunctionMap();
     
     protected:
         virtual void runProgram() = 0;
+        virtual string getProgramName() = 0;
+        virtual string getProgramDescription() = 0;
+        void runSwitches();
     
         vector<SoundFile*> soundFiles;
         string outPutFileName;
@@ -25,12 +27,13 @@ class SoundProgram {
             @param argument the argument passed in with the switch
             @return false if there was an error performing the SwitchFunction
          */
-        typedef bool (*SwitchFunction)(string argument);
+        typedef bool (SoundProgram::*SwitchFunction)(string argument);
         SwitchFunction getSwitchFunction(string switchArg);
     
         /* Switch Functions*/
-        static bool hSwitch(string argument); //override for different programs
-    
+        bool hSwitch(string argument);
+        bool oSwitch(string argument);
+        vector<string> getValidSwitches(bool withParams);
         unordered_map<string, SwitchFunction> switchFunctionMap;
         unordered_map<string, string> switchArgumentMap;
     
@@ -38,8 +41,8 @@ class SoundProgram {
         SoundProgram();
         SoundProgram(vector<string> arguments);
         void setOutputFileName(string fileName);
-    
         SoundFileBuilder* soundFileBuilder;
+        string getSwitchDescription(string switchName);
 };
 
 #endif /* SoundProgram_hpp */
