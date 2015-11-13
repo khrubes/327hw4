@@ -6,7 +6,7 @@
  */
 SoundFile::SoundFile(string fileName, int bitRes, int numChannels, int sampleRate, int numSamples){
     this->fileName = fileName;
-    this->bitRes = bitRes;
+    this->bitDepth = bitDepth;
     this->numChannels = numChannels;
     this->numSamples = numSamples;
     this->sampleRate = sampleRate;
@@ -45,8 +45,8 @@ void SoundFile::setNumSamples(int numSamples){
     this->numSamples = numSamples;
 }
 
-const int SoundFile::getBitRes(){
-    return this->bitRes;
+const int SoundFile::getBitDepth(){
+    return this->bitDepth;
 }
 
 const int SoundFile::getNumChannels(){

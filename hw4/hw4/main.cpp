@@ -7,6 +7,8 @@ using namespace std;
 #include <vector>
 
 
+void lineTest()
+
 
 
 int main(int argc, const char * argv[]) {

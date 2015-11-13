@@ -16,6 +16,7 @@
 		BBD0A7E11BF18A2C00FADB6A /* SwitchManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBD0A7DF1BF18A2C00FADB6A /* SwitchManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		BBD0A7E41BF413F300FADB6A /* SndCat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBD0A7E21BF413F300FADB6A /* SndCat.cpp */; settings = {ASSET_TAGS = (); }; };
 		BBD0A7E71BF44C1700FADB6A /* SndMix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBD0A7E51BF44C1700FADB6A /* SndMix.cpp */; settings = {ASSET_TAGS = (); }; };
+		BBD0A7EA1BF5AC8A00FADB6A /* SoundFileLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBD0A7E81BF5AC8A00FADB6A /* SoundFileLogger.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,6 +53,8 @@
 		BBD0A7E31BF413F300FADB6A /* SndCat.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SndCat.hpp; sourceTree = "<group>"; };
 		BBD0A7E51BF44C1700FADB6A /* SndMix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SndMix.cpp; sourceTree = "<group>"; };
 		BBD0A7E61BF44C1700FADB6A /* SndMix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SndMix.hpp; sourceTree = "<group>"; };
+		BBD0A7E81BF5AC8A00FADB6A /* SoundFileLogger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundFileLogger.cpp; sourceTree = "<group>"; };
+		BBD0A7E91BF5AC8A00FADB6A /* SoundFileLogger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SoundFileLogger.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,8 @@
 				BBD0A7E31BF413F300FADB6A /* SndCat.hpp */,
 				BBD0A7E51BF44C1700FADB6A /* SndMix.cpp */,
 				BBD0A7E61BF44C1700FADB6A /* SndMix.hpp */,
+				BBD0A7E81BF5AC8A00FADB6A /* SoundFileLogger.cpp */,
+				BBD0A7E91BF5AC8A00FADB6A /* SoundFileLogger.hpp */,
 			);
 			path = hw4;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 				BBD0A7D71BF031F700FADB6A /* SndInfo.cpp in Sources */,
 				BB6EBE4E1BEE87EC004F951E /* SoundFileBuilder.cpp in Sources */,
 				BB6EBE4A1BEE7CCE004F951E /* SoundProgram.cpp in Sources */,
+				BBD0A7EA1BF5AC8A00FADB6A /* SoundFileLogger.cpp in Sources */,
 				BB6EBE511BEE92C5004F951E /* util.cpp in Sources */,
 				BB6EBE471BEE6F5E004F951E /* SoundFile.cpp in Sources */,
 			);

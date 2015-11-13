@@ -10,7 +10,7 @@ using namespace std;
 
 class SoundFile {
     private:
-        int bitRes;
+        int bitDepth;
         int numChannels;
         int numSamples;
         int sampleRate;
@@ -21,7 +21,7 @@ class SoundFile {
         SoundFile operator*(int multi);    
         vector< vector<signed int> > channels;
         void setNumSamples(int numSamples);
-        const int getBitRes();
+        const int getBitDepth();
         const int getNumChannels();
         const int getNumSamples();
         const int getSampleRate();
