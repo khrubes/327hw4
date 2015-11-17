@@ -7,7 +7,13 @@ using namespace std;
 #include <vector>
 
 
-void lineTest()
+void lineTest(string fileName = ""){
+        string line;
+        ifstream file(fileName);
+        while ( getline (file.is_open() ? file : cin, line) ){
+            cout << line << endl;
+        }
+}
 
 
 

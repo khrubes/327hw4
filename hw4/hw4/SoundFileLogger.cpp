@@ -1,8 +1,10 @@
 #include "SoundFileLogger.hpp"
 #include <limits.h>
 
-// Global static pointer used to ensure a singleton functionality
 SoundFileLogger* SoundFileLogger::soundfileLoggerInstance = NULL;
+long SoundFileLogger::sampleRateSum;
+int SoundFileLogger::numSoundFilesCreated;
+int SoundFileLogger::maxBitDepth;
 
 /*
     SoundFileLogger is a singleton class used to track data about #SoundFiles.
@@ -16,11 +18,11 @@ SoundFileLogger* SoundFileLogger::getInstance(SoundFile* soundFile /* default is
     }
     
     if(soundFile){
-        if (soundFile->getBitRes() > maxBitDepth) {
-            maxBitDepth = soundFile->getBitRes();
+        if (soundFile->getBitDepth() > SoundFileLogger::maxBitDepth) {
+            SoundFileLogger::maxBitDepth = soundFile->getBitDepth();
         }
-        sampleRateSum+= soundFile->getSampleRate();
-        numSoundFilesCreated++;
+        SoundFileLogger::sampleRateSum+= soundFile->getSampleRate();
+        SoundFileLogger::numSoundFilesCreated++;
     }
     
     return soundfileLoggerInstance;

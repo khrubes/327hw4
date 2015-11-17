@@ -12,10 +12,10 @@ class SoundFileBuilder {
         bool isCS229Heading(string line);
         bool shouldIgnoreLine(vector<string> lineVector);
         bool areSoundFileDataValuesInitialzed(int bitRes, int numChannels, int sampleRate);
-        bool addStartDataToSoundFile(SoundFile** soundFile, ifstream& file, unsigned int multiplyValue);
+        bool addStartDataToSoundFile(SoundFile** soundFile, istream& input, unsigned int multiplyValue);
     public:
         SoundFileBuilder();
-        SoundFile* buildSoundFileFromFileName(string fileName, unsigned int multiplyValue = 1);
+        SoundFile* buildSoundFileFromInput(string input = "", unsigned int multiplyValue = 1);
         bool isValidFileType(string fileName, bool printOutput=true);
 };
 

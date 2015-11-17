@@ -5,6 +5,9 @@
     Instantiates channels with numChannels # of vectors to hold chanel data.
  */
 SoundFile::SoundFile(string fileName, int bitRes, int numChannels, int sampleRate, int numSamples){
+    if(fileName.compare("")==0){
+        fileName = "SoundFile read from stdin";
+    }
     this->fileName = fileName;
     this->bitDepth = bitDepth;
     this->numChannels = numChannels;

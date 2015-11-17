@@ -24,15 +24,19 @@ void SoundProgram::setOutputFileName(string fileName){
         if the argument cannot be made into a #SoundFile, an error will be printed to stderr.
 */
 void SoundProgram::initSoundFiles(vector<string> arguments){
-    for (int i = 0; i < arguments.size(); i++) {
-        SoundFile* soundFile = this->soundFileBuilder->buildSoundFileFromFileName(arguments[i]);
+    for (int i = 0; i <= arguments.size(); i++) {
+        SoundFile* soundFile = this->soundFileBuilder->buildSoundFileFromInput(arguments.size()==0 ? "" : arguments[i]);
         if (soundFile) {
             this->soundFiles.push_back(soundFile);
         } else {
             //something other than a switch was found in @arguments
-            fprintf(stderr,"Illegal argument: %s\n", arguments[i].c_str());
+            string illegalArgument = arguments.size()==0 ? "" : ": " + arguments[i];
+            fprintf(stderr,"Illegal argument%s\n", illegalArgument.c_str());
             exit(0);
 
+        }
+        if (arguments.size()==0) {
+            break; //no file arguments, we only needed to build a file from stdin and need this hack.
         }
     }
 }

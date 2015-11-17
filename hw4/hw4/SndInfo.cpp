@@ -21,7 +21,7 @@ void SndInfo::runProgram(){
         cout << "File name: " << soundFile->getFileName() << endl;
         cout << "File type: " << soundFile->getFileType() << endl;
         cout << "Sample rate: " << soundFile->getSampleRate() << endl;
-        cout << "Bit depth: " << soundFile->getBitRes() << endl;
+        cout << "Bit depth: " << soundFile->getBitDepth() << endl;
         cout << "Number of channels: " << soundFile->getNumChannels() << endl;
         cout << "Number of samples: " << soundFile->getNumSamples() << endl; //TODO you don't really need numsamples
         long soundLengthInSeconds = (long)(soundFile->getNumSamples() / soundFile->getSampleRate());

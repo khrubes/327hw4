@@ -2,6 +2,7 @@
 #define SoundFileLogger_hpp
 #include "all.h"
 #include "SoundFile.hpp"
+using namespace std;
 
 /*
     This Singleton class records data about produced #SoundFiles to be used by SndCat and SndMix.
@@ -9,14 +10,13 @@
 class SoundFileLogger{
 public:
     static SoundFileLogger* getInstance(SoundFile* soundFile = NULL);
-    int computeMedian(vector<int> values);
-
-private:
-    SoundFileLogger(){};
-    static SoundFileLogger* soundfileLoggerInstance;
-    
+    static int computeMedian(vector<int> values);
     static long sampleRateSum;
     static int numSoundFilesCreated;
     static int maxBitDepth;
+    
+private:
+    SoundFileLogger(){};
+    static SoundFileLogger* soundfileLoggerInstance;
 };
 #endif /* SoundFileLogger_hpp */

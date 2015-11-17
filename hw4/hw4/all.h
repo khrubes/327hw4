@@ -9,6 +9,5 @@
 #include <sstream>
 #include <unordered_map>
 #include <algorithm>
-#include "SoundFileLogger.hpp"
 
 #endif /* all_h */

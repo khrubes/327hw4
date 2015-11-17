@@ -5,11 +5,11 @@ const int NON_INITIALIZED_INT = -9999;
 SoundFileBuilder::SoundFileBuilder(){}
 
 /*
- @param fileName, the name of the file to create the SoundFile from.
+ @param input, the name of the file to create the SoundFile from, or "" by default. If no file name is provided, a SoundFile is built by reading from stdin.
  @param multiplyValue the optional value to multiply SoundFile::channels sample data by.
- @return a pointer to a newly constructed SoundFile, or NULL if there was an error processing the file.
+ @return a pointer to a newly constructed SoundFile, or NULL if there was an error processing the input.
 */
-SoundFile* SoundFileBuilder::buildSoundFileFromFileName(string fileName, unsigned int multiplyValue /* default = 1 */){
+SoundFile* SoundFileBuilder::buildSoundFileFromInput(string input /* default = "" */, unsigned int multiplyValue /* default = 1 */){
 
     SoundFile* soundFile = NULL;
     //SoundFile member variables to initialize
@@ -18,15 +18,12 @@ SoundFile* SoundFileBuilder::buildSoundFileFromFileName(string fileName, unsigne
     int numSamples = NON_INITIALIZED_INT; //the only nonrequired field
     int sampleRate = NON_INITIALIZED_INT;
     
-    if ( !isValidFileType(fileName) ) return NULL; //failure
-    
-    ifstream file (fileName);
-    if ( file.is_open() )
-    {
-        string line;
-        bool isFirstLine = true;
-        while ( getline (file,line) )
-        {
+    ifstream file(input);
+    if (file && !isValidFileType(input) ) return NULL; //failure
+
+    string line;
+    bool isFirstLine = true;
+    while ( getline (file.is_open() ? file : cin, line) ) {
             vector<string> lineVector = getStringVectorFromLine(line);
             if (shouldIgnoreLine(lineVector)) {
                 continue;
@@ -57,21 +54,21 @@ SoundFile* SoundFileBuilder::buildSoundFileFromFileName(string fileName, unsigne
                 if (!areSoundFileDataValuesInitialzed(bitRes, numChannels, sampleRate)) { //TODO check for invalid values like -1
                     return NULL; //failure
                 }
-                soundFile = new SoundFile(fileName, bitRes, numChannels, sampleRate, numSamples);
+                soundFile = new SoundFile(input, bitRes, numChannels, sampleRate, numSamples);
                 break;
             } else {
                 // the header type isn't recognized, there is some sort of error in the file.
                 cout << "Invalid header: " << lineVector[0] << " this file cannot be parsed." << endl;
             }
-        }
-        if(!addStartDataToSoundFile(&soundFile, file, multiplyValue)){
-            //there was an error parsing the startdata
-            delete soundFile;
-            return NULL;
-        }
+    }
+    if(!addStartDataToSoundFile(&soundFile, file, multiplyValue)){
+        //there was an error parsing the startdata
+        delete soundFile;
+        return NULL;
+    }
+    if(file){
         file.close();
     }
-    else cout << "Unable to open file " << fileName << endl;
     return soundFile;
 }
 
@@ -126,20 +123,24 @@ bool SoundFileBuilder::areSoundFileDataValuesInitialzed(int bitRes, int numChann
     return true;
 }
 
-/*
-    @param soundFile, a pointer to a SoundFile pointer which will be filled with @file startdata
+/*  
+    This function reads in sample data from @input until it reaches "<EOF>"
+    @param soundFile, a pointer to a SoundFile pointer which will be filled with @input startdata
     @param file, the file to read startdata from
-    @return true if StartData was successfully added to the SoundFile
+    @return true if StartData was successfully added to the SoundFile.
 */
-bool SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, ifstream& file, unsigned int multiplyValue){
+bool SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, istream& input, unsigned int multiplyValue){
     if (!soundFile || !(*soundFile)) {
         return false;
     }
     string line;
     int numSamples = 0;
-    while ( getline(file,line) ) {
+    while ( getline(input,line) ) {
         vector<string> lineVector = getStringVectorFromLine(line);
         for (int i = 0; i < (*soundFile)->channels.size(); i++) {
+            if (lineVector[i].compare("<EOF>") == 0) {
+                return true; // we have reached the end of input
+            }
             signed int sample;
             if(!parseAndStoreStringIntoInt(sample, lineVector[i])){
                 fprintf(stderr, "Sample %s in StartData section is not a valid sample.", (lineVector[i]).c_str());

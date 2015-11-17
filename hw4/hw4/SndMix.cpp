@@ -41,7 +41,7 @@ void SndMix::initSoundFiles(vector<string> arguments){
         try {
             iter++;
             string fileName = *iter;
-            SoundFile* soundFile = this->soundFileBuilder->buildSoundFileFromFileName(fileName, multiplier);
+            SoundFile* soundFile = this->soundFileBuilder->buildSoundFileFromInput(fileName, multiplier);
             this->soundFiles.push_back(soundFile);
         }
         catch (...){
