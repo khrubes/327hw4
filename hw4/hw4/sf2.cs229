@@ -1,0 +1,22 @@
+
+#lalllal
+
+CS229
+
+# testing2
+Samples 3
+
+channels 2
+BitRes 8
+
+# Because we can:
+
+SaMpLeRaTe 11025
+# From here on things are more rigid
+
+STARTdata
+6 2
+6 2
+6 2
+6 4
+<EOF>

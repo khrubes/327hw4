@@ -71,8 +71,16 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "/Users/kelseyhrubes/Documents/327/hw4/hw4/hw4/sf1.cs229"
+            argument = "/Users/kelseyhrubes/Documents/327/hw4/hw4/hw4/sf2.cs229"
             isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "mult2"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "/Users/kelseyhrubes/Documents/327/hw4/hw4/hw4/sf1.cs229"
+            isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>

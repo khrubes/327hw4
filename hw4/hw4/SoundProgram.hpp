@@ -15,7 +15,7 @@ class SoundProgram {
     
     protected:
         /* Functions */
-        virtual void runProgram() = 0;
+        virtual void runProgram(vector<string> fileArguments) = 0;
         virtual string getProgramName() = 0;
         virtual string getProgramDescription() = 0;
         virtual void initSoundFiles(vector<string> arguments);

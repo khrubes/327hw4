@@ -8,17 +8,12 @@ using namespace std;
  */
 class SndMix : public SndCat {
     protected:
-        void runProgram();
         string getProgramName();
         string getProgramDescription();
         virtual void initSoundFiles(vector<string> arguments);
-        int getMultiplyValueFromSndMixArg(string str);
-    
-        /* Switch Functions */
-        bool oSwitch(string argument);
-    
-public:
-    SndMix(vector<string> fileArguments);
+        int getMultiplyValueFromSndMixArg(string str);    
+    public:
+        SndMix(vector<string> fileArguments);
 };
 
 #endif /* SndMix_hpp */

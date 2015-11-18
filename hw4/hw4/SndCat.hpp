@@ -8,7 +8,7 @@ using namespace std;
 */
 class SndCat : public SoundProgram {
     protected:
-        void runProgram();
+        virtual void runProgram(vector<string> fileArguments);
         string getProgramName();
         string getProgramDescription();
     

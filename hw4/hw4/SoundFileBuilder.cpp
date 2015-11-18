@@ -1,5 +1,6 @@
 #include "SoundFileBuilder.hpp"
 #include "util.hpp"
+#include "SoundFileLogger.hpp"
 const int NON_INITIALIZED_INT = -9999;
 
 SoundFileBuilder::SoundFileBuilder(){}
@@ -69,6 +70,7 @@ SoundFile* SoundFileBuilder::buildSoundFileFromInput(string input /* default = "
     if(file){
         file.close();
     }
+    SoundFileLogger::logInstance(soundFile);
     return soundFile;
 }
 
@@ -137,19 +139,21 @@ bool SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, istream& i
     int numSamples = 0;
     while ( getline(input,line) ) {
         vector<string> lineVector = getStringVectorFromLine(line);
-        for (int i = 0; i < (*soundFile)->channels.size(); i++) {
-            if (lineVector[i].compare("<EOF>") == 0) {
-                return true; // we have reached the end of input
+        numSamples++;
+        for (int i = 0; i < (*soundFile)->getChannels()->size(); i++) {
+            if (lineVector[i].compare("<EOF>") == 0 || lineVector[i].compare("<eof>") == 0) {
+                numSamples--;
+                break;
             }
             signed int sample;
             if(!parseAndStoreStringIntoInt(sample, lineVector[i])){
                 fprintf(stderr, "Sample %s in StartData section is not a valid sample.", (lineVector[i]).c_str());
                 return false;
             }else{
-                (*soundFile)->channels[i].push_back(sample * multiplyValue); //channels[i] is a vector<signed int> which holds data for one channel
+                //messy dereferencing of the pointer to the #SoundFile
+                (*((*soundFile)->getChannels()))[i].push_back(sample * multiplyValue); //channels[i] is a vector<signed int> which holds data for one channel
             }
         }
-        numSamples++;
     }
     (*soundFile)->setNumSamples(numSamples); // set the number of samples because this is not a required value for .cs229 files
     return true;

@@ -9,14 +9,16 @@ using namespace std;
 */
 class SoundFileLogger{
 public:
-    static SoundFileLogger* getInstance(SoundFile* soundFile = NULL);
-    static int computeMedian(vector<int> values);
+    static SoundFileLogger* logInstance(SoundFile* soundFile = NULL);
+    static SoundFileLogger* getInstance();
     static long sampleRateSum;
     static int numSoundFilesCreated;
     static int maxBitDepth;
+    static int totalNumSamples;
+    static int getAverageSampleRate();
     
 private:
     SoundFileLogger(){};
-    static SoundFileLogger* soundfileLoggerInstance;
+    static SoundFileLogger* soundfileLoggerInstance;    
 };
 #endif /* SoundFileLogger_hpp */

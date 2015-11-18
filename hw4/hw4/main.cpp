@@ -1,5 +1,6 @@
 #include "all.h"
-#include "SndInfo.hpp"
+#include "SndMix.hpp"
+#include "SoundProgram.hpp"
 #include "util.hpp"
 using namespace std;
 
@@ -19,13 +20,11 @@ void lineTest(string fileName = ""){
 
 int main(int argc, const char * argv[]) {
     try{
-        //TODO print error messages to standard error rather than stdout
-
         vector<string> arguments;
         for (int i = 1; i < argc; i++) { // skip over program name
             arguments.push_back(argv[i]);
         }
-        SndInfo* sf = new SndInfo(arguments);
+        SndMix* sf = new SndMix(arguments);
     }
     catch (exception& e)
     {

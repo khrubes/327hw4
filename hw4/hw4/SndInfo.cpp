@@ -1,7 +1,7 @@
 #include "SndInfo.hpp"
 
 SndInfo::SndInfo(vector<string> fileArguments) : SoundProgram(fileArguments){
-    runProgram();
+    runProgram(fileArguments);
 }
 
 /*
@@ -14,7 +14,10 @@ SndInfo::SndInfo(vector<string> fileArguments) : SoundProgram(fileArguments){
     - The number of samples
     - The length of the sound (in seconds)
  */
-void SndInfo::runProgram(){
+void SndInfo::runProgram(vector<string> arguments){
+    initSwitchArgumentMap(&arguments);
+    initSwitchFunctionMap();
+    initSoundFiles(arguments);
     runSwitches();
     for (auto &soundFile : this->soundFiles) // access by reference to avoid copying
     {

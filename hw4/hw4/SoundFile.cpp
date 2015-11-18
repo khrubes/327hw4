@@ -1,5 +1,7 @@
 #include "SoundFile.hpp"
 
+SoundFile::SoundFile(){
+}
 /*
     Constructor for a SoundFile. Assumes all input params are valid.
     Instantiates channels with numChannels # of vectors to hold chanel data.
@@ -9,7 +11,7 @@ SoundFile::SoundFile(string fileName, int bitRes, int numChannels, int sampleRat
         fileName = "SoundFile read from stdin";
     }
     this->fileName = fileName;
-    this->bitDepth = bitDepth;
+    this->bitDepth = bitRes;
     this->numChannels = numChannels;
     this->numSamples = numSamples;
     this->sampleRate = sampleRate;
@@ -48,6 +50,22 @@ void SoundFile::setNumSamples(int numSamples){
     this->numSamples = numSamples;
 }
 
+void SoundFile::setBitDepth(int bitdepth){
+    this->bitDepth = bitdepth;
+
+}
+void SoundFile::setNumChannels(int numChannels){
+    this->numChannels = numChannels;
+}
+
+void SoundFile::setSampleRate(int sampleRate){
+    this->sampleRate = sampleRate;
+}
+
+void SoundFile::setChannels(vector< vector<signed int> > channels){
+    this->channels = channels;
+}
+
 const int SoundFile::getBitDepth(){
     return this->bitDepth;
 }
@@ -76,4 +94,9 @@ const string SoundFile::getFileType(){
         return NULL;
     }
     return fileName.substr(index, this->fileName.length() );
+}
+
+
+vector< vector<signed int> >* SoundFile::getChannels(){
+    return &this->channels;
 }

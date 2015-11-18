@@ -1,19 +1,10 @@
 #include "SndMix.hpp"
+#include "SoundProgram.hpp"
 #include "SndCat.hpp"
 #include "util.hpp"
 
-void SndMix::runProgram(){
-    //check for swtiches
-    runSwitches();
-    // call SndCat to mix all soundfiles together 
-}
-
-/*
-    @param string outputFileName the output file name.
-    @return true if @outputFileName is a valid file.
- */
-bool SndMix::oSwitch(string outputFileName){
-    return SndCat::oSwitch(outputFileName);
+SndMix::SndMix(vector<string> fileArguments) : SndMix(fileArguments){
+    runProgram();
 }
 
 string SndMix::getProgramName(){

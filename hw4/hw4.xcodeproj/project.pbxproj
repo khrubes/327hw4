@@ -44,6 +44,7 @@
 		BB6EBE4D1BEE87EC004F951E /* SoundFileBuilder.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SoundFileBuilder.hpp; sourceTree = "<group>"; };
 		BB6EBE4F1BEE92C5004F951E /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
 		BB6EBE501BEE92C5004F951E /* util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = util.hpp; sourceTree = "<group>"; };
+		BBCAA73A1BFBEC3E00B08C87 /* sf2.cs229 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sf2.cs229; sourceTree = "<group>"; };
 		BBD0A7D51BF031F700FADB6A /* SndInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SndInfo.cpp; sourceTree = "<group>"; };
 		BBD0A7D61BF031F700FADB6A /* SndInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SndInfo.hpp; sourceTree = "<group>"; };
 		BBD0A7DB1BF13A0200FADB6A /* ofile.cs229 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofile.cs229; sourceTree = "<group>"; };
@@ -87,6 +88,7 @@
 		BB6EBE3C1BEE6F11004F951E /* hw4 */ = {
 			isa = PBXGroup;
 			children = (
+				BBCAA73A1BFBEC3E00B08C87 /* sf2.cs229 */,
 				BBD0A7DB1BF13A0200FADB6A /* ofile.cs229 */,
 				BB6EBE4B1BEE8707004F951E /* sf1.cs229 */,
 				BB6EBE3D1BEE6F11004F951E /* main.cpp */,

@@ -9,9 +9,6 @@ SoundProgram::SoundProgram(){
 */
 SoundProgram::SoundProgram(vector<string> arguments){
     this->soundFileBuilder = new SoundFileBuilder();
-    initSwitchArgumentMap(&arguments);
-    initSwitchFunctionMap();
-    initSoundFiles(arguments);
 }
 
 void SoundProgram::setOutputFileName(string fileName){
@@ -24,7 +21,7 @@ void SoundProgram::setOutputFileName(string fileName){
         if the argument cannot be made into a #SoundFile, an error will be printed to stderr.
 */
 void SoundProgram::initSoundFiles(vector<string> arguments){
-    for (int i = 0; i <= arguments.size(); i++) {
+    for (int i = 0; (i < arguments.size()) || (arguments.size()==0) ; i++) {
         SoundFile* soundFile = this->soundFileBuilder->buildSoundFileFromInput(arguments.size()==0 ? "" : arguments[i]);
         if (soundFile) {
             this->soundFiles.push_back(soundFile);
