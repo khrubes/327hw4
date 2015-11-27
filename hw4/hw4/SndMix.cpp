@@ -3,9 +3,7 @@
 #include "SndCat.hpp"
 #include "util.hpp"
 
-SndMix::SndMix(vector<string> fileArguments) : SndMix(fileArguments){
-    runProgram();
-}
+SndMix::SndMix() : SndCat(){}
 
 string SndMix::getProgramName(){
     return "SndMix";

@@ -1,13 +1,5 @@
 #include "SoundProgram.hpp"
 SoundProgram::SoundProgram(){
-    cout << "SoundProgram constructor, should never be called" << endl;
-}
-
-/*
-    This constructor takes in arguments passed in from the commandline, assigning switches to @switchArguments and creating SoundFiles for #soundFiles
-    TODO If no files are passed as arguments, then the program should read from standard input
-*/
-SoundProgram::SoundProgram(vector<string> arguments){
     this->soundFileBuilder = new SoundFileBuilder();
 }
 

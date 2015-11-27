@@ -3,10 +3,7 @@
 #include "SoundFileLogger.hpp"
 #include "util.hpp"
 
-SndCat::SndCat(vector<string> fileArguments) : SoundProgram(fileArguments){
-    initSoundFiles(fileArguments);
-    runProgram(fileArguments);
-}
+SndCat::SndCat() : SoundProgram(){}
 
 string SndCat::getProgramName(){
     return "SndCat";
@@ -24,6 +21,9 @@ string SndCat::getProgramDescription(){
     Missing values will be filled in as 0s.
  */
 void SndCat::runProgram(vector<string> fileArguments){
+    this->initSwitchArgumentMap(&fileArguments);
+    this->initSwitchFunctionMap();
+    this->initSoundFiles(fileArguments);
     runSwitches();
     
     SoundFile sndCat;
@@ -51,4 +51,15 @@ void SndCat::runProgram(vector<string> fileArguments){
     sndCat.setChannels(channels);
     //either set SoundFile to #outputFile or write to standard output
 }
+
+
+/*
+ @override SoundProgram::initSoundFiles
+ @param arguments the file arguments to iterate over and store SoundFile object representations of in #soundFiles.
+ Switches have already been removed from @arguments in #initSwitchArgumentMap,
+ if the argument cannot be made into a #SoundFile, an error will be printed to stderr.
+ */
+//void SndCat::initSoundFiles(vector<string> arguments){
+//    SoundProgram::initSoundFiles(arguments);
+//}
 

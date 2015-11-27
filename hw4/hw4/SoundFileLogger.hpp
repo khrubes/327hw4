@@ -9,7 +9,7 @@ using namespace std;
 */
 class SoundFileLogger{
 public:
-    static SoundFileLogger* logInstance(SoundFile* soundFile = NULL);
+    static SoundFileLogger* logInstance(SoundFile* soundFile);
     static SoundFileLogger* getInstance();
     static long sampleRateSum;
     static int numSoundFilesCreated;

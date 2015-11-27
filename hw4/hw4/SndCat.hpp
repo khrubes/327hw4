@@ -8,12 +8,12 @@ using namespace std;
 */
 class SndCat : public SoundProgram {
     protected:
-        virtual void runProgram(vector<string> fileArguments);
         string getProgramName();
         string getProgramDescription();
     
     public:
-        SndCat(vector<string> fileArguments);
+        SndCat();
+        virtual void runProgram(vector<string> fileArguments);
 };
 
 #endif /* SndCat_hpp */

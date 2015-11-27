@@ -8,7 +8,7 @@ using namespace std;
  This class is responsible for creating SoundFile objects for various cases.
  */
 class SoundFileBuilder {
-    protected:
+    private:
         bool isCS229Heading(string line);
         bool shouldIgnoreLine(vector<string> lineVector);
         bool areSoundFileDataValuesInitialzed(int bitRes, int numChannels, int sampleRate);

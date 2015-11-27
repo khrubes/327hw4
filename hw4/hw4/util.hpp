@@ -9,5 +9,5 @@ string getFirstTokenFromLine(string line);
 vector<string> getStringVectorFromLine(string line);
 bool parseAndStoreStringIntoInt(int &i, string str);
 int getMedianNumChannels(vector<SoundFile*> values);
-
+vector<string> charArrayToStringVector(int argc, const char* argv[]);
 #endif /* util_hpp */

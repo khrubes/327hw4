@@ -51,3 +51,17 @@ int getMedianNumChannels(vector<SoundFile*> values){
     }
     return channels[ channels.size() /2 ];
 }
+
+/*
+    Converts a c string array into a vector of strings.
+    @param argc the number of arguments
+    @param argv the c string array of arguments
+    @return a vector<string> containing the c strings in argv
+*/
+vector<string> charArrayToStringVector(int argc, const char* argv[]){
+    vector<string> arguments;
+    for (int i = 1; i < argc; i++) { // skip over program name
+        arguments.push_back(argv[i]);
+    }
+    return arguments;
+}

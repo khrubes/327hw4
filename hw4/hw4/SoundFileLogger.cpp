@@ -11,20 +11,17 @@ int SoundFileLogger::totalNumSamples;
     @param soundFile a #SoundFile to record data on, or NULL if this instance is not needed to modify #SoundFile data.
     This method is safe to use if a SoundFileLogger instance has not been created yet.
 */
-SoundFileLogger* SoundFileLogger::logInstance(SoundFile* soundFile /* default is NULL */) {
+SoundFileLogger* SoundFileLogger::logInstance(SoundFile* soundFile) {
     if (!soundfileLoggerInstance){
         soundfileLoggerInstance = new SoundFileLogger;
         soundfileLoggerInstance->maxBitDepth = INT_MIN;
     }
-    
-    if(soundFile){
-        if (soundFile->getBitDepth() > SoundFileLogger::maxBitDepth) {
-            SoundFileLogger::maxBitDepth = soundFile->getBitDepth();
-        }
-        SoundFileLogger::sampleRateSum+= soundFile->getSampleRate();
-        SoundFileLogger::numSoundFilesCreated++;
-        SoundFileLogger::totalNumSamples+= soundFile->getNumSamples();
+    if (soundFile->getBitDepth() > SoundFileLogger::maxBitDepth) {
+        SoundFileLogger::maxBitDepth = soundFile->getBitDepth();
     }
+    SoundFileLogger::sampleRateSum+= soundFile->getSampleRate();
+    SoundFileLogger::numSoundFilesCreated++;
+    SoundFileLogger::totalNumSamples+= soundFile->getNumSamples();
     return soundfileLoggerInstance;
 }
 

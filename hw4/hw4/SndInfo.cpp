@@ -1,8 +1,6 @@
 #include "SndInfo.hpp"
 
-SndInfo::SndInfo(vector<string> fileArguments) : SoundProgram(fileArguments){
-    runProgram(fileArguments);
-}
+SndInfo::SndInfo() : SoundProgram(){}
 
 /*
   Prints the following for each SoundFile in #soundFiles

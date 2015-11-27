@@ -8,12 +8,12 @@ using namespace std;
  */
 class SndInfo : public SoundProgram {
     protected:
-        virtual void runProgram(vector<string> fileArguments);
         string getProgramName();
         string getProgramDescription();
     
     public:
-        SndInfo(vector<string> fileArguments);
+        SndInfo();
+        virtual void runProgram(vector<string> fileArguments);
 };
 
 
