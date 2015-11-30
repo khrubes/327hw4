@@ -89,12 +89,10 @@ void SoundProgram::initSwitchFunctionMap(){
  */
 SoundProgram::SwitchFunction SoundProgram::getSwitchFunction(string switchArg){
     if (switchArg.compare("-h")==0) {
-        //refer to http://stackoverflow.com/questions/26331628/reference-to-non-static-member-function-must-be-called for how to call them
         return &SoundProgram::hSwitch;
     }else if(switchArg.compare("-o")==0){
         return &SoundProgram::oSwitch;
     }else{
-        cout << "TODO support more switches" << endl;
         return NULL;
     }
 }

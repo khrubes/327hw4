@@ -8,20 +8,13 @@ using namespace std;
  */
 class SndGen : public SoundProgram {
     private:
-        int durationInSeconds; //dont need
-        int sampleRate; //dont need
-        long peakVolume; //probably don't need
+        vector<string> requiredArgumentsVector;
         string waveFormType;
-    
-        long attackSeconds; //probably don't need these, use switchargmap
-        long decaySeconds;
-        long sustainSeconds;
-        long releaseSeconds;
-    
         long lastSampleValue;
+        void initRequiredArgumentsVector();
         long getSampleValue(long currentTime, int iterationNum);
         long getXValue(int iterationNum);
-        long calculateSustainVolume(long percentage);
+        void calculateSustainVolume();
         long getAmplitudeValue(long currentTime);
         long getAttackAmplitudeValue(long currentTime);
         long getDecayAmplitudeValue(long currentTime);
@@ -35,9 +28,11 @@ class SndGen : public SoundProgram {
     protected:
         string getProgramName();
         string getProgramDescription();
+        virtual vector<string> getValidSwitches(bool withParams);
     
     public:
         SndGen();
+        virtual string getSwitchDescription(string switchName);
         virtual void runProgram(vector<string> fileArguments);
 };
 

@@ -44,10 +44,8 @@ class SoundProgram {
     public:
         SoundProgram();
         void setOutputFileName(string fileName);
-        string getSwitchDescription(string switchName);
+        virtual string getSwitchDescription(string switchName);
         virtual void runProgram(vector<string> fileArguments) = 0;
-    
-
 };
 
 #endif /* SoundProgram_hpp */

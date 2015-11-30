@@ -14,7 +14,6 @@
 		BB6EBE511BEE92C5004F951E /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB6EBE4F1BEE92C5004F951E /* util.cpp */; settings = {ASSET_TAGS = (); }; };
 		BB7CEC091C063AB300A1A719 /* SndGen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB7CEC071C063AB300A1A719 /* SndGen.cpp */; settings = {ASSET_TAGS = (); }; };
 		BBD0A7D71BF031F700FADB6A /* SndInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBD0A7D51BF031F700FADB6A /* SndInfo.cpp */; settings = {ASSET_TAGS = (); }; };
-		BBD0A7E11BF18A2C00FADB6A /* SwitchManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBD0A7DF1BF18A2C00FADB6A /* SwitchManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		BBD0A7E41BF413F300FADB6A /* SndCat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBD0A7E21BF413F300FADB6A /* SndCat.cpp */; settings = {ASSET_TAGS = (); }; };
 		BBD0A7E71BF44C1700FADB6A /* SndMix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBD0A7E51BF44C1700FADB6A /* SndMix.cpp */; settings = {ASSET_TAGS = (); }; };
 		BBD0A7EA1BF5AC8A00FADB6A /* SoundFileLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBD0A7E81BF5AC8A00FADB6A /* SoundFileLogger.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -51,8 +50,6 @@
 		BBD0A7D51BF031F700FADB6A /* SndInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SndInfo.cpp; sourceTree = "<group>"; };
 		BBD0A7D61BF031F700FADB6A /* SndInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SndInfo.hpp; sourceTree = "<group>"; };
 		BBD0A7DB1BF13A0200FADB6A /* ofile.cs229 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofile.cs229; sourceTree = "<group>"; };
-		BBD0A7DF1BF18A2C00FADB6A /* SwitchManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SwitchManager.cpp; sourceTree = "<group>"; };
-		BBD0A7E01BF18A2C00FADB6A /* SwitchManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SwitchManager.hpp; sourceTree = "<group>"; };
 		BBD0A7E21BF413F300FADB6A /* SndCat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SndCat.cpp; sourceTree = "<group>"; };
 		BBD0A7E31BF413F300FADB6A /* SndCat.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SndCat.hpp; sourceTree = "<group>"; };
 		BBD0A7E51BF44C1700FADB6A /* SndMix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SndMix.cpp; sourceTree = "<group>"; };
@@ -106,8 +103,6 @@
 				BB6EBE4D1BEE87EC004F951E /* SoundFileBuilder.hpp */,
 				BBD0A7D51BF031F700FADB6A /* SndInfo.cpp */,
 				BBD0A7D61BF031F700FADB6A /* SndInfo.hpp */,
-				BBD0A7DF1BF18A2C00FADB6A /* SwitchManager.cpp */,
-				BBD0A7E01BF18A2C00FADB6A /* SwitchManager.hpp */,
 				BBD0A7E21BF413F300FADB6A /* SndCat.cpp */,
 				BBD0A7E31BF413F300FADB6A /* SndCat.hpp */,
 				BBD0A7E51BF44C1700FADB6A /* SndMix.cpp */,
@@ -179,7 +174,6 @@
 				BBD0A7E41BF413F300FADB6A /* SndCat.cpp in Sources */,
 				BB7CEC091C063AB300A1A719 /* SndGen.cpp in Sources */,
 				BB6EBE3E1BEE6F11004F951E /* main.cpp in Sources */,
-				BBD0A7E11BF18A2C00FADB6A /* SwitchManager.cpp in Sources */,
 				BBD0A7E71BF44C1700FADB6A /* SndMix.cpp in Sources */,
 				BBD0A7D71BF031F700FADB6A /* SndInfo.cpp in Sources */,
 				BB6EBE4E1BEE87EC004F951E /* SoundFileBuilder.cpp in Sources */,
