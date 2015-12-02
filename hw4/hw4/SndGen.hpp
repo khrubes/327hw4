@@ -11,10 +11,12 @@ class SndGen : public SoundProgram {
         vector<string> requiredArgumentsVector;
         string waveFormType;
         long lastSampleValue;
+        bool hasValidInputsToRunProgram();
+        bool isWaveFormSwitch(string argument);
         void initRequiredArgumentsVector();
+        void calculateSustainVolume();
         long getSampleValue(long currentTime, int iterationNum);
         long getXValue(int iterationNum);
-        void calculateSustainVolume();
         long getAmplitudeValue(long currentTime);
         long getAttackAmplitudeValue(long currentTime);
         long getDecayAmplitudeValue(long currentTime);
@@ -29,6 +31,8 @@ class SndGen : public SoundProgram {
         string getProgramName();
         string getProgramDescription();
         virtual vector<string> getValidSwitches(bool withParams);
+        virtual bool isValidSwitchArgumentPair(string switchArg, string paramValue);
+        virtual void initSwitchArgumentMap(vector<string>* arguments);
     
     public:
         SndGen();

@@ -8,15 +8,13 @@ using namespace std;
     This class is an abstract representation for a Sound Program
 */
 class SoundProgram {
-    private:
-        bool isValidSwitch(string switchArg, bool withParams);
-    
     protected:
         /* Functions */
         virtual string getProgramName() = 0;
         virtual string getProgramDescription() = 0;
-    
-        void initSwitchArgumentMap(vector<string>* arguments);
+        bool isValidSwitch(string switchArg, bool withParams);
+        virtual bool isValidSwitchArgumentPair(string switchArg, string paramValue);
+        virtual void initSwitchArgumentMap(vector<string>* arguments);
         void initSwitchFunctionMap();
         virtual void initSoundFiles(vector<string> arguments);
     

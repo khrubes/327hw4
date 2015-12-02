@@ -45,24 +45,27 @@ void SoundProgram::initSwitchArgumentMap(vector<string>* arguments){
         
         // if the argument resembles a switch (contains "-") and is not a file name
         if (foundSwitchChar!=string::npos && !(this->soundFileBuilder->isValidFileType(argument, false /*print output*/))) {
-            
-            if ( isValidSwitch(argument, false /* with parameters = false */) ) {
-                this->switchArgumentMap.insert(make_pair(argument, ""));
-                iter = (*arguments).erase(iter);
-            } else if ( isValidSwitch(argument, true /* with parameters = true */) ){
+            try{
+                string switchParamArg;
+                if ( isValidSwitch(argument, false /* with parameters = false */) ) {
+                    
+                    this->switchArgumentMap.insert(make_pair(argument, ""));
+                    iter = (*arguments).erase(iter);
+                    
+                } else if ( isValidSwitchArgumentPair(argument , (switchParamArg = *(iter+1) )) ){
                 //this switch has a parameter, so the next element in @arguments is the value and we need to add it as a value to the hashmap
-                try{
-                    string switchParamArg = *(iter+1);
+
                     this->switchArgumentMap.insert(make_pair(argument, switchParamArg));
                     iter = (*arguments).erase(iter);
                     iter = (*arguments).erase(iter); //TODO see if there's a better way to remove things from a vector
-                }
-                catch(...){
-                    cout << "No argument provided for " << argument << endl;
+                    
+                }else{
+                    cout << "Invalid switch \"" << argument << "\"" << endl;
                     exit(1);
                 }
-            }else{
-                cout << "Invalid switch \"" << argument << "\"" << endl;
+            }
+            catch(...){
+                cout << "No argument provided for " << argument << endl;
                 exit(1);
             }
         } else {
@@ -166,6 +169,14 @@ vector<string> SoundProgram::getValidSwitches(bool withParams){
 bool SoundProgram::isValidSwitch(string switchArg, bool withParams){
     vector<string> validSwitches = getValidSwitches(withParams /* with parameters */);
     return (validSwitches.size()!=0 && find(validSwitches.begin(), validSwitches.end(), switchArg)!=validSwitches.end());
+}
+
+/*
+    @return true if @param switchArg and it's corresponding @param paramValue are a valid pair.
+    Because SoundProgram is abstract and does not know of any switch argument pairs, it simply returns if the switch is valid to have a parameter.
+*/
+bool SoundProgram::isValidSwitchArgumentPair(string switchArg, string paramValue){
+    return isValidSwitch(switchArg, true);
 }
 
 /*
