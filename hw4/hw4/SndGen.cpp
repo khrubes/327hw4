@@ -6,12 +6,12 @@
     @param arguments the arguments passed in from the command line.
  */
 void SndGen::initSwitchArgumentMap(vector<string>* arguments){
-    SoundProgram::initSwitchArgumentMap(arguments);
     for (int i=0; i<arguments->size(); i++) {
         if (isWaveFormSwitch( (*arguments)[i] ) ) {
             this->waveFormType = (*arguments)[i];
         }
     }
+    SoundProgram::initSwitchArgumentMap(arguments);
     for(auto iterator = this->switchArgumentMap.begin(); iterator != switchArgumentMap.end(); iterator++) {
         if( find(requiredArgumentsVector.begin(), requiredArgumentsVector.end(), iterator->first) != requiredArgumentsVector.end() ) {
             requiredArgumentsVector.erase(find(requiredArgumentsVector.begin(), requiredArgumentsVector.end(), iterator->first));
@@ -20,11 +20,13 @@ void SndGen::initSwitchArgumentMap(vector<string>* arguments){
 }
 
 /*
-    @return an x value data point determined by the sample rate, @param iterationNum, and the length of the sound.
+    @return an x value data point determined by @param iterationNum, and the length of the sound.
 */
-long SndGen::getXValue(int iterationNum){
+float SndGen::getXValue(int iterationNum){
 //TODO check for sampleRate = 0;
-    return iterationNum * (stol(switchArgumentMap["-t"]) / stol(switchArgumentMap["--sr"]));
+    float lengthOfSound = stol(switchArgumentMap["-t"]);
+    float result = (float)(((float)iterationNum) / lengthOfSound);
+    return result;
 }
 
 /*
@@ -48,6 +50,7 @@ string SndGen::getProgramDescription(){
     This program produces a sound of a specified frequency and waveform using a simple ADSR envelope.
  */
 void SndGen::runProgram(vector<string> fileArguments){
+    this->initRequiredArgumentsVector();
     this->initSwitchArgumentMap(&fileArguments);
     
     if (!hasValidInputsToRunProgram()) {
@@ -55,7 +58,6 @@ void SndGen::runProgram(vector<string> fileArguments){
     }
     
     this->initSwitchFunctionMap();
-    this->initSoundFiles(fileArguments);
     runSwitches();
     
     int numSamples = floor( stol(switchArgumentMap["-t"]) * stol(switchArgumentMap["--sr"]) );
@@ -68,9 +70,9 @@ void SndGen::runProgram(vector<string> fileArguments){
 
 /*
     @param currentTime the current x value we are generating amplitude value to multiply by separately calculated y value for.
-    @return a long value to scale the function by, depending on the current stage in the a d s r envelope.
+    @return a float value to scale the function by, depending on the current stage in the a d s r envelope.
 */
-long SndGen::getAmplitudeValue(long currentTime){
+float SndGen::getAmplitudeValue(float currentTime){
     if (currentTime <= stol(switchArgumentMap["-a"])) {
         return this->getAttackAmplitudeValue(currentTime);
     }else if (currentTime <= (stol(switchArgumentMap["-a"]) + stol(switchArgumentMap["-d"]))){
@@ -90,11 +92,13 @@ long SndGen::getAmplitudeValue(long currentTime){
     @return an amplitude value building up to peakVolumte depending on @param currenTime.
     ex: if currentTime is the same time where peakVolume should occur, then the returned result is peakVolume.
 */
-long SndGen::getAttackAmplitudeValue(long currentTime){
+float SndGen::getAttackAmplitudeValue(float currentTime){
     if (currentTime == 0) {
         return 1;
     } else {
-        return stol(switchArgumentMap["-v"]) * (currentTime/stol(switchArgumentMap["-a"]));
+        float peakvelocity = stol(switchArgumentMap["-v"]);
+        float attackTime = stol(switchArgumentMap["-a"]);
+        return  peakvelocity * (currentTime/attackTime);
     }
 }
 
@@ -102,7 +106,7 @@ long SndGen::getAttackAmplitudeValue(long currentTime){
     @return an amplitude value building down from peakVolumte depending on @param currenTime.
     ex: if currentTime is the same time where peakVolume should occur, then the returned result is peakVolume.
  */
-long SndGen::getDecayAmplitudeValue(long currentTime){
+float SndGen::getDecayAmplitudeValue(float currentTime){
     return this->getAttackAmplitudeValue(stol(switchArgumentMap["-a"]) - currentTime);
 }
 
@@ -110,12 +114,12 @@ long SndGen::getDecayAmplitudeValue(long currentTime){
     @return an amplitude value building down from sustatining depending on @param currenTime.
     ex: if currentTime is the same time where the sound should end, then the returned result is 0.
 */
-long SndGen::getReleaseAmplitudeValue(long currentTime){
+float SndGen::getReleaseAmplitudeValue(float currentTime){
     return lastSampleValue * (1 - (currentTime/stol(switchArgumentMap["-t"])));
 }
 
-long SndGen::getSampleValue(long currentTime, int iterationNum){
-    long toReturn;
+float SndGen::getSampleValue(float currentTime, int iterationNum){
+    float toReturn;
     if (this->waveFormType.compare("--sin")==0) {
         return this->getSinWaveValue(currentTime, iterationNum);
     } else if(this->waveFormType.compare("--triangle")==0){
@@ -132,15 +136,16 @@ long SndGen::getSampleValue(long currentTime, int iterationNum){
 /*
     @return a sin wave function depending on @param currentTime and @param iterationNum
 */
-long SndGen::getSinWaveValue(long currentTime, int iterationNum){
-    return this->getAmplitudeValue(currentTime) * sin( stol(switchArgumentMap["-f"]) * this->getXValue(iterationNum));
+float SndGen::getSinWaveValue(float currentTime, int iterationNum){
+    float frequency = stol(switchArgumentMap["-f"]);
+    return this->getAmplitudeValue(currentTime) * sin( frequency * this->getXValue(iterationNum) );
 }
 
 /*
     @return a triangle wave function depending on @param currentTime and @param iterationNum
  */
-long SndGen::getTriangleWaveValue(long currentTime, int iterationNum){
-    long xValue = this->getXValue(iterationNum);
+float SndGen::getTriangleWaveValue(float currentTime, int iterationNum){
+    float xValue = this->getXValue(iterationNum);
     if (xValue == 0) {
         return 0;
     }else{
@@ -151,14 +156,14 @@ long SndGen::getTriangleWaveValue(long currentTime, int iterationNum){
 /*
     @return a sawtooth wave function depending on @param currentTime and @param iterationNum
  */
-long SndGen::getSawtoothWaveValue(long currentTime, int iterationNum){
+float SndGen::getSawtoothWaveValue(float currentTime, int iterationNum){
     return -1 * ((2 * this->getAmplitudeValue(currentTime))/M_PI) * atan( 1/(tan( (this->getXValue(iterationNum) * M_PI) / stol(switchArgumentMap["-f"]) )));
 }
 
 /*
     @return a pulse wave function depending on @param currentTime and @param iterationNum
  */
-long SndGen::getPulseWaveValue(long currentTime, int iterationNum){
+float SndGen::getPulseWaveValue(float currentTime, int iterationNum){
     return (stol(switchArgumentMap["--pf"])/stol(switchArgumentMap["-f"])) + this->getPulseWaveRecurisive(currentTime, iterationNum);
 }
 
@@ -166,7 +171,7 @@ long SndGen::getPulseWaveValue(long currentTime, int iterationNum){
     Recursive version of #SndGen::getPulseWave
     @return a pulse wave function depending on @param currentTime and @param iterationNum
  */
-long SndGen::getPulseWaveRecurisive(long currentTime, int iterationNum){
+float SndGen::getPulseWaveRecurisive(float currentTime, int iterationNum){
     if (iterationNum == 0) {
         return 0;
     }else {
@@ -185,7 +190,7 @@ vector<string> SndGen::getValidSwitches(bool withParams){
     vector<string> switches = SoundProgram::getValidSwitches(withParams);
     if (!withParams) {
         switches.push_back("-h");
-        switches.push_back("--sine");
+        switches.push_back("--sin");
         switches.push_back("--triangle");
         switches.push_back("--sawtooth");
         switches.push_back("--pulse");
@@ -259,6 +264,7 @@ void SndGen::initRequiredArgumentsVector(){
     this->requiredArgumentsVector.push_back("-s");
     this->requiredArgumentsVector.push_back("-r");
     this->requiredArgumentsVector.push_back("-t");
+    this->requiredArgumentsVector.push_back("-f");
     this->requiredArgumentsVector.push_back("-v");
 }
 

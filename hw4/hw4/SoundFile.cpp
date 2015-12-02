@@ -46,6 +46,27 @@ SoundFile SoundFile::operator*(int multi){ //TODO TEST
     return *this;
 }
 
+/*
+    Prints the contents of this SoundFile to @param output.
+    Assumes that is output is a file, it has already been opened and will be closed after calling this function.
+*/
+void SoundFile::print(ostream output){
+    output << "CS229" << endl;
+    output << "Samples \t" << (this->getNumSamples() / this->getNumChannels()) << endl;
+    output << "Channels \t" << this->getNumChannels() << endl;
+    output << "BitRes \t" << this->getBitDepth() << endl;
+    output << "SampleRate \t" << this->getSampleRate() << endl;
+    output << "StartData" << endl;
+  
+    for(int row=0; row < ((*(this->getChannels()))[0]).size(); row++) {
+        for (int channelNumber=0; channelNumber<this->getNumChannels(); channelNumber++) {
+            output << ((*(this->getChannels()))[channelNumber])[row] << endl;
+        }
+        output << "\n";
+    }
+    output <<  "<EOF>" << endl;
+}
+
 void SoundFile::setNumSamples(int numSamples){
     this->numSamples = numSamples;
 }

@@ -35,6 +35,7 @@ class SoundFile {
         vector< vector<signed int> >* getChannels();
         const string getFileName();
         const string getFileType();
+        void print(ostream ouput);
 };
 
 #endif /* SoundFile_hpp */

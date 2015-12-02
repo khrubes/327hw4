@@ -31,7 +31,7 @@ void SndCat::runProgram(vector<string> fileArguments){
     sndCat.setNumChannels(numChannels);
     sndCat.setNumSamples(SoundFileLogger::getInstance()->totalNumSamples);
     sndCat.setBitDepth(SoundFileLogger::getInstance()->maxBitDepth);
-    sndCat.setSampleRate(SoundFileLogger::getInstance()->getAverageSampleRate());
+    sndCat.setSampleRate(SoundFileLogger::getInstance()->sampleRate);
     vector< vector<signed int>> channels( numChannels, vector<signed int>(SoundFileLogger::getInstance()->totalNumSamples, 0) );
     
     int samplesIndex = 0;

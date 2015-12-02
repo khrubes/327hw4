@@ -8,17 +8,15 @@ using namespace std;
     This Singleton class records data about produced #SoundFiles to be used by SndCat and SndMix.
 */
 class SoundFileLogger{
-public:
-    static SoundFileLogger* logInstance(SoundFile* soundFile);
-    static SoundFileLogger* getInstance();
-    static long sampleRateSum;
-    static int numSoundFilesCreated;
-    static int maxBitDepth;
-    static int totalNumSamples;
-    static int getAverageSampleRate();
+    public:
+        static SoundFileLogger* logInstance(SoundFile* soundFile);
+        static SoundFileLogger* getInstance();
+        static int maxBitDepth;
+        static int totalNumSamples;
+        static int sampleRate;
     
-private:
-    SoundFileLogger(){};
-    static SoundFileLogger* soundfileLoggerInstance;    
+    private:
+        SoundFileLogger(){};
+        static SoundFileLogger* soundfileLoggerInstance;
 };
 #endif /* SoundFileLogger_hpp */

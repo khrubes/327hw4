@@ -2,9 +2,8 @@
 #include <limits.h>
 
 SoundFileLogger* SoundFileLogger::soundfileLoggerInstance = NULL;
-long SoundFileLogger::sampleRateSum;
-int SoundFileLogger::numSoundFilesCreated;
 int SoundFileLogger::maxBitDepth;
+int SoundFileLogger::sampleRate;
 int SoundFileLogger::totalNumSamples;
 
 /*
@@ -19,8 +18,14 @@ SoundFileLogger* SoundFileLogger::logInstance(SoundFile* soundFile) {
     if (soundFile->getBitDepth() > SoundFileLogger::maxBitDepth) {
         SoundFileLogger::maxBitDepth = soundFile->getBitDepth();
     }
-    SoundFileLogger::sampleRateSum+= soundFile->getSampleRate();
-    SoundFileLogger::numSoundFilesCreated++;
+    if (SoundFileLogger::sampleRate==0) { /* this is the first soundFile we are logging and have not initialized sampleRate yet*/
+        SoundFileLogger::sampleRate = soundFile->getSampleRate();
+    } else {
+        if (SoundFileLogger::sampleRate != soundFile->getSampleRate()) {
+            fprintf(stderr, "Concantenation of soundfiles with different sample rates not supported.");
+            exit(0);
+        }
+    }
     SoundFileLogger::totalNumSamples+= soundFile->getNumSamples();
     return soundfileLoggerInstance;
 }
@@ -35,12 +40,4 @@ SoundFileLogger* SoundFileLogger::getInstance() {
         soundfileLoggerInstance->maxBitDepth = INT_MIN;
     }
     return soundfileLoggerInstance;
-}
-
-
-/*
-    Computes the average sample rate of #SoundFiles known to the #SoundFileLogger
-*/
-int SoundFileLogger::getAverageSampleRate(){
-    return (SoundFileLogger::sampleRateSum / SoundFileLogger::numSoundFilesCreated);
 }

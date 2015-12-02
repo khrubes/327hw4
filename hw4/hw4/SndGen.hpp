@@ -10,23 +10,23 @@ class SndGen : public SoundProgram {
     private:
         vector<string> requiredArgumentsVector;
         string waveFormType;
-        long lastSampleValue;
+        float lastSampleValue;
         bool hasValidInputsToRunProgram();
         bool isWaveFormSwitch(string argument);
         void initRequiredArgumentsVector();
         void calculateSustainVolume();
-        long getSampleValue(long currentTime, int iterationNum);
-        long getXValue(int iterationNum);
-        long getAmplitudeValue(long currentTime);
-        long getAttackAmplitudeValue(long currentTime);
-        long getDecayAmplitudeValue(long currentTime);
-        long getReleaseAmplitudeValue(long currentTime);
+        float getSampleValue(float currentTime, int iterationNum);
+        float getXValue(int iterationNum);
+        float getAmplitudeValue(float currentTime);
+        float getAttackAmplitudeValue(float currentTime);
+        float getDecayAmplitudeValue(float currentTime);
+        float getReleaseAmplitudeValue(float currentTime);
     
-        long getSinWaveValue(long currentTime, int iterationNum);
-        long getTriangleWaveValue(long currentTime, int iterationNum);
-        long getSawtoothWaveValue(long currentTime, int iterationNum);
-        long getPulseWaveValue(long currentTime, int iterationNum);
-        long getPulseWaveRecurisive(long currentTime, int IterationNum);
+        float getSinWaveValue(float currentTime, int iterationNum);
+        float getTriangleWaveValue(float currentTime, int iterationNum);
+        float getSawtoothWaveValue(float currentTime, int iterationNum);
+        float getPulseWaveValue(float currentTime, int iterationNum);
+        float getPulseWaveRecurisive(float currentTime, int IterationNum);
     protected:
         string getProgramName();
         string getProgramDescription();
