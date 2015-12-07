@@ -1,6 +1,5 @@
 #ifndef SoundFileLogger_hpp
 #define SoundFileLogger_hpp
-#include "all.h"
 #include "SoundFile.hpp"
 using namespace std;
 

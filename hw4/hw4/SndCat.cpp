@@ -49,7 +49,7 @@ void SndCat::runProgram(vector<string> fileArguments){
         }
     }
     sndCat.setChannels(channels);
-    //either set SoundFile to #outputFile or write to standard output
+    this->outputSoundFile(&sndCat);
 }
 
 

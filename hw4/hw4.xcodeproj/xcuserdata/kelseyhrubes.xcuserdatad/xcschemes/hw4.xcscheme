@@ -71,12 +71,16 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "2"
+            argument = "1"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-o ofile.cs229"
-            isEnabled = "NO">
+            argument = "-o "
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "/Users/kelseyhrubes/Documents/327/hw4/hw4/hw4/ofile.cs229"
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "mult5"
@@ -107,7 +111,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "5"
+            argument = "10"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
@@ -115,7 +119,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "3"
+            argument = "2"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
@@ -131,7 +135,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "1"
+            argument = "2"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
@@ -147,7 +151,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "5"
+            argument = "10"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
@@ -155,11 +159,11 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "100"
+            argument = "102"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--sin"
+            argument = "--triangle"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

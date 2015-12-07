@@ -13,3 +13,11 @@ A new SoundProgram must
 To add a new Switch:
 - add a new description in SoundProgram::getSwitchDescription
 - ensure getValidSwitches for the SoundProgram you are adding the Switch to includes your switch 
+
+##SndInfo
+##SndCat
+##SndMix
+##SndGen
+	
+
+

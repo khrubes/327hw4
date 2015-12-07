@@ -5,7 +5,7 @@
 using namespace std;
 
 /*
- This class is responsible for creating SoundFile objects for various cases.
+ This class is responsible for creating SoundFile and WavFile objects for various cases.
  */
 class SoundFileBuilder {
     private:

@@ -1,6 +1,7 @@
 #include "SoundFileBuilder.hpp"
 #include "util.hpp"
 #include "SoundFileLogger.hpp"
+#include <istream>
 const int NON_INITIALIZED_INT = -9999;
 
 SoundFileBuilder::SoundFileBuilder(){}
@@ -52,7 +53,7 @@ SoundFile* SoundFileBuilder::buildSoundFileFromInput(string input /* default = "
             }else if(lineVector[0].compare("startdata")==0) {
                 
                 //We are in the StartData section now, check if the necessary variables have been provided and instantiate a SoundFile
-                if (!areSoundFileDataValuesInitialzed(bitRes, numChannels, sampleRate)) { //TODO check for invalid values like -1
+                if (!areSoundFileDataValuesInitialzed(bitRes, numChannels, sampleRate)) {
                     return NULL; //failure
                 }
                 soundFile = new SoundFile(input, bitRes, numChannels, sampleRate, numSamples);
@@ -74,12 +75,13 @@ SoundFile* SoundFileBuilder::buildSoundFileFromInput(string input /* default = "
     return soundFile;
 }
 
-bool SoundFileBuilder::isValidFileType(string fileName, bool printOutput){ //TODO support .wav ?
+bool SoundFileBuilder::isValidFileType(string fileName, bool printOutput){
     const string cs229FileExtenstion = ".cs229";
+    //const string wavFileExtenstion = ".wav";
     size_t found = fileName.find(cs229FileExtenstion);
-    if (found==string::npos){
+    if (found==string::npos){ //&& fileName.find(wavFileExtenstion)==string::npos
         if (printOutput) {
-            cout << "File must be of type .cs229" << endl;
+            cout << "File must be of type .cs229 or .wav" << endl;
         }
         return false; //failure
     }
@@ -99,7 +101,6 @@ bool SoundFileBuilder::isCS229Heading(string heading){
     @return true if the line is blank or begins with a #comment
  */
 bool SoundFileBuilder::shouldIgnoreLine(vector<string> lineVector){
-    //string token = getFirstTokenFromLine(line);
     return (lineVector.size()== 0 || lineVector[0].compare(0, 1, "#") == 0);
 }
 
@@ -107,8 +108,8 @@ bool SoundFileBuilder::shouldIgnoreLine(vector<string> lineVector){
     It's pretty clear what this one does imo.
 */
 bool SoundFileBuilder::areSoundFileDataValuesInitialzed(int bitRes, int numChannels, int sampleRate){
-    if (bitRes == NON_INITIALIZED_INT){
-        fprintf(stderr, "A BitRes value must be provided");
+    if (bitRes == NON_INITIALIZED_INT || bitRes<=0){
+        fprintf(stderr, "A valid BitRes value must be provided");
         return false;
     }
     if (numChannels == NON_INITIALIZED_INT){
@@ -119,8 +120,8 @@ bool SoundFileBuilder::areSoundFileDataValuesInitialzed(int bitRes, int numChann
         return false;
     }
     
-    if (sampleRate == NON_INITIALIZED_INT){
-        fprintf(stderr, "A SampleRate value must be provided");
+    if (sampleRate == NON_INITIALIZED_INT || sampleRate<=0){
+        fprintf(stderr, "A valid Samplerate value must be provided");
     }
     return true;
 }
@@ -158,5 +159,3 @@ bool SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, istream& i
     (*soundFile)->setNumSamples(numSamples); // set the number of samples because this is not a required value for .cs229 files
     return true;
 }
-
-

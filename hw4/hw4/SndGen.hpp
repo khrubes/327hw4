@@ -12,6 +12,7 @@ class SndGen : public SoundProgram {
         string waveFormType;
         float lastSampleValue;
         bool hasValidInputsToRunProgram();
+        void setWaveFormType(vector<string>* arguments);
         bool isWaveFormSwitch(string argument);
         void initRequiredArgumentsVector();
         void calculateSustainVolume();

@@ -65,3 +65,17 @@ vector<string> charArrayToStringVector(int argc, const char* argv[]){
     }
     return arguments;
 }
+
+/*
+    @return true if @param input is a string representing a valid number.
+*/
+bool isNumeric(string& input) {
+    size_t indexOfDecimal = input.find(".");
+    if (indexOfDecimal!=string::npos){
+        //strip the decimal from input
+        string temp = input.substr(0, indexOfDecimal);
+        temp+= input.substr(indexOfDecimal+1, input.length());
+        input = temp;
+    }
+    return std::all_of(input.begin(), input.end(), ::isdigit);
+}

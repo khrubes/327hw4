@@ -1,6 +1,5 @@
 #ifndef SoundProgram_hpp
 #define SoundProgram_hpp
-#include "all.h"
 #include "SoundFile.hpp"
 #include "SoundFileBuilder.hpp"
 using namespace std;
@@ -17,6 +16,7 @@ class SoundProgram {
         virtual void initSwitchArgumentMap(vector<string>* arguments);
         void initSwitchFunctionMap();
         virtual void initSoundFiles(vector<string> arguments);
+        virtual void outputSoundFile(SoundFile* soundFile);
     
         void runSwitches();
         /*

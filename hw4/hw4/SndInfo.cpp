@@ -19,17 +19,25 @@ void SndInfo::runProgram(vector<string> arguments){
     runSwitches();
     for (auto &soundFile : this->soundFiles) // access by reference to avoid copying
     {
-        cout << "File name: " << soundFile->getFileName() << endl;
-        cout << "File type: " << soundFile->getFileType() << endl;
-        cout << "Sample rate: " << soundFile->getSampleRate() << endl;
-        cout << "Bit depth: " << soundFile->getBitDepth() << endl;
-        cout << "Number of channels: " << soundFile->getNumChannels() << endl;
-        cout << "Number of samples: " << soundFile->getNumSamples() << endl; //TODO you don't really need numsamples
-        long soundLengthInSeconds = (long)(soundFile->getNumSamples() / soundFile->getSampleRate());
-        cout << "Sound length in seconds: " << soundLengthInSeconds << endl;
+        this->outputSoundFile(soundFile);
     }
     
 }
+
+/*
+    Outputs the contents @param soundFile to the console.
+ */
+void SndInfo::outputSoundFile(SoundFile* soundFile){
+    cout << "File name: " << soundFile->getFileName() << endl;
+    cout << "File type: " << soundFile->getFileType() << endl;
+    cout << "Sample rate: " << soundFile->getSampleRate() << endl;
+    cout << "Bit depth: " << soundFile->getBitDepth() << endl;
+    cout << "Number of channels: " << soundFile->getNumChannels() << endl;
+    cout << "Number of samples: " << soundFile->getNumSamples() << endl;
+    long soundLengthInSeconds = (long)(soundFile->getNumSamples() / soundFile->getSampleRate());
+    cout << "Sound length in seconds: " << soundLengthInSeconds << endl;
+}
+
 
 string SndInfo::getProgramName(){
     return "SndInfo";

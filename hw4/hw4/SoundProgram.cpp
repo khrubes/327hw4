@@ -31,6 +31,20 @@ void SoundProgram::initSoundFiles(vector<string> arguments){
 }
 
 /*
+    Outputs the contents @param soundFile to either a CS229 file or to the console, depending on if an output file was specified by -o
+*/
+void SoundProgram::outputSoundFile(SoundFile* soundFile){
+    ofstream output;
+    output.open(this->outPutFileName);
+    
+    soundFile->print( (output.is_open()) ? output  : cout );
+    
+    if (output.is_open()) {
+        output.close();
+    }
+}
+
+/*
     Removes strings resembling switches "-*" and their following values "n" from @arguments and adds the pairs to #switchArgumentMap.
     This function also outputs an error message if an invalid switch was passed in.
     @param arguments the arguments passed in from the command line.
@@ -57,7 +71,7 @@ void SoundProgram::initSwitchArgumentMap(vector<string>* arguments){
 
                     this->switchArgumentMap.insert(make_pair(argument, switchParamArg));
                     iter = (*arguments).erase(iter);
-                    iter = (*arguments).erase(iter); //TODO see if there's a better way to remove things from a vector
+                    iter = (*arguments).erase(iter);
                     
                 }else{
                     cout << "Invalid switch \"" << argument << "\"" << endl;
@@ -123,7 +137,7 @@ void SoundProgram::runSwitches(){
  @param string outputFileName the output file name
  @return true if @outputFileName is a valid file
  */
-bool SoundProgram::oSwitch(string outputFileName){ //TODO move this to SndCat
+bool SoundProgram::oSwitch(string outputFileName){
     if(!this->soundFileBuilder->isValidFileType(outputFileName, false /*print output*/)){
         return false;
     }
@@ -194,31 +208,3 @@ string SoundProgram::getSwitchDescription(string switchName){ //TODO add more de
     
     return description;
 }
-
-////    vector<string> validNoParamSwitches;
-////    validNoParamSwitches.push_back("-h");         TODO use the switch strings you typed here to save time
-////    validNoParamSwitches.push_back("--sine");
-////    validNoParamSwitches.push_back("--triangle");
-////    validNoParamSwitches.push_back("--sawtooth");
-////    validNoParamSwitches.push_back("--pulse");
-////    
-////    return(find(validNoParamSwitches.begin(), validNoParamSwitches.end(), switchArg) != validNoParamSwitches.end());
-//}
-
-//    
-////    vector<string> validParamSwitches;
-////    validParamSwitches.push_back("-o");
-////    validParamSwitches.push_back("-f");
-////    validParamSwitches.push_back("-t");
-////    validParamSwitches.push_back("-v");
-////    validParamSwitches.push_back("-a");
-////    validParamSwitches.push_back("-d");
-////    validParamSwitches.push_back("-s");
-////    validParamSwitches.push_back("-r");
-////    validParamSwitches.push_back("--bits");
-////    validParamSwitches.push_back("--sr");
-////    validParamSwitches.push_back("--pf");
-////    
-////    return(find(validParamSwitches.begin(), validParamSwitches.end(), switchArg) != validParamSwitches.end());
-//}
-

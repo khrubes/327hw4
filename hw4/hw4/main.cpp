@@ -1,4 +1,4 @@
-#include "all.h"
+
 #include "SndGen.hpp"
 #include "SoundProgram.hpp"
 #include "util.hpp"

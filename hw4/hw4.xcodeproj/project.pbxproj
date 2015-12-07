@@ -32,9 +32,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BB11B1021C14EE0800B13E25 /* all.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = all.h; sourceTree = "<group>"; };
 		BB6EBE3A1BEE6F11004F951E /* hw4 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hw4; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB6EBE3D1BEE6F11004F951E /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		BB6EBE441BEE6F3C004F951E /* all.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = all.h; sourceTree = "<group>"; };
 		BB6EBE451BEE6F5E004F951E /* SoundFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundFile.cpp; sourceTree = "<group>"; };
 		BB6EBE461BEE6F5E004F951E /* SoundFile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SoundFile.hpp; sourceTree = "<group>"; };
 		BB6EBE481BEE7CCE004F951E /* SoundProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundProgram.cpp; sourceTree = "<group>"; };
@@ -88,13 +88,13 @@
 		BB6EBE3C1BEE6F11004F951E /* hw4 */ = {
 			isa = PBXGroup;
 			children = (
+				BB11B1021C14EE0800B13E25 /* all.h */,
 				BBCAA73A1BFBEC3E00B08C87 /* sf2.cs229 */,
 				BBD0A7DB1BF13A0200FADB6A /* ofile.cs229 */,
 				BB6EBE4B1BEE8707004F951E /* sf1.cs229 */,
 				BB6EBE3D1BEE6F11004F951E /* main.cpp */,
 				BB6EBE4F1BEE92C5004F951E /* util.cpp */,
 				BB6EBE501BEE92C5004F951E /* util.hpp */,
-				BB6EBE441BEE6F3C004F951E /* all.h */,
 				BB6EBE451BEE6F5E004F951E /* SoundFile.cpp */,
 				BB6EBE461BEE6F5E004F951E /* SoundFile.hpp */,
 				BB6EBE481BEE7CCE004F951E /* SoundProgram.cpp */,

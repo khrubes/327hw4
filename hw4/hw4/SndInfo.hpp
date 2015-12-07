@@ -10,6 +10,7 @@ class SndInfo : public SoundProgram {
     protected:
         string getProgramName();
         string getProgramDescription();
+        virtual void outputSoundFile(SoundFile* soundFile);
     
     public:
         SndInfo();

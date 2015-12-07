@@ -24,7 +24,6 @@ SoundFile::SoundFile(string fileName, int bitRes, int numChannels, int sampleRat
 }
 
 SoundFile::~SoundFile(){
-    cout << "soundfile destructor, you probably have a shit ton of memory leaks" << endl; //TODO remove
 }
 
 /*  
@@ -33,7 +32,7 @@ SoundFile::~SoundFile(){
     @return a modified reference to the current #SoundFile, or an unmodified one if multi is invalid.
  
 */
-SoundFile SoundFile::operator*(int multi){ //TODO TEST
+SoundFile SoundFile::operator*(int multi){
     if (multi < -10 || multi > 10) {
         fprintf(stderr, "Invalid multiplying value \"%i\" for file %s.", multi, this->getFileName().c_str());
         return *this;
@@ -50,7 +49,7 @@ SoundFile SoundFile::operator*(int multi){ //TODO TEST
     Prints the contents of this SoundFile to @param output.
     Assumes that is output is a file, it has already been opened and will be closed after calling this function.
 */
-void SoundFile::print(ostream output){
+void SoundFile::print(ostream& output){
     output << "CS229" << endl;
     output << "Samples \t" << (this->getNumSamples() / this->getNumChannels()) << endl;
     output << "Channels \t" << this->getNumChannels() << endl;
@@ -62,7 +61,6 @@ void SoundFile::print(ostream output){
         for (int channelNumber=0; channelNumber<this->getNumChannels(); channelNumber++) {
             output << ((*(this->getChannels()))[channelNumber])[row] << endl;
         }
-        output << "\n";
     }
     output <<  "<EOF>" << endl;
 }
