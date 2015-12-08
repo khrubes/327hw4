@@ -14,6 +14,7 @@ class SndGen : public SoundProgram {
         bool hasValidInputsToRunProgram();
         void setWaveFormType(vector<string>* arguments);
         bool isWaveFormSwitch(string argument);
+        bool isValidADSREnvelope();
         void initRequiredArgumentsVector();
         void calculateSustainVolume();
         float getSampleValue(float currentTime, int iterationNum);
@@ -29,8 +30,8 @@ class SndGen : public SoundProgram {
         float getPulseWaveValue(float currentTime, int iterationNum);
         float getPulseWaveRecurisive(float currentTime, int IterationNum);
     protected:
-        string getProgramName();
-        string getProgramDescription();
+        virtual string getProgramName();
+        virtual string getProgramDescription();
         virtual vector<string> getValidSwitches(bool withParams);
         virtual bool isValidSwitchArgumentPair(string switchArg, string paramValue);
         virtual void initSwitchArgumentMap(vector<string>* arguments);

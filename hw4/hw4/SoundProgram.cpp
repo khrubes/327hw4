@@ -37,7 +37,7 @@ void SoundProgram::outputSoundFile(SoundFile* soundFile){
     ofstream output;
     output.open(this->outPutFileName);
     
-    soundFile->print( (output.is_open()) ? output  : cout );
+    soundFile->print( (output && output.is_open()) ? output  : cout );
     
     if (output.is_open()) {
         output.close();

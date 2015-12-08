@@ -25,7 +25,7 @@ class SoundProgram {
             @return false if there was an error performing the SwitchFunction
          */
         typedef bool (SoundProgram::*SwitchFunction)(string argument);
-        SwitchFunction getSwitchFunction(string switchArg);
+        virtual SwitchFunction getSwitchFunction(string switchArg);
     
         /* Switch Functions*/
         bool hSwitch(string argument);

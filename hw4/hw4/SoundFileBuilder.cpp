@@ -71,6 +71,7 @@ SoundFile* SoundFileBuilder::buildSoundFileFromInput(string input /* default = "
     if(file){
         file.close();
     }
+    soundFile = ((SoundFile)*soundFile) * multiplyValue;
     SoundFileLogger::logInstance(soundFile);
     return soundFile;
 }
@@ -146,13 +147,13 @@ bool SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, istream& i
                 numSamples--;
                 break;
             }
-            signed int sample;
-            if(!parseAndStoreStringIntoInt(sample, lineVector[i])){
+            int sample;
+            if(!isValidSample(*soundFile, sample, lineVector[i], multiplyValue)){
                 fprintf(stderr, "Sample %s in StartData section is not a valid sample.", (lineVector[i]).c_str());
                 return false;
             }else{
                 //messy dereferencing of the pointer to the #SoundFile
-                (*((*soundFile)->getChannels()))[i].push_back(sample * multiplyValue); //channels[i] is a vector<signed int> which holds data for one channel
+                (*((*soundFile)->getChannels()))[i].push_back(sample); //channels[i] is a vector<signed int> which holds data for one channel
             }
         }
     }

@@ -44,7 +44,7 @@ void SndCat::runProgram(vector<string> fileArguments){
         }
         samplesIndex+= soundFile->getNumSamples(); //next iteration, we will fill in the samples starting at samplesIndex
         if (samplesIndex > SoundFileLogger::getInstance()->totalNumSamples) {
-            fprintf(stderr, "Error concantenating SoundFiles");
+            fprintf(stderr, "Error concantenating SoundFiles\n");
             break;
         }
     }

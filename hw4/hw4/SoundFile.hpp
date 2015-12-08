@@ -20,7 +20,8 @@ class SoundFile {
         SoundFile(string fileName, int bitRes, int numChannels, int sampleRate, int numSamples);
         SoundFile();
         ~SoundFile();
-        SoundFile operator*(int multi);
+        SoundFile* operator*(int multi);
+        SoundFile* operator+(int plus);
     
         void setNumSamples(int numSamples);
         void setBitDepth(int bitdepth);

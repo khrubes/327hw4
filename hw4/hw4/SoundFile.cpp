@@ -32,17 +32,33 @@ SoundFile::~SoundFile(){
     @return a modified reference to the current #SoundFile, or an unmodified one if multi is invalid.
  
 */
-SoundFile SoundFile::operator*(int multi){
+SoundFile* SoundFile::operator*(int multi){
     if (multi < -10 || multi > 10) {
         fprintf(stderr, "Invalid multiplying value \"%i\" for file %s.", multi, this->getFileName().c_str());
-        return *this;
+        return this;
     }
     for(auto& channel : this->channels){
         for (int i = 0; i < channel.size(); i++){
             channel[i]*= multi;
         }
     }
-    return *this;
+    return this;
+}
+
+/*
+ Iterates over the sample data in #channels and adds it by plus.
+ @param plus the value to add to the sample data. Must not add over the 2^getBitDepth
+ @return a modified reference to the current #SoundFile, or an unmodified one if plus is invalid.
+*/
+SoundFile* SoundFile::operator+(int plus){
+    for(auto& channel : this->channels){
+        for (int i = 0; i < channel.size(); i++){
+            if (abs(channel[i]+plus) <= pow(2, this->getBitDepth())) {
+                channel[i]+= plus;
+            }
+        }
+    }
+    return this;
 }
 
 /*
@@ -59,8 +75,9 @@ void SoundFile::print(ostream& output){
   
     for(int row=0; row < ((*(this->getChannels()))[0]).size(); row++) {
         for (int channelNumber=0; channelNumber<this->getNumChannels(); channelNumber++) {
-            output << ((*(this->getChannels()))[channelNumber])[row] << endl;
+            output << ((*(this->getChannels()))[channelNumber])[row] << " ";
         }
+        output << endl;
     }
     output <<  "<EOF>" << endl;
 }

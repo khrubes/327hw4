@@ -1,4 +1,5 @@
 #include "util.hpp"
+#include <cmath>
 /*
     A set of util functions not specific to any class
 */
@@ -38,6 +39,22 @@ bool parseAndStoreStringIntoInt(int &i, string str) {
         return false;
     }
     return true;
+}
+
+/*
+   @return true if @param sampleStringFromFile is a valid sample for @param soundFile based off of the max bit depth.
+*/
+bool isValidSample(SoundFile* soundFile, int& sampleValueToStoreInto, string sampleStringFromFile, signed int multiplyValue){
+    if (parseAndStoreStringIntoInt(sampleValueToStoreInto, sampleStringFromFile) ) {
+        int maxValue = pow( 2 , soundFile->getBitDepth());
+        if(! (abs(sampleValueToStoreInto * multiplyValue) <=  maxValue )) {
+            fprintf(stderr, "Sample value: %d exceeds bit depth: %d", sampleValueToStoreInto, soundFile->getBitDepth());
+            return false;
+        }
+        return true;
+    } else {
+        return false;
+    }
 }
 
 /*

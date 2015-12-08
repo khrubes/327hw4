@@ -15,6 +15,7 @@ void SndGen::initSwitchArgumentMap(vector<string>* arguments){
             requiredArgumentsVector.erase(find(requiredArgumentsVector.begin(), requiredArgumentsVector.end(), iterator->first));
         }
     }
+    this->calculateSustainVolume();
 }
 
 void SndGen::setWaveFormType(vector<string>* arguments){
@@ -28,10 +29,11 @@ void SndGen::setWaveFormType(vector<string>* arguments){
 /*
     @return an x value data point determined by @param iterationNum, and the length of the sound.
 */
-float SndGen::getXValue(int iterationNum){
+float SndGen::getXValue(int iterationNum){  //TODO this is broken
 //TODO check for sampleRate = 0;
     float lengthOfSound = stol(switchArgumentMap["-t"]);
-    float result = (float)(((float)iterationNum) / lengthOfSound);
+    int totalNumSamples = lengthOfSound * stol(switchArgumentMap["--sr"]);
+    float result = (lengthOfSound / (totalNumSamples)) * (iterationNum + 1); // +1 used to avoid initial 0 value
     return result;
 }
 
@@ -39,7 +41,20 @@ float SndGen::getXValue(int iterationNum){
     Calculates the length in seconds the sound file should be in the "sustain" phase, dependent on the length of the sound.
 */
 void SndGen::calculateSustainVolume(){
-    switchArgumentMap["-s"] = stol(switchArgumentMap["-s"]) * stol(switchArgumentMap["-t"]);
+    float sustainPercent = stof(switchArgumentMap["-s"]);
+    float lengthOfSound = stol(switchArgumentMap["-t"]);
+    float result = sustainPercent * lengthOfSound;
+    switchArgumentMap["-s"] = to_string(sustainPercent * lengthOfSound);
+}
+
+/*
+    @return true if the provided ASDR envelope is valid compared to the given length of the Sound.
+*/
+bool SndGen::isValidADSREnvelope(){
+    if (stol(switchArgumentMap["-t"]) < (stol(switchArgumentMap["-a"]) + stol(switchArgumentMap["-d"]) + stol(switchArgumentMap["-s"]) + stol(switchArgumentMap["-r"]))) {
+        return false;
+    }
+    return true;
 }
 
 SndGen::SndGen() : SoundProgram(){}
@@ -69,7 +84,8 @@ void SndGen::runProgram(vector<string> fileArguments){
     int numSamples = floor( stol(switchArgumentMap["-t"]) * stol(switchArgumentMap["--sr"]) );
     SoundFile* generatedSoundFile = new SoundFile(this->outPutFileName, stol(switchArgumentMap["--bits"]), 1, stol(switchArgumentMap["--sr"]), numSamples);
     for (int i=0; i < numSamples; i++) {
-        ((*(generatedSoundFile->getChannels()))[0]).push_back(getSampleValue(getXValue(i), i ));
+        float sampleValue = fmin(getSampleValue(getXValue(i), i ), pow(2, generatedSoundFile->getBitDepth())); // cap the maximum sample value to 2^bitdepth
+        ((*(generatedSoundFile->getChannels()))[0]).push_back(sampleValue);
     }
     this->outputSoundFile(generatedSoundFile);
 }
@@ -86,9 +102,6 @@ float SndGen::getAmplitudeValue(float currentTime){
     }else if (currentTime <= (stol(switchArgumentMap["-a"]) + stol(switchArgumentMap["-d"]) + stol(switchArgumentMap["-s"]))){ //decayseconds will be a value UP TO end of decay
         return this->lastSampleValue;
     }else{ // we are in the release phase
-        if (stol(switchArgumentMap["-t"]) < (stol(switchArgumentMap["-a"]) + stol(switchArgumentMap["-d"]) + stol(switchArgumentMap["-s"]) + stol(switchArgumentMap["-r"]))) {
-            return 0; //No sound should be produced if the duration is less than the release time.
-        }
         return this->getDecayAmplitudeValue(currentTime);
     }
 }
@@ -133,13 +146,13 @@ float SndGen::getReleaseAmplitudeValue(float currentTime){
 float SndGen::getSampleValue(float currentTime, int iterationNum){
     float toReturn;
     if (this->waveFormType.compare("--sin")==0) {
-        return this->getSinWaveValue(currentTime, iterationNum);
+        toReturn = this->getSinWaveValue(currentTime, iterationNum);
     } else if(this->waveFormType.compare("--triangle")==0){
-        return this->getTriangleWaveValue(currentTime, iterationNum);
+        toReturn = this->getTriangleWaveValue(currentTime, iterationNum);
     }else if(this->waveFormType.compare("--sawtooth")==0){
-        return this->getSawtoothWaveValue(currentTime, iterationNum);
+        toReturn = this->getSawtoothWaveValue(currentTime, iterationNum);
     }else if(this->waveFormType.compare("--pulse")==0){
-        return this->getPulseWaveValue(currentTime, iterationNum);
+        toReturn = this->getPulseWaveValue(currentTime, iterationNum);
     }
     lastSampleValue = toReturn;
     return toReturn;
@@ -299,15 +312,18 @@ bool SndGen::hasValidInputsToRunProgram(){
             fprintf(stderr, "No wave form type (sin, triangle, sawtooth, pulse) specified.\n");
         return false;
     }else if (this->waveFormType.compare("pulse")==0 && ( (this->switchArgumentMap.find("--pf"))==this->switchArgumentMap.end())){
-            fprintf(stderr, "No percent up value (--pf) specified for Pulse waves require a ");
+            fprintf(stderr, "No percent up value (--pf) specified for Pulse wave.\n");
         return false;
     }
     
-    if (stol(switchArgumentMap["-t"]) == 0) {
-        fprintf(stderr, "0 is probably an invalid Sample Rate");
-        exit(0);
+    if (stol(switchArgumentMap["--sr"]) == 0) {
+        fprintf(stderr, "0 is probably an invalid sample rate.\n");
     }
     
+    if (!this->isValidADSREnvelope()) {
+        fprintf(stderr, "Invalid ADSR evelope, provided time less than calculated duration from ADSR.\n");
+        exit(0);
+    }
     return true;
 }
 
