@@ -7,11 +7,11 @@ const int NON_INITIALIZED_INT = -9999;
 SoundFileBuilder::SoundFileBuilder(){}
 
 /*
- @param input, the name of the file to create the SoundFile from, or "" by default. If no file name is provided, a SoundFile is built by reading from stdin.
- @param multiplyValue the optional value to multiply SoundFile::channels sample data by.
- @return a pointer to a newly constructed SoundFile, or NULL if there was an error processing the input.
+    @param input, the name of the file to create the SoundFile from, or "" by default. If no file name is provided, a SoundFile is built by reading from stdin.
+    @param multiplyValue the optional value to multiply SoundFile::channels sample data by.
+    @return a pointer to a newly constructed SoundFile, or NULL if there was an error processing the input.
 */
-SoundFile* SoundFileBuilder::buildSoundFileFromInput(string input /* default = "" */, unsigned int multiplyValue /* default = 1 */){
+SoundFile* SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = "" */, unsigned int multiplyValue /* default = 1 */){
 
     SoundFile* soundFile = NULL;
     //SoundFile member variables to initialize

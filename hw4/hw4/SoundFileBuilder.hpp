@@ -15,7 +15,7 @@ class SoundFileBuilder {
         bool addStartDataToSoundFile(SoundFile** soundFile, istream& input, unsigned int multiplyValue);
     public:
         SoundFileBuilder();
-        SoundFile* buildSoundFileFromInput(string input = "", unsigned int multiplyValue = 1);
+        SoundFile* buildCS229SoundFileFromInput(string input = "", unsigned int multiplyValue = 1);
         bool isValidFileType(string fileName, bool printOutput=true);
 };
 

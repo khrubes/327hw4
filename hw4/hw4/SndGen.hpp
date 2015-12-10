@@ -19,7 +19,7 @@ class SndGen : public SoundProgram {
         bool isValidADSREnvelope();
         void setWaveFormType(vector<string>* arguments);
         void initRequiredArgumentsVector();
-        void calculateSustainVolume();
+        void calculateSustainTime();
     
         /* Getters for generating sample data */
         virtual float getAmplitudeValue(float currentTime);
@@ -28,10 +28,11 @@ class SndGen : public SoundProgram {
         float getAttackAmplitudeValue(float currentTime);
         float getDecayAmplitudeValue(float currentTime);
         float getReleaseAmplitudeValue(float currentTime);
+        float getPeriod();
     
         /* Formulas for generating wave values at a specific time and sample number.*/
         float getSinWaveValue(float currentTime, int sampleNum);
-        float getTriangleWaveValue(float currentTime, int sampleNum);
+        float getTriangleWaveValue(float currentTime);
         float getSawtoothWaveValue(float currentTime, int sampleNum);
         float getPulseWaveValue(float currentTime, int sampleNum);
         float getPulseWaveRecurisive(float currentTime, int sampleNum);

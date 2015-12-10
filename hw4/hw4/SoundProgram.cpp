@@ -15,7 +15,7 @@ void SoundProgram::setOutputFileName(string fileName){
 */
 void SoundProgram::initSoundFiles(vector<string> arguments){
     for (int i = 0; (i < arguments.size()) || (arguments.size()==0) ; i++) {
-        SoundFile* soundFile = this->soundFileBuilder->buildSoundFileFromInput(arguments.size()==0 ? "" : arguments[i]);
+        SoundFile* soundFile = this->soundFileBuilder->buildCS229SoundFileFromInput(arguments.size()==0 ? "" : arguments[i]);
         if (soundFile) {
             this->soundFiles.push_back(soundFile);
         } else {

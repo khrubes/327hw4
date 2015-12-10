@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundProgram.hpp"
-            timestampString = "471407160.562618"
+            timestampString = "471458178.551085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "class SoundProgram"
             landmarkType = "3">
          </BreakpointContent>
@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
             endingLineNumber = "30"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
             endingLineNumber = "32"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -91,7 +91,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
             endingLineNumber = "48"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -107,7 +107,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
             endingLineNumber = "33"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -123,7 +123,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
             endingLineNumber = "31"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -153,7 +153,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
             endingLineNumber = "62"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -185,7 +185,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
             endingLineNumber = "61"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -201,7 +201,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
             endingLineNumber = "76"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -217,7 +217,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
             endingLineNumber = "70"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -249,7 +249,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "65"
             endingLineNumber = "65"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -265,7 +265,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
             endingLineNumber = "36"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -354,11 +354,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundProgram.hpp"
-            timestampString = "471407160.562618"
+            timestampString = "471458178.551085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "class SoundProgram"
             landmarkType = "3">
          </BreakpointContent>
@@ -370,11 +370,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFile.hpp"
-            timestampString = "471237003.794977"
+            timestampString = "471458178.551085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "class SoundFile"
             landmarkType = "3">
          </BreakpointContent>
@@ -449,7 +449,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
             endingLineNumber = "28"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -479,7 +479,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "56"
             endingLineNumber = "56"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -495,7 +495,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
             endingLineNumber = "58"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -511,7 +511,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
             endingLineNumber = "57"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -527,7 +527,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "46"
             endingLineNumber = "46"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -543,7 +543,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
             endingLineNumber = "50"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -559,7 +559,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
             endingLineNumber = "51"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -575,7 +575,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
             endingLineNumber = "52"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -591,7 +591,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "69"
             endingLineNumber = "69"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -687,7 +687,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
             endingLineNumber = "49"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -703,7 +703,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "59"
             endingLineNumber = "59"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -746,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471237003.794977"
+            timestampString = "471461294.416174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
             landmarkName = "SndGen::getSwitchDescription(string switchArg)"
             landmarkType = "5">
          </BreakpointContent>
@@ -762,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471237003.794977"
+            timestampString = "471461294.416174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217">
+            startingLineNumber = "216"
+            endingLineNumber = "216">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -776,11 +776,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471237003.794977"
+            timestampString = "471461004.203157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "SndGen::runProgram(vector&lt;string&gt; fileArguments)"
             landmarkType = "5">
          </BreakpointContent>
@@ -808,11 +808,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471214460.572075"
+            timestampString = "471461004.203157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "SndGen::runProgram(vector&lt;string&gt; fileArguments)"
             landmarkType = "5">
          </BreakpointContent>
@@ -824,11 +824,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471214460.572075"
+            timestampString = "471461004.203157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "SndGen::runProgram(vector&lt;string&gt; fileArguments)"
             landmarkType = "5">
          </BreakpointContent>
@@ -840,11 +840,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471214460.572075"
+            timestampString = "471461004.203157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "SndGen::runProgram(vector&lt;string&gt; fileArguments)"
             landmarkType = "5">
          </BreakpointContent>
@@ -856,11 +856,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471237003.794977"
+            timestampString = "471461004.203157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "SndGen::getAttackAmplitudeValue(float currentTime)"
             landmarkType = "5">
          </BreakpointContent>
@@ -872,11 +872,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471237003.794977"
+            timestampString = "471461294.416174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "SndGen::isValidSwitchArgumentPair(string switchArg, string paramValue)"
             landmarkType = "5">
          </BreakpointContent>
@@ -888,11 +888,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471237003.794977"
+            timestampString = "471461004.203157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "SndGen::getSinWaveValue(float currentTime, int sampleNum)"
             landmarkType = "5">
          </BreakpointContent>
@@ -920,11 +920,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471237003.794977"
+            timestampString = "471461004.203157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "SndGen::runProgram(vector&lt;string&gt; fileArguments)"
             landmarkType = "5">
          </BreakpointContent>
@@ -936,11 +936,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471214460.572075"
+            timestampString = "471461004.203157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "SndGen::runProgram(vector&lt;string&gt; fileArguments)"
             landmarkType = "5">
          </BreakpointContent>
@@ -984,11 +984,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471237003.794977"
+            timestampString = "471461004.203157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "SndGen::getSampleValue(float currentTime, int sampleNum)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1000,11 +1000,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/main.cpp"
-            timestampString = "471231751.415963"
+            timestampString = "471461294.416174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "main(int argc, const char * argv[])"
             landmarkType = "7">
          </BreakpointContent>
@@ -1016,11 +1016,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471214460.572075"
+            timestampString = "471461004.203157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "SndGen::runProgram(vector&lt;string&gt; fileArguments)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1032,12 +1032,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471237003.794977"
+            timestampString = "471461294.416174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "SndGen::getTriangleWaveValue(float currentTime, int sampleNum)"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "SndGen::getTriangleWaveValue(float currentTime)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1048,27 +1048,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471237003.794977"
+            timestampString = "471461004.203157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
-            landmarkName = "SndGen::getTriangleWaveValue(float currentTime, int sampleNum)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "hw4/SndGen.cpp"
-            timestampString = "471237003.794977"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "SndGen::runProgram(vector&lt;string&gt; fileArguments)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1096,11 +1080,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/main.cpp"
-            timestampString = "471231751.415963"
+            timestampString = "471461294.416174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "main(int argc, const char * argv[])"
             landmarkType = "7">
          </BreakpointContent>
@@ -1112,71 +1096,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471237003.794977"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "SndGen::getAmplitudeValue(float currentTime)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "hw4/SndGen.cpp"
-            timestampString = "471212750.543772"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "SndGen::calculateSustainVolume()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "hw4/SndGen.cpp"
-            timestampString = "471237003.794977"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
-            landmarkName = "SndGen::getSampleValue(float currentTime, int sampleNum)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "hw4/SndGen.cpp"
-            timestampString = "471237003.794977"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "SndGen::getAmplitudeValue(float currentTime)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "hw4/SndGen.cpp"
-            timestampString = "471237003.794977"
+            timestampString = "471461004.203157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
@@ -1192,11 +1112,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471237003.794977"
+            timestampString = "471461004.203157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "SndGen::calculateSustainTime()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hw4/SndGen.cpp"
+            timestampString = "471461004.203157"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "SndGen::getSampleValue(float currentTime, int sampleNum)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hw4/SndGen.cpp"
+            timestampString = "471461004.203157"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "SndGen::getAmplitudeValue(float currentTime)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1208,11 +1160,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471237003.794977"
+            timestampString = "471461004.203157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "SndGen::getAmplitudeValue(float currentTime)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1224,7 +1176,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471237003.794977"
+            timestampString = "471461004.203157"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "SndGen::getAmplitudeValue(float currentTime)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hw4/SndGen.cpp"
+            timestampString = "471461004.203157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "101"
@@ -1240,11 +1208,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471237003.794977"
+            timestampString = "471461004.203157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "SndGen::getAmplitudeValue(float currentTime)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hw4/SndGen.cpp"
+            timestampString = "471461004.203157"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "SndGen::getSampleValue(float currentTime, int sampleNum)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1272,11 +1256,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471214460.572075"
+            timestampString = "471461004.203157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50">
+            startingLineNumber = "48"
+            endingLineNumber = "48">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1430,11 +1414,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFile.cpp"
-            timestampString = "471237524.207709"
+            timestampString = "471458178.551085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "SoundFile::operator+(int plus)"
             landmarkType = "5">
             <Locations>
@@ -1579,7 +1563,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
             endingLineNumber = "74"
-            landmarkName = "SoundFileBuilder::buildSoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
+            landmarkName = "SoundFileBuilder::buildCS229SoundFileFromInput(string input /* default = &quot;&quot; */, unsigned int multiplyValue"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1590,11 +1574,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFile.cpp"
-            timestampString = "471319308.836886"
+            timestampString = "471458178.551085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "SoundFile::operator*(int multi)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1606,11 +1590,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFile.cpp"
-            timestampString = "471320054.509232"
+            timestampString = "471458178.551085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "SoundFile::operator+(int plus)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1654,11 +1638,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SoundFile.cpp"
-            timestampString = "471325532.723066"
+            timestampString = "471458178.551085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "SoundFile::setNumSamples(int numSamples)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2034,16 +2018,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hw4/SndGen.cpp"
+            timestampString = "471461004.203157"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "SndGen::runProgram(vector&lt;string&gt; fileArguments)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hw4/SndGen.cpp"
+            timestampString = "471461004.203157"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "SndGen::getSinWaveValue(float currentTime, int sampleNum)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hw4/SndGen.cpp"
-            timestampString = "471410833.500397"
+            timestampString = "471461004.203157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "SndGen::runProgram(vector&lt;string&gt; fileArguments)"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "SndGen::getSinWaveValue(float currentTime, int sampleNum)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hw4/SndGen.cpp"
+            timestampString = "471461010.768363"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "SndGen::initSwitchArgumentMap(vector&lt;string&gt;* arguments)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -167,6 +167,10 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "--sin"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "-backwards"
             isEnabled = "NO">
          </CommandLineArgument>

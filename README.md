@@ -43,11 +43,44 @@ bool isValidSwitchArgumentPair(string switchArg, string paramValue);
 	Iterates through switches in #switchArgumentMap and calls the corresponding functions in #switchArgumentMap.
 
 ##SndInfo
+  Prints the following for each SoundFile in #soundFiles
+    -The file name
+    - The file type
+    - The sample rate
+    - The bit depth
+    - The number of channels
+    - The number of samples
+    - The length of the sound (in seconds)
+
 
 ##SndCat
+This program reads all sound files passed as arguments, and writes a single sound file that is the concatenation of the inputs. 
 Note, SndCat currently does not support concantenating Sound Files with different sample rates by interpolating. An error will by printed if files passed to SndCat are 
 
 ##SndMix
-SndMix actually calls the same runProgram as SndCat, as I designed it to be as similar to SndCat as possible.
+This program reads all sound files passed as arguments, and “mixes” them into a single sound file. The program is invoked as 
+ 
+ sndmix [switches] mult1 file1 ...multn filen 
+ 
+where the sample data of filei is multiplied by multi (a real value between -10 and 10)
+
+SndMix actually calls the same runProgram as SndCat, as it was designed to be as similar to SndCat as possible.
+
 ##SndGen
+Sin Wave
+
+Triangle Wave
+
+Sawtooth Wave
+![Sawtooth Wave](http://prntscr.com/9cm1nl)
+
+Pulse Wave
+
+##SndFx
 	
+
+
+##SoundFileBuilder
+buildCS229SoundFileFromInput
+
+##SoundFileLogger

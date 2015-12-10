@@ -15,7 +15,7 @@ void SndGen::initSwitchArgumentMap(vector<string>* arguments){
             requiredArgumentsVector.erase(find(requiredArgumentsVector.begin(), requiredArgumentsVector.end(), iterator->first));
         }
     }
-    this->calculateSustainVolume();
+    this->calculateSustainTime();
 }
 
 void SndGen::setWaveFormType(vector<string>* arguments){
@@ -40,11 +40,9 @@ float SndGen::getXValue(int sampleNum){  //TODO this is broken
 /*
     Calculates the length in seconds the sound file should be in the "sustain" phase, dependent on the length of the sound.
 */
-void SndGen::calculateSustainVolume(){
-    float sustainPercent = stof(switchArgumentMap["-s"]);
-    float lengthOfSound = stof(switchArgumentMap["-t"]);
-    float result = sustainPercent * lengthOfSound;
-    switchArgumentMap["-s"] = to_string(sustainPercent * lengthOfSound);
+void SndGen::calculateSustainTime(){
+    float sustainLength = (stof(switchArgumentMap["-t"])) -  (stof(switchArgumentMap["-a"]) + stof(switchArgumentMap["-d"]) + stof(switchArgumentMap["-r"]));
+    switchArgumentMap["-s"] = to_string(sustainLength);
 }
 
 /*
@@ -84,7 +82,10 @@ void SndGen::runProgram(vector<string> fileArguments){
     int numSamples = floor( stof(switchArgumentMap["-t"]) * stof(switchArgumentMap["--sr"]) );
     SoundFile* generatedSoundFile = new SoundFile(this->outPutFileName, stof(switchArgumentMap["--bits"]), 1, stof(switchArgumentMap["--sr"]), numSamples);
     for (int i=0; i < numSamples; i++) {
-        float sampleValue = fmin(getSampleValue(getXValue(i), i ), pow(2, generatedSoundFile->getBitDepth())); // cap the maximum sample value to 2^bitdepth
+        //float sampleValue = fmin(getSampleValue(getXValue(i), i ), pow(2, generatedSoundFile->getBitDepth())); // cap the maximum sample value to 2^bitdepth
+        float sampleValue = getSampleValue(getXValue(i), i );
+        cout << "Amplitude: "<< getAmplitudeValue(getXValue(i)) << endl;
+        
         ((*(generatedSoundFile->getChannels()))[0]).push_back(sampleValue);
     }
     this->outputSoundFile(generatedSoundFile);
@@ -148,7 +149,7 @@ float SndGen::getSampleValue(float currentTime, int sampleNum){
     if (this->waveFormType.compare("--sin")==0) {
         toReturn = this->getSinWaveValue(currentTime, sampleNum);
     } else if(this->waveFormType.compare("--triangle")==0){
-        toReturn = this->getTriangleWaveValue(currentTime, sampleNum);
+        toReturn = this->getTriangleWaveValue(currentTime);
     }else if(this->waveFormType.compare("--sawtooth")==0){
         toReturn = this->getSawtoothWaveValue(currentTime, sampleNum);
     }else if(this->waveFormType.compare("--pulse")==0){
@@ -163,34 +164,35 @@ float SndGen::getSampleValue(float currentTime, int sampleNum){
 */
 float SndGen::getSinWaveValue(float currentTime, int sampleNum){
     float frequency = stof(switchArgumentMap["-f"]);
-    float sinWaveValue = this->getAmplitudeValue(currentTime) * sin( frequency * this->getXValue(sampleNum) );
+    float sinWaveValue = sin( frequency * this->getXValue(sampleNum) ); //TODO put amplitude back this->getAmplitudeValue(currentTime) *
     return sinWaveValue;
 }
 
 /*
-    @return a triangle wave function depending on @param currentTime and @param sampleNum
-    Follows the formula for a triangle wave from https://en.wikipedia.org/wiki/Triangle_wave, with period p - "-f" and amplitude a given by getAmplitudeValue(currentTime)
+    @return a triangle wave function depending on @param currentTime
+    Follows the formula for a triangle wave from https://en.wikipedia.org/wiki/Triangle_wave, with period p - (1/ "-f")
  */
-float SndGen::getTriangleWaveValue(float currentTime, int sampleNum){
-    float triangleWaveValue = ((2 * this->getAmplitudeValue(currentTime)) / M_PI) * asin( sin( ((2*M_PI)/stof(switchArgumentMap["-f"])) * this->getXValue(sampleNum)));
+float SndGen::getTriangleWaveValue(float currentTime){
+    //* this->getAmplitudeValue(currentTime)
+    float triangleWaveValue = (2/M_PI) * asin(  sin( ((2*M_PI) / this->getPeriod()) * currentTime )  );
     return triangleWaveValue;
 }
 
 /*
     @return a sawtooth wave function depending on @param currentTime and @param sampleNum.
-    Follows the formula for a sawtooth wave from https://en.wikipedia.org/wiki/Sawtooth_wave, with period p - "-f" and amplitude a given by getAmplitudeValue(currentTime)
+    Follows the formula for a sawtooth wave from https://en.wikipedia.org/wiki/Sawtooth_wave, with period p - (1/ "-f") and amplitude a given by getAmplitudeValue(currentTime)
  */
 float SndGen::getSawtoothWaveValue(float currentTime, int sampleNum){
-    float sawToothWaveValue = -1 * ((2 * this->getAmplitudeValue(currentTime))/M_PI) * atan( 1/(tan( (this->getXValue(sampleNum) * M_PI) / stof(switchArgumentMap["-f"]) )));
+    float sawToothWaveValue = -1 * ((2 * this->getAmplitudeValue(currentTime))/M_PI) * atan( 1/(tan( (this->getXValue(sampleNum) * M_PI) / (1/stof(switchArgumentMap["-f"])) )));
     return sawToothWaveValue;
 }
 
 /*
     @return a pulse wave function depending on @param currentTime and @param sampleNum.
-    Follows the Fourier series expansion for a pulse wave from https://en.wikipedia.org/wiki/Pulse_wave with period "-f" and pulse time "--pf".
+    Follows the Fourier series expansion for a pulse wave from https://en.wikipedia.org/wiki/Pulse_wave with period p - (1/ "-f") and pulse time "--pf".
  */
 float SndGen::getPulseWaveValue(float currentTime, int sampleNum){
-    float pulsewWaveValue = (stof(switchArgumentMap["--pf"])/stof(switchArgumentMap["-f"])) + this->getPulseWaveRecurisive(currentTime, sampleNum);
+    float pulsewWaveValue = (stof(switchArgumentMap["--pf"])/(1/stof(switchArgumentMap["-f"]))) + this->getPulseWaveRecurisive(currentTime, sampleNum);
     return pulsewWaveValue;
 }
 
@@ -202,8 +204,8 @@ float SndGen::getPulseWaveRecurisive(float currentTime, int sampleNum){
     if (sampleNum == 0) {
         return 0;
     }else {
-        return ((2/(sampleNum * M_PI)) * sin( (M_PI * sampleNum * stof(switchArgumentMap["--pf"]))/stof(switchArgumentMap["-f"])) *
-        cos( ((2 * M_PI * stof(switchArgumentMap["--pf"])) / stof(switchArgumentMap["-f"])) * this->getXValue(sampleNum)) ) +
+        return ((2/(sampleNum * M_PI)) * sin( (M_PI * sampleNum * stof(switchArgumentMap["--pf"]))/(1/stof(switchArgumentMap["-f"]))) *
+        cos( ((2 * M_PI * stof(switchArgumentMap["--pf"])) / (1/stof(switchArgumentMap["-f"]))) * currentTime) ) +
         this->getPulseWaveRecurisive(currentTime, sampleNum - 1);
     }
 }
@@ -341,5 +343,9 @@ bool SndGen::isValidSwitchArgumentPair(string switchArg, string paramValue){
 */
 bool SndGen::isWaveFormSwitch(string argument){
     return (argument.compare("--sin")==0 || argument.compare("--sawtooth")==0 || argument.compare("--triangle")==0 || argument.compare("--pulse")==0);
+}
+
+float SndGen::getPeriod(){
+   return (1/stof(switchArgumentMap["-f"]));
 }
 
