@@ -893,7 +893,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "165"
             endingLineNumber = "165"
-            landmarkName = "SndGen::getSinWaveValue(float currentTime, int iterationNum)"
+            landmarkName = "SndGen::getSinWaveValue(float currentTime, int sampleNum)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -989,7 +989,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "151"
             endingLineNumber = "151"
-            landmarkName = "SndGen::getSampleValue(float currentTime, int iterationNum)"
+            landmarkName = "SndGen::getSampleValue(float currentTime, int sampleNum)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1037,7 +1037,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "179"
             endingLineNumber = "179"
-            landmarkName = "SndGen::getTriangleWaveValue(float currentTime, int iterationNum)"
+            landmarkName = "SndGen::getTriangleWaveValue(float currentTime, int sampleNum)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1053,7 +1053,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "178"
             endingLineNumber = "178"
-            landmarkName = "SndGen::getTriangleWaveValue(float currentTime, int iterationNum)"
+            landmarkName = "SndGen::getTriangleWaveValue(float currentTime, int sampleNum)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1149,7 +1149,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "157"
             endingLineNumber = "157"
-            landmarkName = "SndGen::getSampleValue(float currentTime, int iterationNum)"
+            landmarkName = "SndGen::getSampleValue(float currentTime, int sampleNum)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1245,7 +1245,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "150"
             endingLineNumber = "150"
-            landmarkName = "SndGen::getSampleValue(float currentTime, int iterationNum)"
+            landmarkName = "SndGen::getSampleValue(float currentTime, int sampleNum)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2029,6 +2029,22 @@
                   offsetFromSymbolStart = "586">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hw4/SndGen.cpp"
+            timestampString = "471410833.500397"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "SndGen::runProgram(vector&lt;string&gt; fileArguments)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

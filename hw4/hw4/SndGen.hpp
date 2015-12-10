@@ -8,27 +8,34 @@ using namespace std;
  */
 class SndGen : public SoundProgram {
     private:
+        /* Member Variables */
         vector<string> requiredArgumentsVector;
         string waveFormType;
         float lastSampleValue;
+    
+        /* Helper Functions */
         bool hasValidInputsToRunProgram();
-        void setWaveFormType(vector<string>* arguments);
         bool isWaveFormSwitch(string argument);
         bool isValidADSREnvelope();
+        void setWaveFormType(vector<string>* arguments);
         void initRequiredArgumentsVector();
         void calculateSustainVolume();
-        float getSampleValue(float currentTime, int iterationNum);
-        virtual float getXValue(int iterationNum);
+    
+        /* Getters for generating sample data */
         virtual float getAmplitudeValue(float currentTime);
+        float getSampleValue(float currentTime, int sampleNum);
+        float getXValue(int sampleNum);
         float getAttackAmplitudeValue(float currentTime);
         float getDecayAmplitudeValue(float currentTime);
         float getReleaseAmplitudeValue(float currentTime);
     
-        float getSinWaveValue(float currentTime, int iterationNum);
-        float getTriangleWaveValue(float currentTime, int iterationNum);
-        float getSawtoothWaveValue(float currentTime, int iterationNum);
-        float getPulseWaveValue(float currentTime, int iterationNum);
-        float getPulseWaveRecurisive(float currentTime, int IterationNum);
+        /* Formulas for generating wave values at a specific time and sample number.*/
+        float getSinWaveValue(float currentTime, int sampleNum);
+        float getTriangleWaveValue(float currentTime, int sampleNum);
+        float getSawtoothWaveValue(float currentTime, int sampleNum);
+        float getPulseWaveValue(float currentTime, int sampleNum);
+        float getPulseWaveRecurisive(float currentTime, int sampleNum);
+    
     protected:
         virtual string getProgramName();
         virtual string getProgramDescription();

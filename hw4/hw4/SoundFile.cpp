@@ -23,9 +23,6 @@ SoundFile::SoundFile(string fileName, int bitRes, int numChannels, int sampleRat
     }
 }
 
-SoundFile::~SoundFile(){
-}
-
 /*  
     Iterates over the sample data in #channels and multiplies it by multi.
     @param multi the value to multiply sample data by. Must be a real value between -10 and 10

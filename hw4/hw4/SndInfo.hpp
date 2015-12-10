@@ -8,8 +8,8 @@ using namespace std;
  */
 class SndInfo : public SoundProgram {
     protected:
-        string getProgramName();
-        string getProgramDescription();
+        virtual string getProgramName();
+        virtual string getProgramDescription();
         virtual void outputSoundFile(SoundFile* soundFile);
     
     public:
