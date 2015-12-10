@@ -72,7 +72,7 @@ Sin Wave
 Triangle Wave
 
 Sawtooth Wave
-![Sawtooth Wave](http://prntscr.com/9cm24o)
+![Sawtooth Wave](http://media.mydogspace.com.s3.amazonaws.com/wp-content/uploads/2013/08/puppy-500x350.jpg)
 
 Pulse Wave
 
