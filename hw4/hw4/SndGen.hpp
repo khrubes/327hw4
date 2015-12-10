@@ -18,8 +18,8 @@ class SndGen : public SoundProgram {
         void initRequiredArgumentsVector();
         void calculateSustainVolume();
         float getSampleValue(float currentTime, int iterationNum);
-        float getXValue(int iterationNum);
-        float getAmplitudeValue(float currentTime);
+        virtual float getXValue(int iterationNum);
+        virtual float getAmplitudeValue(float currentTime);
         float getAttackAmplitudeValue(float currentTime);
         float getDecayAmplitudeValue(float currentTime);
         float getReleaseAmplitudeValue(float currentTime);

@@ -23,7 +23,7 @@ int main(int argc, const char * argv[]) {
         }else if (programName.find("sndfx")!= string::npos) {
             program = new SndFx();
         }else {
-            fprintf(stderr, "Invalid sound program: %s", programName.c_str());
+            fprintf(stderr, "Invalid sound program: %s.\n", programName.c_str());
         }
         program->runProgram(charArrayToStringVector(argc, argv));
     }

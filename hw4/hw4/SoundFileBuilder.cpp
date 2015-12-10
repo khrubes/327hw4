@@ -71,7 +71,7 @@ SoundFile* SoundFileBuilder::buildSoundFileFromInput(string input /* default = "
     if(file){
         file.close();
     }
-    soundFile = ((SoundFile)*soundFile) * multiplyValue;
+    *soundFile = ((SoundFile)*soundFile) * multiplyValue;
     SoundFileLogger::logInstance(soundFile);
     return soundFile;
 }
@@ -110,19 +110,19 @@ bool SoundFileBuilder::shouldIgnoreLine(vector<string> lineVector){
 */
 bool SoundFileBuilder::areSoundFileDataValuesInitialzed(int bitRes, int numChannels, int sampleRate){
     if (bitRes == NON_INITIALIZED_INT || bitRes<=0){
-        fprintf(stderr, "A valid BitRes value must be provided");
+        fprintf(stderr, "A valid BitRes value must be provided.\n");
         return false;
     }
     if (numChannels == NON_INITIALIZED_INT){
-        fprintf(stderr, "A value for Channels must be provided");
+        fprintf(stderr, "A value for Channels must be provided.\n");
         return false;
     }else if(numChannels <= 0){
-        fprintf(stderr, "Invalid number of Channels: %d", numChannels);
+        fprintf(stderr, "Invalid number of Channels: %d.\n", numChannels);
         return false;
     }
     
     if (sampleRate == NON_INITIALIZED_INT || sampleRate<=0){
-        fprintf(stderr, "A valid Samplerate value must be provided");
+        fprintf(stderr, "A valid Samplerate value must be provided.\n");
     }
     return true;
 }
@@ -141,19 +141,18 @@ bool SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, istream& i
     int numSamples = 0;
     while ( getline(input,line) ) {
         vector<string> lineVector = getStringVectorFromLine(line);
-        numSamples++;
-        for (int i = 0; i < (*soundFile)->getChannels()->size(); i++) {
+        for (int i = 0; i < lineVector.size(); i++) {
             if (lineVector[i].compare("<EOF>") == 0 || lineVector[i].compare("<eof>") == 0) {
-                numSamples--;
                 break;
             }
             int sample;
             if(!isValidSample(*soundFile, sample, lineVector[i], multiplyValue)){
-                fprintf(stderr, "Sample %s in StartData section is not a valid sample.", (lineVector[i]).c_str());
+                fprintf(stderr, "Sample %s in StartData section is not a valid sample.\n", (lineVector[i]).c_str());
                 return false;
             }else{
                 //messy dereferencing of the pointer to the #SoundFile
                 (*((*soundFile)->getChannels()))[i].push_back(sample); //channels[i] is a vector<signed int> which holds data for one channel
+                numSamples++;
             }
         }
     }

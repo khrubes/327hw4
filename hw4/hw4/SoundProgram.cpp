@@ -1,4 +1,5 @@
 #include "SoundProgram.hpp"
+#include "SoundFileLogger.hpp"
 SoundProgram::SoundProgram(){
     this->soundFileBuilder = new SoundFileBuilder();
 }
@@ -42,6 +43,32 @@ void SoundProgram::outputSoundFile(SoundFile* soundFile){
     if (output.is_open()) {
         output.close();
     }
+}
+
+/*
+ Adds the sample data from all #SoundFiles contained in @param soundFiles into @param toConcantenateInto.
+ 
+ Note: this function assumes @param toConcantenateInto already has all attributes (numChannels, numSamples, bitdepth) set before calling this method.
+ The number of channels set for the output file will be the median number of channels calculated from the specified input files.
+ Missing values will be filled in as 0s.
+ */
+void SoundProgram::concantenateSoundFiles(SoundFile* toConcantenateInto, vector<SoundFile*> soundFiles, int numSamplesForChannel){
+    // instantiate the channels for toConcantenateInto with
+    vector< vector<signed int> > channels( toConcantenateInto->getNumChannels(), vector<signed int>(numSamplesForChannel, 0) );
+    int indexOfLastSampleRow = 0; //used to track the row # we left off at after concantenating the previous soundfilee
+    for (auto &soundFile : soundFiles)
+    {
+        for (int channelIndex = 0; channelIndex < min( soundFile->getNumChannels(), toConcantenateInto->getNumChannels() ); channelIndex++) {
+            
+            vector<signed int> currentChannel = (* (soundFile->getChannels()) )[channelIndex]; //for readability purposes
+            for (int sampleIndex = 0; sampleIndex < currentChannel.size(); sampleIndex++) {
+                ( channels[channelIndex] )[sampleIndex + indexOfLastSampleRow] = currentChannel[sampleIndex];
+            }
+            
+        }
+        indexOfLastSampleRow+=  (* (soundFile->getChannels()) )[0].size();
+    }
+    toConcantenateInto->setChannels(channels);
 }
 
 /*

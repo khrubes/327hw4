@@ -1,5 +1,4 @@
 #include "SndFx.hpp"
-
 SndFx::SndFx() : SndGen(){}
 
 string SndFx::getProgramName(){
@@ -123,7 +122,17 @@ bool SndFx::backwardsSwitch(string argument = NULL){
     @return true if the fadeinout operation was performed successfully
  */
 bool SndFx::fadeinoutSwitch(string argument = NULL){
-    cout << "testing fadeinout switch" << endl;
+    for (auto& soundFile : this->soundFiles) {
+        for (auto& channel : *(*soundFile).getChannels()) {
+            
+            for (int sampleIndex = 0; sampleIndex< channel.size(); sampleIndex++) {
+                
+                float amplitudeValue = getAmplitudeValue(sampleIndex, channel);
+                float fadedValue =  (float)channel  [sampleIndex] * amplitudeValue;
+                channel[sampleIndex] = fadedValue;
+            }
+        }
+    }
     return true;
 }
 
@@ -133,15 +142,15 @@ bool SndFx::fadeinoutSwitch(string argument = NULL){
     @return true of @param argument is valid and the pitchup operation was performed successfully
  */
 bool SndFx::pitchupSwitch(string argument){
-//    for (auto& soundFile : this->soundFiles) {
-//        try {
-//            soundFile+= stoi(argument);
-//        }
-//        catch(...){
-//            fprintf(stderr, "Only int values allowed for pitchup");
-//            return false;
-//        }
-//    }
+    for (auto& soundFile : this->soundFiles) {
+        try {
+            (*soundFile) = (*soundFile) + stoi(argument);
+        }
+        catch(...){
+            fprintf(stderr, "Only int values allowed for pitchup.\n");
+            return false;
+        }
+    }
     return true;
 }
 
@@ -151,10 +160,10 @@ bool SndFx::pitchupSwitch(string argument){
 bool SndFx::pitchdownSwitch(string argument){
     for (auto &soundFile : this->soundFiles) {
         try {
-            soundFile =  ((SoundFile)*soundFile) + (-1 * stoi(argument));
+            (*soundFile) =  (*soundFile) + (-1 * stoi(argument));
         }
         catch(...){
-            fprintf(stderr, "Only int values allowed for pitchup");
+            fprintf(stderr, "Only int values allowed for pitchup.\n");
             return false;
         }
     }
@@ -162,9 +171,33 @@ bool SndFx::pitchdownSwitch(string argument){
 }
 
 /*
-    Repeats the SoundFile numtimes, fading in and out each time.
+    Repeats the SoundFile numtimes.
  */
 bool SndFx::echoSwitch(string argument){
-    cout << "testing echo switch, arg:" << argument << endl;
+    try {
+        int numTimesToEcho = stoi(argument);
+        for (auto& soundFile : this->soundFiles) {
+            int numSamplesInCurrentSoundFileChannel = (*(soundFile->getChannels()))[0].size();
+            int numSamplesForEchoSoundFile = numSamplesInCurrentSoundFileChannel * numTimesToEcho;
+            this->concantenateSoundFiles(soundFile, vector<SoundFile*>(numTimesToEcho, soundFile), numSamplesForEchoSoundFile);
+        }
+    } catch (...) {
+        fprintf(stderr, "Invalid value for echo: %s, only integer values are allowed.", argument.c_str());
+    }
     return true;
 }
+
+/*
+ @param currentIndex the current x value we are generating amplitude value to multiply by separately calculated y value for.
+ @param channel to produce the fadeinout effect on. The sound scales up to the correct amplitude about halfway, and then back down,
+    essentially turning the sound into one large triangle wave.
+ @return a float value to scale the function by.
+ */
+float SndFx::getAmplitudeValue(float currentIndex, vector<signed int> channel){
+    if (currentIndex <= ( channel.size()/2 )) {
+        return (currentIndex / channel.size());
+    } else {
+        return 1 - (currentIndex / channel.size());
+    }
+}
+

@@ -9,8 +9,7 @@ using namespace std;
 class SndCat : public SoundProgram {
     protected:
         string getProgramName();
-        string getProgramDescription();
-    
+        string getProgramDescription();    
     public:
         SndCat();
         virtual void runProgram(vector<string> fileArguments);

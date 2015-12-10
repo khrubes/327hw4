@@ -12,12 +12,14 @@ BitRes 8
 
 # Because we can:
 
-SaMpLeRaTe 11025
+SaMpLeRaTe 10
 # From here on things are more rigid
 
 STARTdata
-0 -127 127
-10 45 -103
-20 83 -4
-30 0 99
+10 20 30
+10 20 30
+10 20 30
+10 20 30
+10 20 30
+10 20 30
 <EOF>

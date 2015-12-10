@@ -1,6 +1,7 @@
 #ifndef SndFx_hpp
 #define SndFx_hpp
 #include "SndGen.hpp"
+#include "SndCat.hpp"
 #include "all.h"
 using namespace std;
 
@@ -16,6 +17,7 @@ class SndFx : public SndGen {
         virtual bool isValidSwitchArgumentPair(string switchArg, string paramValue);
         virtual void initSwitchArgumentMap(vector<string>* arguments);
         virtual SwitchFunction getSwitchFunction(string switchArg);
+        virtual float getAmplitudeValue(float currentTime, vector<signed int> currentChannel);
     
         /* Switch Functions */
         bool backwardsSwitch(string argument);

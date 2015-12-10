@@ -58,18 +58,6 @@ bool isValidSample(SoundFile* soundFile, int& sampleValueToStoreInto, string sam
 }
 
 /*
-    @param values a #SoundFile* vector to compute the median number of channels from.
-    @return the median number of samples computed from all #SoundFiles
- */
-int getMedianNumChannels(vector<SoundFile*> values){
-    vector<int> channels;
-    for (int i = 0; i<values.size(); i++) {
-        channels.push_back( values[i]->getNumChannels() );
-    }
-    return channels[ channels.size() /2 ];
-}
-
-/*
     Converts a c string array into a vector of strings.
     @param argc the number of arguments
     @param argv the c string array of arguments

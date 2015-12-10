@@ -88,7 +88,7 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Users/kelseyhrubes/Documents/327/hw4/hw4/hw4/sf2.cs229"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "mult2"
@@ -180,11 +180,11 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-pitchdown"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "3"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-fadeinout"
@@ -195,7 +195,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "5"
+            argument = "2"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

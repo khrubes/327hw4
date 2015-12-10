@@ -17,6 +17,7 @@ class SoundProgram {
         void initSwitchFunctionMap();
         virtual void initSoundFiles(vector<string> arguments);
         virtual void outputSoundFile(SoundFile* soundFile);
+        void concantenateSoundFiles(SoundFile* toConcantenateInto, vector<SoundFile*> soundFiles, int numSamplesForChannel);
     
         void runSwitches();
         /*

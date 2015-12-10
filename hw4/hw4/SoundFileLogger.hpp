@@ -11,7 +11,9 @@ class SoundFileLogger{
         static SoundFileLogger* logInstance(SoundFile* soundFile);
         static SoundFileLogger* getInstance();
         static int maxBitDepth;
-        static int totalNumSamples;
+        static int maxNumChannels;
+        static int maxNumSamplesInChannel;
+        static int numRowsForSndCat;
         static int sampleRate;
     
     private:

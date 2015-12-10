@@ -34,7 +34,7 @@ void SndMix::initSoundFiles(vector<string> arguments){
             this->soundFiles.push_back(soundFile);
         }
         catch (...){
-            fprintf(stderr,  "No matching file to multi arg mult%i", multiplier);
+            fprintf(stderr,  "No matching file to multi arg mult%i.\n", multiplier);
         }
         iter++;
     }
@@ -51,10 +51,10 @@ int SndMix::getMultiplyValueFromSndMixArg(string str) {
     if (found!=string::npos){
         string parsedValue = str.substr(found + mult.length(), str.length());
         if (!parseAndStoreStringIntoInt(multValue, parsedValue)){
-            fprintf(stderr, "Non int multiplier value passed to SndMix: %s", parsedValue.c_str());
+            fprintf(stderr, "Non int multiplier value passed to SndMix: %s\n", parsedValue.c_str());
         }
     } else {
-        fprintf(stderr, "Invalid argument passed to SndMix: %s", str.c_str());
+        fprintf(stderr, "Invalid argument passed to SndMix: %s\n", str.c_str());
         exit(0);
     }
     return multValue;

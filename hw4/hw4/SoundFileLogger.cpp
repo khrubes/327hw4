@@ -3,8 +3,10 @@
 
 SoundFileLogger* SoundFileLogger::soundfileLoggerInstance = NULL;
 int SoundFileLogger::maxBitDepth;
+int SoundFileLogger::maxNumChannels;
 int SoundFileLogger::sampleRate;
-int SoundFileLogger::totalNumSamples;
+int SoundFileLogger::maxNumSamplesInChannel;
+int SoundFileLogger::numRowsForSndCat;
 
 /*
     @param soundFile a #SoundFile to record data on, or NULL if this instance is not needed to modify #SoundFile data.
@@ -18,15 +20,27 @@ SoundFileLogger* SoundFileLogger::logInstance(SoundFile* soundFile) {
     if (soundFile->getBitDepth() > SoundFileLogger::maxBitDepth) {
         SoundFileLogger::maxBitDepth = soundFile->getBitDepth();
     }
+    
+    if (soundFile->getNumChannels() > SoundFileLogger::maxNumChannels) {
+        SoundFileLogger::maxNumChannels = soundFile->getNumChannels();
+    }
+    
+    int numSamplesInChannel = (*(soundFile->getChannels()))[0].size();
+    if (SoundFileLogger::maxNumSamplesInChannel < numSamplesInChannel ) {
+        SoundFileLogger::maxNumSamplesInChannel = numSamplesInChannel;
+    }
+    
     if (SoundFileLogger::sampleRate==0) { /* this is the first soundFile we are logging and have not initialized sampleRate yet*/
         SoundFileLogger::sampleRate = soundFile->getSampleRate();
     } else {
         if (SoundFileLogger::sampleRate != soundFile->getSampleRate()) {
-            fprintf(stderr, "Concantenation of soundfiles with different sample rates not supported.");
+            fprintf(stderr, "Concantenation of soundfiles with different sample rates %d and %d not supported.\n", SoundFileLogger::sampleRate, soundFile->getSampleRate());
             exit(0);
         }
     }
-    SoundFileLogger::totalNumSamples+= soundFile->getNumSamples();
+    
+    SoundFileLogger::numRowsForSndCat += (*(soundFile->getChannels()))[0].size();
+    
     return soundfileLoggerInstance;
 }
 
