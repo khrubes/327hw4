@@ -72,7 +72,7 @@ Sin Wave
 Triangle Wave
 
 Sawtooth Wave
-![Sawtooth Wave](http://prntscr.com/9cm1nl)
+![Sawtooth Wave](http://prntscr.com/9cm24o)
 
 Pulse Wave
 
