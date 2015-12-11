@@ -9,9 +9,6 @@ string SndFx::getProgramDescription(){
     return "This program produces a sound with a combination of special effects, such as -backwards, -pitchup x, -pitchdown x, -fadeinout, and -echo numtimes.";
 }
 
-/*
- This program produces a sound of a specified frequency and waveform using a simple ADSR envelope.
- */
 void SndFx::runProgram(vector<string> fileArguments){
     this->initSwitchArgumentMap(&fileArguments);
     this->initSwitchFunctionMap();

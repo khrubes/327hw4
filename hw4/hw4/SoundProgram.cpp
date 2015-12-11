@@ -169,7 +169,7 @@ bool SoundProgram::oSwitch(string outputFileName){
         return false;
     }
     this->setOutputFileName(outputFileName);
-    return true;    //TODO use for -o
+    return true;
 }
 
 
@@ -224,7 +224,7 @@ bool SoundProgram::isValidSwitchArgumentPair(string switchArg, string paramValue
     @param switchName, the switch to return a description of.
     @return a description of what the switch referred to by @switchName does, to be used in #hSwitch
 */
-string SoundProgram::getSwitchDescription(string switchName){ //TODO add more descriptions.
+string SoundProgram::getSwitchDescription(string switchName){
     string description = "";
     
     if (switchName.compare("-h")==0) {

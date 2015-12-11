@@ -177,15 +177,17 @@ bool SndGen::hasValidInputsToRunProgram(){
     
     if (stof(switchArgumentMap["--sr"]) == 0) {
         fprintf(stderr, "0 is probably an invalid sample rate.\n");
+        return false;
     }
     
     if (stof(switchArgumentMap["-v"]) > 1 ||  stof(switchArgumentMap["-v"]) < 0) {
         fprintf(stderr, "Invalid value for -v switch: %f \n", stof(switchArgumentMap["-v"]));
+        return false;
     }
     
     if (!this->isValidADSREnvelope()) {
         fprintf(stderr, "Invalid ADSR evelope, provided time less than calculated duration from ADSR.\n");
-        exit(0);
+        return false;
     }
     return true;
 }

@@ -17,7 +17,7 @@ class SndFx : public SndGen {
         virtual bool isValidSwitchArgumentPair(string switchArg, string paramValue);
         virtual void initSwitchArgumentMap(vector<string>* arguments);
         virtual SwitchFunction getSwitchFunction(string switchArg);
-        virtual float getAmplitudeValue(float currentTime, vector<signed int> currentChannel);
+        float getAmplitudeValue(float currentTime, vector<signed int> currentChannel);
     
         /* Switch Functions */
         bool backwardsSwitch(string argument);

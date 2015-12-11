@@ -63,24 +63,39 @@ This program reads all sound files passed as arguments, and “mixes” them int
  sndmix [switches] mult1 file1 ...multn filen 
  
 where the sample data of filei is multiplied by multi (a real value between -10 and 10)
-
 SndMix actually calls the same runProgram as SndCat, as it was designed to be as similar to SndCat as possible.
 
 ##SndGen
-Sin Wave
+	This program produces a sound of a specified frequency and waveform using a simple ADSR envelope.
 
-Triangle Wave
-
-Sawtooth Wave
-
-
-Pulse Wave
 
 ##SndFx
-	
+	"This program produces a sound with a combination of special effects, such as -backwards, -pitchup x, -pitchdown x, -fadeinout, and -echo numtimes."	
 
 
 ##SoundFileBuilder
 buildCS229SoundFileFromInput
 
+buildSoundFileFromADSREvelope
+Sin Wave
+	Sin Waves are produced using
+	y = sin (period * x)
+
+Triangle Wave
+ Trangle Waves are produced using the function 
+ 	y = (2/pi) * arcsin( sin ( ((2*pi)/ period ) x ) )
+
+Sawtooth Wave
+  Sawtooth Waves are produced using the function
+    y = -1 * (2/pi) * arctan( cot ( (x*pi)/ period )  )
+
+Pulse Wave
+	Pulse Waves are produced using the following logic
+	  if ( ( sampleNum / sampleRate )* frequency - floor((1/sampleRate) - frequency) < percent up ) {
+        return maxVolume;
+      else
+        return -1 * maxVolume;
+
+
 ##SoundFileLogger
+    This Singleton class records data about produced #SoundFiles to be used by SndCat and SndMix.

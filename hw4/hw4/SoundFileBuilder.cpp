@@ -175,12 +175,10 @@ SoundFile* SoundFileBuilder::buildSoundFileFromADSREvelope(float attackTime, flo
     channel.reserve(numSamples);
     for (int i = 0; i < numSamples; i++) {
         float currentTime = this->getXValue(i, numSamples, totalSoundLength);
-        channel.push_back(this->getSampleValue(waveForm, currentTime, frequency, i, sampleRate, pf, volumePeak));
-    }
-    for (int sampleIndex = 0; sampleIndex < channel.size(); sampleIndex++) {
-        float currentTime = this->getXValue(sampleIndex, numSamples, totalSoundLength);
-        channel[sampleIndex]*= this->getAmplitudeValue(currentTime, attackTime, decayTime, sustainTime, releaseTime, totalSoundLength);
-        channel[sampleIndex]*= pow(2, bitdepth) - 1;
+        float sampleValue = this->getSampleValue(waveForm, currentTime, frequency, i, sampleRate, pf, volumePeak);
+        sampleValue*= this->getAmplitudeValue(currentTime, attackTime, decayTime, sustainTime, releaseTime, totalSoundLength);
+        sampleValue*= pow(2, bitdepth) - 1;
+        channel.push_back(sampleValue);
     }
     soundFile->setChannels(vector< vector<signed int> >(1, channel));
     return soundFile;
@@ -242,7 +240,7 @@ float SoundFileBuilder::getSawtoothWaveValue(float currentTime, float period){
 
 
 /*
- @return a pulse wave function depending on @param sampleNum, @param sampleRate, @param frequency, @param pf (fraction the wave is up) and @param maxVolume
+    @return a pulse wave function depending on @param sampleNum, @param sampleRate, @param frequency, @param pf (fraction the wave is up) and @param maxVolume
  */
 float SoundFileBuilder::getPulseWaveValue(float currentTime, int sampleNum, int sampleRate, float frequency, float pf, float maxVolume){
     if ( (sampleNum/sampleRate)*frequency - floor((1/sampleRate) - frequency) < pf ) {
@@ -272,47 +270,3 @@ float SoundFileBuilder::getAmplitudeValue(float currentTime, float attackTime, f
     this->lastAmplitudeValue = toReturn;
     return toReturn;
 }
-//
-///*
-// @return an amplitude value building up to peak volume depending on @param currenTime.
-// ex: if currentTime is the same time where peak volume should occur, then the returned result is 1.
-// */
-//float SoundFileBuilder::getAttackAmplitudeValue(float currentTime, float attackTime){
-//        float attackAmplitudeValue = peakvelocity * (currentTime/attackTime);
-//        return attackAmplitudeValue;
-//    }
-//}
-//
-///*
-// @return an amplitude value building down from peakVolumte depending on @param currenTime.
-// ex: if currentTime is the same time where peakVolume should occur, then the returned result is peakVolume.
-// */
-//float SoundFileBuilder::getDecayAmplitudeValue(float currentTime){
-//    float decayAmplitudeValue = this->getAttackAmplitudeValue(stof(switchArgumentMap["-a"]) - currentTime);
-//    return decayAmplitudeValue;
-//}
-//
-///*
-// @return an amplitude value building down from sustatining depending on @param currenTime.
-// ex: if currentTime is the same time where the sound should end, then the returned result is 0.
-// */
-//float SoundFileBuilder::getReleaseAmplitudeValue(float currentTime){
-//    float releaseAmplitudeValue = lastSampleValue * (1 - (currentTime/stof(switchArgumentMap["-t"])));
-//    return releaseAmplitudeValue;
-//}
-//
-//
-//
-///*
-// Recursive version of #SoundFileBuilder::getPulseWave
-// @return a pulse wave function depending on @param currentTime and @param sampleNum
-// */
-//float SoundFileBuilder::getPulseWaveRecurisive(float currentTime, int sampleNum){
-//    if (sampleNum == 0) {
-//        return 0;
-//    }else {
-//        return ((2/(sampleNum * M_PI)) * sin( (M_PI * sampleNum * stof(switchArgumentMap["--pf"]))/(1/stof(switchArgumentMap["-f"]))) *
-//                cos( ((2 * M_PI * stof(switchArgumentMap["--pf"])) / (1/stof(switchArgumentMap["-f"]))) * currentTime) ) +
-//        this->getPulseWaveRecurisive(currentTime, sampleNum - 1);
-//    }
-//}
