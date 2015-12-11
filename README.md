@@ -1,10 +1,10 @@
-# 327hw4
+#327 HW 4
 
 ##SoundProgram
 The SoundProgram class is an abstract implementation of a SoundProgram. 
 I chose to use an abstract class rather than an interface while there is a lot of shared functionality between the SoundPrograms an abstract class could implement. 
 
-SoundProgram also has a few pure virtual functions, such as
+###SoundProgram also has a few pure virtual functions, such as
 - void runProgram()
 	Here you implement what the SoundProgram will do with the provided SoundFiles and switch arguments.
 - string getProgramName()
@@ -24,7 +24,7 @@ bool isValidSwitchArgumentPair(string switchArg, string paramValue);
 	and return the function in based off of @param switchArg
 	SwitchFunction getSwitchFunction(string switchArg);
 
-###A few functions that typically require additional implementation from subclassed SoundPrograms
+####A few functions that typically require additional implementation from subclassed SoundPrograms
 - void SoundProgram::initSwitchArgumentMap(vector<string>* arguments)
 	Removes strings resembling switches "-*" and their following values "n" from @arguments and adds the pairs to #switchArgumentMap.
     This function also outputs an error message if an invalid switch was passed in.
@@ -59,8 +59,7 @@ Note, SndCat currently does not support concantenating Sound Files with differen
 
 ##SndMix
 This program reads all sound files passed as arguments, and “mixes” them into a single sound file. The program is invoked as 
- 
- sndmix [switches] mult1 file1 ...multn filen 
+sndmix [switches] mult1 file1 ...multn filen 
  
 where the sample data of filei is multiplied by multi (a real value between -10 and 10)
 SndMix actually calls the same runProgram as SndCat, as it was designed to be as similar to SndCat as possible.
@@ -75,27 +74,32 @@ SndMix actually calls the same runProgram as SndCat, as it was designed to be as
 
 ##SoundFileBuilder
 buildCS229SoundFileFromInput
+    Builds a #SoundFile object from input in the form of a CS229 file.
+    @param input, the name of the file to create the SoundFile from, or "" by default. If no file name is provided, a SoundFile is built by reading from stdin.
+    @param multiplyValue the optional value to multiply SoundFile::channels sample data by.
+    @return a pointer to a newly constructed SoundFile, or NULL if there was an error processing the input.
 
 buildSoundFileFromADSREvelope
-Sin Wave
+###Sin Wave
 	Sin Waves are produced using
 	y = sin (period * x)
 
-Triangle Wave
- Trangle Waves are produced using the function 
- 	y = (2/pi) * arcsin( sin ( ((2*pi)/ period ) x ) )
+###Triangle Wave
+ - Trangle Waves are produced using the function 
+ 	- y = (2/pi) * arcsin( sin ( ((2*pi)/ period ) x ) )
 
-Sawtooth Wave
-  Sawtooth Waves are produced using the function
-    y = -1 * (2/pi) * arctan( cot ( (x*pi)/ period )  )
+###Sawtooth Wave
+  - Sawtooth Waves are produced using the function
+    - y = -1 * (2/pi) * arctan( cot ( (x*pi)/ period )  )
 
-Pulse Wave
+###Pulse Wave
 	Pulse Waves are produced using the following logic
+	  ```C++
 	  if ( ( sampleNum / sampleRate )* frequency - floor((1/sampleRate) - frequency) < percent up ) {
         return maxVolume;
       else
         return -1 * maxVolume;
-
+       ```
 
 ##SoundFileLogger
     This Singleton class records data about produced #SoundFiles to be used by SndCat and SndMix.
