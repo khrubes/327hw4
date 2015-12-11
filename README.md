@@ -73,19 +73,30 @@ SndMix actually calls the same runProgram as SndCat, as it was designed to be as
 
 
 ##SoundFileBuilder
+
 buildCS229SoundFileFromInput
     Builds a #SoundFile object from input in the form of a CS229 file.
+
     @param input, the name of the file to create the SoundFile from, or "" by default. If no file name is provided, a SoundFile is built by reading from stdin.
+
     @param multiplyValue the optional value to multiply SoundFile::channels sample data by.
+
     @return a pointer to a newly constructed SoundFile, or NULL if there was an error processing the input.
 
 buildSoundFileFromADSREvelope
+
+
 ###Sin Wave
+
 	Sin Waves are produced using
+
 	y = sin (period * x)
 
+
 ###Triangle Wave
+
  - Trangle Waves are produced using the function 
+
  	- y = (2/pi) * arcsin( sin ( ((2*pi)/ period ) x ) )
 
 ###Sawtooth Wave
