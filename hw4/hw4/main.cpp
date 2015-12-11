@@ -9,27 +9,23 @@ using namespace std;
 
 int main(int argc, const char * argv[]) {
     try{
-////        string programName = argv[0];
-//        string programName = "sndgen";
-//        SoundProgram* program = NULL;
-//        if (programName.find("sndinfo")!= string::npos) {
-//            program = new SndInfo();
-//        }else if (programName.find("sndcat")!= string::npos) {
-//            program = new SndCat();
-//        }else if (programName.find("sndmix")!= string::npos) {
-//            program = new SndMix();
-//        }else if (programName.find("sndgen")!= string::npos) {
-//            program = new SndGen();
-//        }else if (programName.find("sndfx")!= string::npos) {
-//            program = new SndFx();
-//        }else {
-//            fprintf(stderr, "Invalid sound program: %s.\n", programName.c_str());
-//        }
-//        program->runProgram(charArrayToStringVector(argc, argv));
-        
-        for (int i=0; i<10; i++) {
-            cout << (int)(2 * sin(2*i)) << endl;
+//        string programName = argv[0];
+        string programName = "sndgen";
+        SoundProgram* program = NULL;
+        if (programName.find("sndinfo")!= string::npos) {
+            program = new SndInfo();
+        }else if (programName.find("sndcat")!= string::npos) {
+            program = new SndCat();
+        }else if (programName.find("sndmix")!= string::npos) {
+            program = new SndMix();
+        }else if (programName.find("sndgen")!= string::npos) {
+            program = new SndGen();
+        }else if (programName.find("sndfx")!= string::npos) {
+            program = new SndFx();
+        }else {
+            fprintf(stderr, "Invalid sound program: %s.\n", programName.c_str());
         }
+        program->runProgram(charArrayToStringVector(argc, argv));
     }
     catch (exception& e)
     {

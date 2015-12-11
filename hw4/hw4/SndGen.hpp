@@ -11,7 +11,6 @@ class SndGen : public SoundProgram {
         /* Member Variables */
         vector<string> requiredArgumentsVector;
         string waveFormType;
-        float lastSampleValue;
     
         /* Helper Functions */
         bool hasValidInputsToRunProgram();
@@ -20,22 +19,6 @@ class SndGen : public SoundProgram {
         void setWaveFormType(vector<string>* arguments);
         void initRequiredArgumentsVector();
         void calculateSustainTime();
-    
-        /* Getters for generating sample data */
-        virtual float getAmplitudeValue(float currentTime);
-        float getSampleValue(float currentTime, int sampleNum);
-        float getXValue(int sampleNum);
-        float getAttackAmplitudeValue(float currentTime);
-        float getDecayAmplitudeValue(float currentTime);
-        float getReleaseAmplitudeValue(float currentTime);
-        float getPeriod();
-    
-        /* Formulas for generating wave values at a specific time and sample number.*/
-        float getSinWaveValue(float currentTime, int sampleNum);
-        float getTriangleWaveValue(float currentTime);
-        float getSawtoothWaveValue(float currentTime, int sampleNum);
-        float getPulseWaveValue(float currentTime, int sampleNum);
-        float getPulseWaveRecurisive(float currentTime, int sampleNum);
     
     protected:
         virtual string getProgramName();

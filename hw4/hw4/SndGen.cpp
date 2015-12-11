@@ -27,17 +27,6 @@ void SndGen::setWaveFormType(vector<string>* arguments){
 }
 
 /*
-    @return an x value data point determined by @param sampleNum, and the length of the sound.
-*/
-float SndGen::getXValue(int sampleNum){  //TODO this is broken
-//TODO check for sampleRate = 0;
-    float lengthOfSound = stof(switchArgumentMap["-t"]);
-    int totalNumSamples = lengthOfSound * stof(switchArgumentMap["--sr"]);
-    float result = (lengthOfSound / (totalNumSamples)) * (sampleNum + 1); // +1 used to avoid initial 0 value
-    return result;
-}
-
-/*
     Calculates the length in seconds the sound file should be in the "sustain" phase, dependent on the length of the sound.
 */
 void SndGen::calculateSustainTime(){
@@ -70,146 +59,16 @@ string SndGen::getProgramDescription(){
  */
 void SndGen::runProgram(vector<string> fileArguments){
     this->initRequiredArgumentsVector();
-    this->initSwitchArgumentMap(&fileArguments);
-    
+    this->initSwitchArgumentMap(&fileArguments);    
     if (!hasValidInputsToRunProgram()) {
         exit(0);
     }
-    
     this->initSwitchFunctionMap();
     runSwitches();
-    
-    int numSamples = floor( stof(switchArgumentMap["-t"]) * stof(switchArgumentMap["--sr"]) );
-    SoundFile* generatedSoundFile = new SoundFile(this->outPutFileName, stof(switchArgumentMap["--bits"]), 1, stof(switchArgumentMap["--sr"]), numSamples);
-    for (int i=0; i < numSamples; i++) {
-        //float sampleValue = fmin(getSampleValue(getXValue(i), i ), pow(2, generatedSoundFile->getBitDepth())); // cap the maximum sample value to 2^bitdepth
-        float sampleValue = getSampleValue(getXValue(i), i );
-        cout << "Amplitude: "<< getAmplitudeValue(getXValue(i)) << endl;
-        
-        ((*(generatedSoundFile->getChannels()))[0]).push_back(sampleValue);
-    }
-    this->outputSoundFile(generatedSoundFile);
+    float pf = (this->switchArgumentMap.find("--pf"))==this->switchArgumentMap.end() ? 0 : stof(switchArgumentMap["-pf"]);
+    SoundFile* generated = this->soundFileBuilder->buildSoundFileFromADSREvelope(stof(switchArgumentMap["-a"]), stof(switchArgumentMap["-d"]), stof(switchArgumentMap["-s"]), stof(switchArgumentMap["-r"]), stof(switchArgumentMap["-t"]), stof(switchArgumentMap["-f"]), stof(switchArgumentMap["-v"]), pf, stoi(switchArgumentMap["--bits"]), stoi(switchArgumentMap["--sr"]), this->waveFormType);
+    this->outputSoundFile(generated);
 }
-
-/*
-    @param currentTime the current x value we are generating amplitude value to multiply by separately calculated y value for.
-    @return a float value to scale the function by, depending on the current stage in the a d s r envelope.
-*/
-float SndGen::getAmplitudeValue(float currentTime){
-    if (currentTime <= stof(switchArgumentMap["-a"])) {
-        return this->getAttackAmplitudeValue(currentTime);
-    }else if (currentTime <= (stof(switchArgumentMap["-a"]) + stof(switchArgumentMap["-d"]))){
-        return this->getDecayAmplitudeValue(currentTime);
-    }else if (currentTime <= (stof(switchArgumentMap["-a"]) + stof(switchArgumentMap["-d"]) + stof(switchArgumentMap["-s"]))){ //decayseconds will be a value UP TO end of decay
-        return this->lastSampleValue;
-    }else{ // we are in the release phase
-        return this->getDecayAmplitudeValue(currentTime);
-    }
-}
-
-
-/*
-    @return an amplitude value building up to peakVolumte depending on @param currenTime.
-    ex: if currentTime is the same time where peakVolume should occur, then the returned result is peakVolume.
-*/
-float SndGen::getAttackAmplitudeValue(float currentTime){
-    if (currentTime == 0) {
-        return 1;
-    } else {
-        float peakvelocity = stof(switchArgumentMap["-v"]);
-        float attackTime = stof(switchArgumentMap["-a"]);
-        float attackAmplitudeValue = peakvelocity * (currentTime/attackTime);
-        return attackAmplitudeValue;
-    }
-}
-
-/*
-    @return an amplitude value building down from peakVolumte depending on @param currenTime.
-    ex: if currentTime is the same time where peakVolume should occur, then the returned result is peakVolume.
- */
-float SndGen::getDecayAmplitudeValue(float currentTime){
-    float decayAmplitudeValue = this->getAttackAmplitudeValue(stof(switchArgumentMap["-a"]) - currentTime);
-    return decayAmplitudeValue;
-}
-
-/*
-    @return an amplitude value building down from sustatining depending on @param currenTime.
-    ex: if currentTime is the same time where the sound should end, then the returned result is 0.
-*/
-float SndGen::getReleaseAmplitudeValue(float currentTime){
-    float releaseAmplitudeValue = lastSampleValue * (1 - (currentTime/stof(switchArgumentMap["-t"])));
-    return releaseAmplitudeValue;
-}
-
-/*
-    @return a sample value for the corresponding @param currentTime and the current sample number we are on @param sampleNum
-*/
-float SndGen::getSampleValue(float currentTime, int sampleNum){
-    float toReturn;
-    if (this->waveFormType.compare("--sin")==0) {
-        toReturn = this->getSinWaveValue(currentTime, sampleNum);
-    } else if(this->waveFormType.compare("--triangle")==0){
-        toReturn = this->getTriangleWaveValue(currentTime);
-    }else if(this->waveFormType.compare("--sawtooth")==0){
-        toReturn = this->getSawtoothWaveValue(currentTime, sampleNum);
-    }else if(this->waveFormType.compare("--pulse")==0){
-        toReturn = this->getPulseWaveValue(currentTime, sampleNum);
-    }
-    lastSampleValue = toReturn;
-    return toReturn;
-}
-
-/*
-    @return a sin wave function depending on @param currentTime and @param sampleNum
-*/
-float SndGen::getSinWaveValue(float currentTime, int sampleNum){
-    float frequency = stof(switchArgumentMap["-f"]);
-    float sinWaveValue = sin( frequency * this->getXValue(sampleNum) ); //TODO put amplitude back this->getAmplitudeValue(currentTime) *
-    return sinWaveValue;
-}
-
-/*
-    @return a triangle wave function depending on @param currentTime
-    Follows the formula for a triangle wave from https://en.wikipedia.org/wiki/Triangle_wave, with period p - (1/ "-f")
- */
-float SndGen::getTriangleWaveValue(float currentTime){
-    //* this->getAmplitudeValue(currentTime)
-    float triangleWaveValue = (2/M_PI) * asin(  sin( ((2*M_PI) / this->getPeriod()) * currentTime )  );
-    return triangleWaveValue;
-}
-
-/*
-    @return a sawtooth wave function depending on @param currentTime and @param sampleNum.
-    Follows the formula for a sawtooth wave from https://en.wikipedia.org/wiki/Sawtooth_wave, with period p - (1/ "-f") and amplitude a given by getAmplitudeValue(currentTime)
- */
-float SndGen::getSawtoothWaveValue(float currentTime, int sampleNum){
-    float sawToothWaveValue = -1 * ((2 * this->getAmplitudeValue(currentTime))/M_PI) * atan( 1/(tan( (this->getXValue(sampleNum) * M_PI) / (1/stof(switchArgumentMap["-f"])) )));
-    return sawToothWaveValue;
-}
-
-/*
-    @return a pulse wave function depending on @param currentTime and @param sampleNum.
-    Follows the Fourier series expansion for a pulse wave from https://en.wikipedia.org/wiki/Pulse_wave with period p - (1/ "-f") and pulse time "--pf".
- */
-float SndGen::getPulseWaveValue(float currentTime, int sampleNum){
-    float pulsewWaveValue = (stof(switchArgumentMap["--pf"])/(1/stof(switchArgumentMap["-f"]))) + this->getPulseWaveRecurisive(currentTime, sampleNum);
-    return pulsewWaveValue;
-}
-
-/*  
-    Recursive version of #SndGen::getPulseWave
-    @return a pulse wave function depending on @param currentTime and @param sampleNum
- */
-float SndGen::getPulseWaveRecurisive(float currentTime, int sampleNum){
-    if (sampleNum == 0) {
-        return 0;
-    }else {
-        return ((2/(sampleNum * M_PI)) * sin( (M_PI * sampleNum * stof(switchArgumentMap["--pf"]))/(1/stof(switchArgumentMap["-f"]))) *
-        cos( ((2 * M_PI * stof(switchArgumentMap["--pf"])) / (1/stof(switchArgumentMap["-f"]))) * currentTime) ) +
-        this->getPulseWaveRecurisive(currentTime, sampleNum - 1);
-    }
-}
-
 
 /*
  @param bool @withParams if the vector of switches to return are the type that contain parameters.
@@ -320,6 +179,10 @@ bool SndGen::hasValidInputsToRunProgram(){
         fprintf(stderr, "0 is probably an invalid sample rate.\n");
     }
     
+    if (stof(switchArgumentMap["-v"]) > 1 ||  stof(switchArgumentMap["-v"]) < 0) {
+        fprintf(stderr, "Invalid value for -v switch: %f \n", stof(switchArgumentMap["-v"]));
+    }
+    
     if (!this->isValidADSREnvelope()) {
         fprintf(stderr, "Invalid ADSR evelope, provided time less than calculated duration from ADSR.\n");
         exit(0);
@@ -343,9 +206,5 @@ bool SndGen::isValidSwitchArgumentPair(string switchArg, string paramValue){
 */
 bool SndGen::isWaveFormSwitch(string argument){
     return (argument.compare("--sin")==0 || argument.compare("--sawtooth")==0 || argument.compare("--triangle")==0 || argument.compare("--pulse")==0);
-}
-
-float SndGen::getPeriod(){
-   return (1/stof(switchArgumentMap["-f"]));
 }
 
