@@ -15,7 +15,6 @@ void SndGen::initSwitchArgumentMap(vector<string>* arguments){
             requiredArgumentsVector.erase(find(requiredArgumentsVector.begin(), requiredArgumentsVector.end(), iterator->first));
         }
     }
-    this->calculateSustainTime();
 }
 
 void SndGen::setWaveFormType(vector<string>* arguments){
@@ -24,24 +23,6 @@ void SndGen::setWaveFormType(vector<string>* arguments){
             this->waveFormType = (*arguments)[i];
         }
     }
-}
-
-/*
-    Calculates the length in seconds the sound file should be in the "sustain" phase, dependent on the length of the sound.
-*/
-void SndGen::calculateSustainTime(){
-    float sustainLength = (stof(switchArgumentMap["-t"])) -  (stof(switchArgumentMap["-a"]) + stof(switchArgumentMap["-d"]) + stof(switchArgumentMap["-r"]));
-    switchArgumentMap["-s"] = to_string(sustainLength);
-}
-
-/*
-    @return true if the provided ASDR envelope is valid compared to the given length of the Sound.
-*/
-bool SndGen::isValidADSREnvelope(){
-    if (stof(switchArgumentMap["-t"]) < (stof(switchArgumentMap["-a"]) + stof(switchArgumentMap["-d"]) + stof(switchArgumentMap["-s"]) + stof(switchArgumentMap["-r"]))) {
-        return false;
-    }
-    return true;
 }
 
 SndGen::SndGen() : SoundProgram(){}
@@ -59,14 +40,16 @@ string SndGen::getProgramDescription(){
  */
 void SndGen::runProgram(vector<string> fileArguments){
     this->initRequiredArgumentsVector();
-    this->initSwitchArgumentMap(&fileArguments);    
+    this->initSwitchArgumentMap(&fileArguments);
+    this->initSwitchFunctionMap();
     if (!hasValidInputsToRunProgram()) {
         exit(0);
     }
-    this->initSwitchFunctionMap();
     runSwitches();
-    float pf = (this->switchArgumentMap.find("--pf"))==this->switchArgumentMap.end() ? 0 : stof(switchArgumentMap["-pf"]);
-    SoundFile* generated = this->soundFileBuilder->buildSoundFileFromADSREvelope(stof(switchArgumentMap["-a"]), stof(switchArgumentMap["-d"]), stof(switchArgumentMap["-s"]), stof(switchArgumentMap["-r"]), stof(switchArgumentMap["-t"]), stof(switchArgumentMap["-f"]), stof(switchArgumentMap["-v"]), pf, stoi(switchArgumentMap["--bits"]), stoi(switchArgumentMap["--sr"]), this->waveFormType);
+    float pf = (this->switchArgumentMap.find("--pf"))==this->switchArgumentMap.end() ? 0 : stof(switchArgumentMap["--pf"]);
+    SoundFile* generated = this->soundFileBuilder->
+        buildSoundFileFromADSREvelope(stof(switchArgumentMap["-a"]), stof(switchArgumentMap["-d"]), stof(switchArgumentMap["-s"]), stof(switchArgumentMap["-r"]), stof(switchArgumentMap["-t"]), stof(switchArgumentMap["-f"]), stof(switchArgumentMap["-v"]), pf, stoi(switchArgumentMap["--bits"]), stoi(switchArgumentMap["--sr"]),
+            this->waveFormType);
     this->outputSoundFile(generated);
 }
 
@@ -170,23 +153,32 @@ bool SndGen::hasValidInputsToRunProgram(){
     if (this->waveFormType.compare("")==0) {
             fprintf(stderr, "No wave form type (sin, triangle, sawtooth, pulse) specified.\n");
         return false;
-    }else if (this->waveFormType.compare("pulse")==0 && ( (this->switchArgumentMap.find("--pf"))==this->switchArgumentMap.end())){
+    }else if (this->waveFormType.compare("pulse")==0) {
+        
+        if( (this->switchArgumentMap.find("--pf"))==this->switchArgumentMap.end()) {
             fprintf(stderr, "No percent up value (--pf) specified for Pulse wave.\n");
-        return false;
+            return false;
+        }
+        
+        if (!isDecimalBetween0And1(switchArgumentMap["--pf"])) {
+            fprintf(stderr, "Invalid value for --pf switch: %s \n", switchArgumentMap["--pf"].c_str());
+            return false;
+        }
     }
     
+
     if (stof(switchArgumentMap["--sr"]) == 0) {
         fprintf(stderr, "0 is probably an invalid sample rate.\n");
         return false;
     }
     
-    if (stof(switchArgumentMap["-v"]) > 1 ||  stof(switchArgumentMap["-v"]) < 0) {
+    if (!isDecimalBetween0And1(switchArgumentMap["-v"])) {
         fprintf(stderr, "Invalid value for -v switch: %f \n", stof(switchArgumentMap["-v"]));
         return false;
     }
     
-    if (!this->isValidADSREnvelope()) {
-        fprintf(stderr, "Invalid ADSR evelope, provided time less than calculated duration from ADSR.\n");
+    if (!isDecimalBetween0And1(switchArgumentMap["-s"])) {
+        fprintf(stderr, "Invalid value for -s switch: %f \n", stof(switchArgumentMap["-s"]));
         return false;
     }
     return true;

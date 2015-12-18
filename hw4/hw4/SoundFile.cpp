@@ -18,7 +18,7 @@ SoundFile::SoundFile(string fileName, int bitRes, int numChannels, int sampleRat
     this->channels.reserve(numChannels);
     
     for (int i=0; i < numChannels; i++) {
-        vector<signed int> *channel = new vector<signed int>();
+        vector<long> *channel = new vector<long>();
         this->channels.push_back(*channel);
     }
 }
@@ -95,7 +95,7 @@ void SoundFile::setSampleRate(int sampleRate){
     this->sampleRate = sampleRate;
 }
 
-void SoundFile::setChannels(vector< vector<signed int> > channels){
+void SoundFile::setChannels(vector< vector<long> > channels){
     this->channels = channels;
 }
 
@@ -130,6 +130,6 @@ const string SoundFile::getFileType(){
 }
 
 
-vector< vector<signed int> >* SoundFile::getChannels(){
+vector< vector<long> >* SoundFile::getChannels(){
     return &this->channels;
 }

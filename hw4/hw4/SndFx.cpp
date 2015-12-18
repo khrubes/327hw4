@@ -190,7 +190,7 @@ bool SndFx::echoSwitch(string argument){
     essentially turning the sound into one large triangle wave.
  @return a float value to scale the function by.
  */
-float SndFx::getAmplitudeValue(float currentIndex, vector<signed int> channel){
+float SndFx::getAmplitudeValue(float currentIndex, vector<long> channel){
     if (currentIndex <= ( channel.size()/2 )) {
         return (currentIndex / channel.size());
     } else {

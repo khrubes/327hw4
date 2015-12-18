@@ -13,6 +13,11 @@
 		BB6EBE4E1BEE87EC004F951E /* SoundFileBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB6EBE4C1BEE87EC004F951E /* SoundFileBuilder.cpp */; settings = {ASSET_TAGS = (); }; };
 		BB6EBE511BEE92C5004F951E /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB6EBE4F1BEE92C5004F951E /* util.cpp */; settings = {ASSET_TAGS = (); }; };
 		BB71984C1C162CE5009118F7 /* SndFx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB71984A1C162CE5009118F7 /* SndFx.cpp */; settings = {ASSET_TAGS = (); }; };
+		BB71984E1C1B8056009118F7 /* sndinfomain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB71984D1C1B8056009118F7 /* sndinfomain.cpp */; settings = {ASSET_TAGS = (); }; };
+		BB7198501C1B8197009118F7 /* sndcatmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB71984F1C1B8197009118F7 /* sndcatmain.cpp */; settings = {ASSET_TAGS = (); }; };
+		BB7198521C1B81D0009118F7 /* sndmixmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB7198511C1B81D0009118F7 /* sndmixmain.cpp */; settings = {ASSET_TAGS = (); }; };
+		BB7198541C1BA187009118F7 /* sndgenmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB7198531C1BA187009118F7 /* sndgenmain.cpp */; settings = {ASSET_TAGS = (); }; };
+		BB7198561C1BA1AF009118F7 /* sndfxmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB7198551C1BA1AF009118F7 /* sndfxmain.cpp */; settings = {ASSET_TAGS = (); }; };
 		BB7CEC091C063AB300A1A719 /* SndGen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB7CEC071C063AB300A1A719 /* SndGen.cpp */; settings = {ASSET_TAGS = (); }; };
 		BBD0A7D71BF031F700FADB6A /* SndInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBD0A7D51BF031F700FADB6A /* SndInfo.cpp */; settings = {ASSET_TAGS = (); }; };
 		BBD0A7E41BF413F300FADB6A /* SndCat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBD0A7E21BF413F300FADB6A /* SndCat.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -47,6 +52,11 @@
 		BB6EBE501BEE92C5004F951E /* util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = util.hpp; sourceTree = "<group>"; };
 		BB71984A1C162CE5009118F7 /* SndFx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SndFx.cpp; sourceTree = "<group>"; };
 		BB71984B1C162CE5009118F7 /* SndFx.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SndFx.hpp; sourceTree = "<group>"; };
+		BB71984D1C1B8056009118F7 /* sndinfomain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sndinfomain.cpp; sourceTree = "<group>"; };
+		BB71984F1C1B8197009118F7 /* sndcatmain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sndcatmain.cpp; sourceTree = "<group>"; };
+		BB7198511C1B81D0009118F7 /* sndmixmain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sndmixmain.cpp; sourceTree = "<group>"; };
+		BB7198531C1BA187009118F7 /* sndgenmain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sndgenmain.cpp; sourceTree = "<group>"; };
+		BB7198551C1BA1AF009118F7 /* sndfxmain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sndfxmain.cpp; sourceTree = "<group>"; };
 		BB7CEC071C063AB300A1A719 /* SndGen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SndGen.cpp; sourceTree = "<group>"; };
 		BB7CEC081C063AB300A1A719 /* SndGen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SndGen.hpp; sourceTree = "<group>"; };
 		BBCAA73A1BFBEC3E00B08C87 /* sf2.cs229 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sf2.cs229; sourceTree = "<group>"; };
@@ -116,6 +126,11 @@
 				BB7CEC081C063AB300A1A719 /* SndGen.hpp */,
 				BB71984A1C162CE5009118F7 /* SndFx.cpp */,
 				BB71984B1C162CE5009118F7 /* SndFx.hpp */,
+				BB71984D1C1B8056009118F7 /* sndinfomain.cpp */,
+				BB71984F1C1B8197009118F7 /* sndcatmain.cpp */,
+				BB7198511C1B81D0009118F7 /* sndmixmain.cpp */,
+				BB7198531C1BA187009118F7 /* sndgenmain.cpp */,
+				BB7198551C1BA1AF009118F7 /* sndfxmain.cpp */,
 			);
 			path = hw4;
 			sourceTree = "<group>";
@@ -176,12 +191,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB7198541C1BA187009118F7 /* sndgenmain.cpp in Sources */,
 				BBD0A7E41BF413F300FADB6A /* SndCat.cpp in Sources */,
+				BB7198521C1B81D0009118F7 /* sndmixmain.cpp in Sources */,
 				BB7CEC091C063AB300A1A719 /* SndGen.cpp in Sources */,
 				BB6EBE3E1BEE6F11004F951E /* main.cpp in Sources */,
+				BB7198501C1B8197009118F7 /* sndcatmain.cpp in Sources */,
+				BB7198561C1BA1AF009118F7 /* sndfxmain.cpp in Sources */,
 				BBD0A7E71BF44C1700FADB6A /* SndMix.cpp in Sources */,
 				BB71984C1C162CE5009118F7 /* SndFx.cpp in Sources */,
 				BBD0A7D71BF031F700FADB6A /* SndInfo.cpp in Sources */,
+				BB71984E1C1B8056009118F7 /* sndinfomain.cpp in Sources */,
 				BB6EBE4E1BEE87EC004F951E /* SoundFileBuilder.cpp in Sources */,
 				BB6EBE4A1BEE7CCE004F951E /* SoundProgram.cpp in Sources */,
 				BBD0A7EA1BF5AC8A00FADB6A /* SoundFileLogger.cpp in Sources */,

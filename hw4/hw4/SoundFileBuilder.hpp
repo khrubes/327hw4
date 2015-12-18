@@ -9,6 +9,7 @@ using namespace std;
  */
 class SoundFileBuilder {
     private:
+    //todo update in UML diagram
         float lastAmplitudeValue;
     
         bool isCS229Heading(string line);
@@ -19,7 +20,10 @@ class SoundFileBuilder {
         /* Getters for generating sample data */
         float getSampleValue(string waveFormType, float currentTime, float frequency, int sampleNum, int sampleRate, float pf, float maxVolume);
         float getXValue(int sampleNum, int totalNumSamples, float lengthOfSound);
-        float getAmplitudeValue(float currentTime, float attackTime, float decayTime, float sustainTime, float releaseTime, float totalSoundLength);
+        float getAmplitudeValue(float peakAmplitude, float currentTime, float attackTime, float decayTime, float sustainValue, float releaseTime, float totalSoundLength);
+        float getAmplitudeAtPoint(float currentX, float x1, float y1, float x0, float y0);
+        float getSlope(float y1, float y0, float x1, float x0);
+        float getYIntercept(float slope, float xValue, float yValue);
     
         /* Formulas for generating wave values at a specific time and sample number.*/
         float getSinWaveValue(float currentTime, float period);

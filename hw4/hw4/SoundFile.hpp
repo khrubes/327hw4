@@ -15,7 +15,7 @@ class SoundFile {
         int numSamples;
         int sampleRate;
         string fileName;
-        vector< vector<signed int> > channels;
+        vector< vector<long> > channels;
     public:
         SoundFile(string fileName, int bitRes, int numChannels, int sampleRate, int numSamples);
         SoundFile();
@@ -27,14 +27,14 @@ class SoundFile {
         void setBitDepth(int bitdepth);
         void setNumChannels(int numChannels);
         void setSampleRate(int sampleRate);
-        void setChannels(vector< vector<signed int> > channels);
+        void setChannels(vector< vector<long> > channels);
         const int getBitDepth();
         const int getNumChannels();
         const int getNumSamples();
         const int getSampleRate();
         const string getFileName();
         const string getFileType();
-        vector< vector<signed int> >* getChannels();
+        vector< vector<long> >* getChannels();
 
 };
 

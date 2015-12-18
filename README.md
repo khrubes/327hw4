@@ -87,7 +87,6 @@ buildSoundFileFromADSREvelope
 
 
 ###Sin Wave
-
 	Sin Waves are produced using
 
 	y = sin (period * x)
@@ -105,6 +104,7 @@ buildSoundFileFromADSREvelope
 
 ###Pulse Wave
 	Pulse Waves are produced using the following logic
+	
 	  ```C++
 	  if ( ( sampleNum / sampleRate )* frequency - floor((1/sampleRate) - frequency) < percent up ) {
         return maxVolume;

@@ -84,3 +84,17 @@ bool isNumeric(string& input) {
     }
     return std::all_of(input.begin(), input.end(), ::isdigit);
 }
+
+
+bool isDecimalBetween0And1(string argument){
+    try {
+        if (stof(argument) > 1 ||  stof(argument) < 0) {
+            return false;
+        }else{
+            return true;
+        }
+    }
+    catch (...) {
+        return false;
+    }
+}

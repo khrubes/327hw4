@@ -10,7 +10,7 @@ using namespace std;
 int main(int argc, const char * argv[]) {
     try{
 //        string programName = argv[0];
-        string programName = "sndgen";
+        string programName = "sndcat";
         SoundProgram* program = NULL;
         if (programName.find("sndinfo")!= string::npos) {
             program = new SndInfo();

@@ -15,11 +15,9 @@ class SndGen : public SoundProgram {
         /* Helper Functions */
         bool hasValidInputsToRunProgram();
         bool isWaveFormSwitch(string argument);
-        bool isValidADSREnvelope();
         void setWaveFormType(vector<string>* arguments);
         void initRequiredArgumentsVector();
-        void calculateSustainTime();
-    
+    //todo update in uml diagram
     protected:
         virtual string getProgramName();
         virtual string getProgramDescription();

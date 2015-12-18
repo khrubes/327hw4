@@ -163,24 +163,27 @@ bool SoundFileBuilder::addStartDataToSoundFile(SoundFile** soundFile, istream& i
 
 /*
  Plots the # samples calculated by @param sampleRate and @param totalSoundLength in the form of @param waveform
- Applies amplitudes to the sound wave depending on the current stage in the ADSR envelope, @param volumePeak, and @param bitdepth.
+ Applies amplitudes to the sound wave depending on the current stage in the ADSR envelope, @param maxAmplitude, and @param bitdepth.
  This function assumes all input parameters are valid, the calling program is responsible for checking.
  @return a SoundFile built from the provided ADSR envelope.
 */
-SoundFile* SoundFileBuilder::buildSoundFileFromADSREvelope(float attackTime, float decayTime, float sustainTime, float releaseTime, float totalSoundLength, float frequency, float volumePeak, float pf, int bitdepth, int sampleRate, string waveForm) {
+SoundFile* SoundFileBuilder::buildSoundFileFromADSREvelope(float attackTime, float decayTime, float sustainValue, float releaseTime, float totalSoundLength, float frequency, float maxAmplitude, float pf, int bitdepth, int sampleRate, string waveForm) {
     
     int numSamples = floor( totalSoundLength * sampleRate );
     SoundFile* soundFile = new SoundFile("" /* file name */, bitdepth, 1 /* num channels */, sampleRate, numSamples);
-    vector<signed int> channel;
+    vector<long> channel;
     channel.reserve(numSamples);
+    
     for (int i = 0; i < numSamples; i++) {
         float currentTime = this->getXValue(i, numSamples, totalSoundLength);
-        float sampleValue = this->getSampleValue(waveForm, currentTime, frequency, i, sampleRate, pf, volumePeak);
-        sampleValue*= this->getAmplitudeValue(currentTime, attackTime, decayTime, sustainTime, releaseTime, totalSoundLength);
-        sampleValue*= pow(2, bitdepth) - 1;
+        float sampleValue = this->getSampleValue(waveForm, currentTime, frequency, i, sampleRate, pf, maxAmplitude);
+        float amplitude = this->getAmplitudeValue(maxAmplitude, currentTime, attackTime, decayTime, sustainValue, releaseTime, totalSoundLength);
+        sampleValue*=amplitude;
+        float bitdepthVal = pow(2, bitdepth-1) - 1;
+        sampleValue*=bitdepthVal;        
         channel.push_back(sampleValue);
     }
-    soundFile->setChannels(vector< vector<signed int> >(1, channel));
+    soundFile->setChannels(vector< vector<long> >(1, channel));
     return soundFile;
 }
 
@@ -188,7 +191,7 @@ SoundFile* SoundFileBuilder::buildSoundFileFromADSREvelope(float attackTime, flo
  @return an x value data point determined by @param sampleNum, and the length of the sound.
 */
 float SoundFileBuilder::getXValue(int sampleNum, int totalNumSamples, float lengthOfSound){
-    float result = (lengthOfSound / (totalNumSamples)) * (sampleNum + 1); // +1 used to avoid initial 0 value
+    float result = (lengthOfSound / (totalNumSamples)) * (sampleNum);
     return result;
 }
 
@@ -198,11 +201,11 @@ float SoundFileBuilder::getXValue(int sampleNum, int totalNumSamples, float leng
 float SoundFileBuilder::getSampleValue(string waveFormType, float currentTime, float frequency, int sampleNum, int sampleRate, float pf, float maxVolume){
     float toReturn;
     if (waveFormType.compare("--sin")==0) {
-        toReturn = this->getSinWaveValue(currentTime, 1/frequency);
+        toReturn = this->getSinWaveValue(currentTime, frequency);
     } else if(waveFormType.compare("--triangle")==0){
-        toReturn = this->getTriangleWaveValue(currentTime, 1/frequency);
+        toReturn = this->getTriangleWaveValue(currentTime, frequency);
     }else if(waveFormType.compare("--sawtooth")==0){
-        toReturn = this->getSawtoothWaveValue(currentTime, 1/frequency);
+        toReturn = this->getSawtoothWaveValue(currentTime, frequency);
     }else if(waveFormType.compare("--pulse")==0){
         toReturn = this->getPulseWaveValue(currentTime, sampleNum, sampleRate, frequency, pf, maxVolume);
     }
@@ -213,28 +216,29 @@ float SoundFileBuilder::getSampleValue(string waveFormType, float currentTime, f
  @return a sin wave function depending on @param currentTime and @param period
  */
 float SoundFileBuilder::getSinWaveValue(float currentTime, float period){
-    float sinWaveValue = sin( period * currentTime);
+    float sinWaveValue = sin( period * currentTime * M_PI);
     return sinWaveValue;
 }
 
 /*
  @return a triangle wave function depending on @param currentTime and @param period
- Follows the formula for a triangle wave from https://en.wikipedia.org/wiki/Triangle_wave, with period p - (1/ "-f")
+ Follows the formula for a triangle wave from https://en.wikipedia.org/wiki/Triangle_wave
  */
 float SoundFileBuilder::getTriangleWaveValue(float currentTime, float period){
-    //* this->getAmplitudeValue(currentTime)
-    float triangleWaveValue = (2/M_PI) * asin(  sin( ((2*M_PI) / period) * currentTime )  );
+    float tOverA = (currentTime * (2.0 * period) );
+    float floorVal = floor(tOverA + 0.5);
+    float absVal = abs ( 2 * ( tOverA - floorVal ) );
+    float triangleWaveValue = 2 * absVal -1;
     return triangleWaveValue;
 }
 
 /*
  @return a sawtooth wave function depending on @param currentTime and @param period.
- Follows the formula for a sawtooth wave from https://en.wikipedia.org/wiki/Sawtooth_wave, with period p - (1/ "-f") and amplitude a given by getAmplitudeValue(currentTime)
+ Follows the formula for a sawtooth wave from https://en.wikipedia.org/wiki/Sawtooth_wave with period p - (1/ "-f") and amplitude a given by getAmplitudeValue(currentTime)
  */
 float SoundFileBuilder::getSawtoothWaveValue(float currentTime, float period){
-    float x = (currentTime * M_PI) / period;
-    float cotX = cos(x)/sin(x);
-    float sawToothWaveValue = -1 * (2/M_PI) * atan( cotX );
+    float tOverA = (currentTime * (2 * period));
+    float sawToothWaveValue = 2 * (tOverA - floor(.5 + tOverA));
     return sawToothWaveValue;
 }
 
@@ -243,30 +247,56 @@ float SoundFileBuilder::getSawtoothWaveValue(float currentTime, float period){
     @return a pulse wave function depending on @param sampleNum, @param sampleRate, @param frequency, @param pf (fraction the wave is up) and @param maxVolume
  */
 float SoundFileBuilder::getPulseWaveValue(float currentTime, int sampleNum, int sampleRate, float frequency, float pf, float maxVolume){
-    if ( (sampleNum/sampleRate)*frequency - floor((1/sampleRate) - frequency) < pf ) {
+    float fraction = (currentTime - frequency) - floor (currentTime - frequency );
+    if ( fraction < (pf*frequency) ) {
         return maxVolume;
     } else {
         return -1 * maxVolume;
     }
 }
 
-
 /*
     @param currentTime the current x value we are generating amplitude value to multiply by separately calculated y value for.
     Other params represent values from the ADSR envelope.
     @return a float value to scale the function by, depending on the current stage in the a d s r envelope.
  */
-float SoundFileBuilder::getAmplitudeValue(float currentTime, float attackTime, float decayTime, float sustainTime, float releaseTime, float totalSoundLength){
+float SoundFileBuilder::getAmplitudeValue(float peakAmplitude, float currentTime, float attackTime, float decayTime, float sustainValue, float releaseTime, float totalSoundLength){
     float toReturn;
     if (currentTime <=  attackTime) {
-        toReturn = (currentTime / attackTime);
+        //attack phase
+        toReturn = this->getAmplitudeAtPoint(currentTime, attackTime, peakAmplitude, 0, 0); // creates a function through (0,0) (attackTime, peakAmplitude)
+        
     }else if (currentTime <= attackTime + decayTime){
-        toReturn = 1 - ((currentTime - attackTime) / decayTime);
-    }else if (currentTime <= attackTime + decayTime + sustainTime){ //decayseconds will be a value UP TO end of decay
+        //decay phase
+        toReturn = this->getAmplitudeAtPoint(currentTime, attackTime + decayTime, sustainValue, attackTime, peakAmplitude);
+        
+    }else if (currentTime <=  ( totalSoundLength - releaseTime )){
+        //sustain phase
         toReturn = this->lastAmplitudeValue;
-    }else{ // we are in the release phase
-        toReturn = this->lastAmplitudeValue * ((currentTime-sustainTime)/totalSoundLength);
+        
+    }else{
+        // release phase
+        toReturn = this->getAmplitudeAtPoint(currentTime, totalSoundLength, 0, totalSoundLength - releaseTime, sustainValue);
     }
+    
     this->lastAmplitudeValue = toReturn;
     return toReturn;
+}
+
+/*
+    Computes the amplitude at point @param currentX by creating a point through (x1, y1) and (x0, y0) and evaluating the function at currentX.
+*/
+float SoundFileBuilder::getAmplitudeAtPoint(float currentX, float x1, float y1, float x0, float y0){
+    float slope = this->getSlope(y1, y0, x1, x0);
+    float yIntercept = this->getYIntercept(slope, x1, y1);
+    return (slope * currentX) +  yIntercept;
+}
+
+
+float SoundFileBuilder::getSlope(float y1, float y0, float x1, float x0) {
+    return (y1 - y0) / (x1 - x0);
+}
+
+float SoundFileBuilder::getYIntercept(float slope, float xValue, float yValue) {
+    return yValue - (slope * xValue);
 }

@@ -68,19 +68,19 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-f"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "1"
-            isEnabled = "YES">
+            argument = "440"
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-o "
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Users/kelseyhrubes/Documents/327/hw4/hw4/hw4/ofile.cs229"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "mult5"
@@ -88,7 +88,7 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Users/kelseyhrubes/Documents/327/hw4/hw4/hw4/sf2.cs229"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "mult2"
@@ -96,79 +96,95 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Users/kelseyhrubes/Documents/327/hw4/hw4/hw4/sf1.cs229"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--bits"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "8"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--sr"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "10"
-            isEnabled = "YES">
+            argument = "1000"
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-a"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = ".5"
-            isEnabled = "YES">
+            argument = ".1"
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-d"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = ".6"
-            isEnabled = "YES">
+            argument = ".1"
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-s"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = ".5"
-            isEnabled = "YES">
+            argument = ".8"
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-r"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = ".5"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-t"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "2"
-            isEnabled = "YES">
+            argument = "1.5"
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-v"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "1"
-            isEnabled = "YES">
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--pulse"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--pf"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = ".002"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--sin"
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--triangle"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--sin"
-            isEnabled = "YES">
+            argument = "--sawtooth"
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-backwards"

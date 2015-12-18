@@ -11,4 +11,5 @@ bool parseAndStoreStringIntoInt(int &i, string str);
 bool isValidSample(SoundFile* soundFile, int& sampleValueToStoreInto, string sampleStringFromFile, signed int multiplyValue);
 vector<string> charArrayToStringVector(int argc, const char* argv[]);
 bool isNumeric(string& input);
+bool isDecimalBetween0And1(string argument);
 #endif /* util_hpp */

@@ -54,13 +54,13 @@ void SoundProgram::outputSoundFile(SoundFile* soundFile){
  */
 void SoundProgram::concantenateSoundFiles(SoundFile* toConcantenateInto, vector<SoundFile*> soundFiles, int numSamplesForChannel){
     // instantiate the channels for toConcantenateInto with
-    vector< vector<signed int> > channels( toConcantenateInto->getNumChannels(), vector<signed int>(numSamplesForChannel, 0) );
+    vector< vector<long> > channels( toConcantenateInto->getNumChannels(), vector<long>(numSamplesForChannel, 0) );
     int indexOfLastSampleRow = 0; //used to track the row # we left off at after concantenating the previous soundfilee
     for (auto &soundFile : soundFiles)
     {
         for (int channelIndex = 0; channelIndex < min( soundFile->getNumChannels(), toConcantenateInto->getNumChannels() ); channelIndex++) {
             
-            vector<signed int> currentChannel = (* (soundFile->getChannels()) )[channelIndex]; //for readability purposes
+            vector<long> currentChannel = (* (soundFile->getChannels()) )[channelIndex]; //for readability purposes
             for (int sampleIndex = 0; sampleIndex < currentChannel.size(); sampleIndex++) {
                 ( channels[channelIndex] )[sampleIndex + indexOfLastSampleRow] = currentChannel[sampleIndex];
             }
@@ -198,6 +198,8 @@ vector<string> SoundProgram::getValidSwitches(bool withParams){
     vector<string> switches;
     if (!withParams) { // there are no switches with parameters for a basic sound program.
         switches.push_back("-h");
+    }else {
+               switches.push_back("-o");
     }
     return switches;
 }
